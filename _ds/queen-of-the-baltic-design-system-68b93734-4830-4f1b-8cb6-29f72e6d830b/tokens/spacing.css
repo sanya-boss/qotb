@@ -1,0 +1,42 @@
+:root{
+--space-1:4px;
+--space-2:8px;
+--space-3:12px;
+--space-4:16px;
+--space-5:24px;
+--space-6:32px;
+--space-7:48px;
+--space-8:64px;
+--space-9:96px;
+--space-10:128px;
+
+--section-y:clamp(72px,9vw,128px); /* @kind spacing */
+--gutter:clamp(20px,5vw,64px); /* @kind spacing */
+--container:1200px; /* @kind spacing */
+--container-narrow:760px; /* @kind spacing */
+
+--radius-0:0;
+--radius-sm:4px;
+--radius-pill:999px; /* legacy */
+--radius-btn:6px;
+--radius-card:6px;
+--radius-inner:10px;
+--radius-panel:16px;
+--radius-circle:50%;
+
+--border-w:1px; /* @kind spacing */
+
+--shadow-none:none;
+--shadow-focus:0 0 0 3px rgba(58,85,120,.35);
+
+--ease-out:cubic-bezier(.22,.61,.36,1); /* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1); /* @kind other */
+--dur-fast:180ms; /* @kind other */
+--dur-base:280ms; /* @kind other */
+--dur-slow:640ms; /* @kind other */
+--dur-marquee:40s; /* @kind other */
+
+--nav-h:72px; /* @kind spacing */
+--btn-h:56px; /* @kind spacing */
+--btn-h-sm:44px; /* @kind spacing */
+}

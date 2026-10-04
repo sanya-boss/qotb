@@ -1,0 +1,56 @@
+:root{
+/* Navy — sampled from qotb.eu (#041E3A) */
+--qb-navy-950:#020F1F;
+--qb-navy-900:#031629;
+--qb-navy-800:#041E3A;
+--qb-navy-700:#0C2B4E;
+--qb-navy-600:#1B3B63;
+--qb-navy-500:#3A5578;
+--qb-navy-300:#8B9AAF;
+--qb-navy-200:#B9C3D1;
+--qb-navy-100:#DCE1E8;
+/* Paper — soft off-white (site uses #E6E6E6) */
+--qb-paper-50:#F6F5F2;
+--qb-paper-100:#EEEDE9;
+--qb-paper-200:#E6E6E6;
+--qb-paper-300:#D6D5D1;
+/* Pearl — quiet warm neutral for numerals & fine rules on navy (never large fills) */
+--qb-pearl-300:#D9D0C1;
+--qb-pearl-500:#B3A48C;
+/* Ink */
+--qb-ink-900:#14171C;
+--qb-ink-700:#3B3F46;
+--qb-ink-500:#62666D;
+--qb-white:#FFFFFF;
+--qb-black:#000000;
+/* Semantic (forms only — used sparingly) */
+--qb-error:#9B2C2C;
+--qb-success:#2F5D46;
+
+/* Aliases — Luxe (night) is the default */
+--surface-page:var(--qb-navy-950);
+--surface-alt:var(--qb-navy-900);
+--surface-raised:var(--qb-navy-900);
+--surface-panel:var(--qb-navy-900);
+--surface-well:var(--qb-navy-800);
+--surface-inverse:var(--qb-paper-50);
+--surface-inverse-deep:var(--qb-navy-900);
+--surface-overlay:rgba(2,15,31,.62);
+--text-heading:var(--qb-paper-50);
+--text-body:var(--qb-navy-100);
+--text-muted:var(--qb-navy-300);
+--text-accent:var(--qb-paper-50);
+--text-label:var(--qb-pearl-300);
+--text-on-inverse:var(--qb-navy-950);
+--text-on-inverse-muted:var(--qb-ink-500);
+--border-hairline:rgba(246,245,242,.28);
+--border-subtle:rgba(246,245,242,.12);
+--border-on-inverse:rgba(246,245,242,.6);
+--focus-ring:var(--qb-pearl-300);
+}
+/* Light "paper" scope — forms, print, legacy light pages */
+.theme-paper{
+--surface-page:var(--qb-paper-100);--surface-alt:var(--qb-paper-200);--surface-raised:var(--qb-paper-50);--surface-panel:var(--qb-paper-50);--surface-well:var(--qb-paper-200);
+--surface-inverse:var(--qb-navy-800);--text-heading:var(--qb-navy-800);--text-body:var(--qb-ink-900);--text-muted:var(--qb-ink-500);--text-accent:var(--qb-navy-800);--text-label:var(--qb-ink-500);
+--text-on-inverse:var(--qb-paper-50);--border-hairline:var(--qb-navy-800);--border-subtle:var(--qb-paper-300);
+}

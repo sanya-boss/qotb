@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /scraps/
+
+Sitemap: https://qotb.eu/sitemap.xml

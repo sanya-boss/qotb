@@ -1,0 +1,27 @@
+/* "Baltic Sea" palette — alternative theme. Abyss ground, sea-glass accents, a single spark of Baltic amber. */
+:root{
+--sea-abyss:#03161B;
+--sea-trench:#020E12;
+--sea-deep:#072A31;
+--sea-current:#0C3A43;
+--sea-tide:#135A63;
+--sea-lagoon:#2F7A80;
+--sea-glass:#8FC1B5;
+--sea-foam:#C9DFD8;
+--sea-mist:#E4ECE8;
+--sea-salt:#F3F4EF;
+--sea-amber:#D08A3C;
+--sea-amber-soft:#E7B77A;
+}
+/* Apply on a wrapper to re-skin every component to the sea palette (dark ground). */
+.theme-sea{
+--qb-navy-950:#020E12;--qb-navy-900:#03161B;--qb-navy-800:#072A31;--qb-navy-700:#0C3A43;--qb-navy-600:#135A63;--qb-navy-500:#2F7A80;--qb-navy-300:#5E8F8C;--qb-navy-200:#8FC1B5;--qb-navy-100:#C9DFD8;
+--qb-paper-50:#F3F4EF;--qb-paper-100:#E4ECE8;--qb-pearl-300:#8FC1B5;--qb-pearl-500:#D08A3C;
+--surface-page:#03161B;--surface-raised:#072A31;--surface-inverse:#072A31;--surface-overlay:rgba(3,22,27,.55);
+--text-heading:#F3F4EF;--text-body:#D3E0DB;--text-muted:#8FA9A5;--text-accent:#8FC1B5;--text-on-inverse:#F3F4EF;--text-on-inverse-muted:#8FC1B5;
+--border-hairline:rgba(143,193,181,.32);--border-subtle:rgba(143,193,181,.16);--border-on-inverse:rgba(243,244,239,.6);
+}
+/* Light "salt" variant inside a sea page (forms, long reading). */
+.theme-sea-light{
+--surface-page:#F3F4EF;--text-heading:#072A31;--text-body:#0E2227;--text-muted:#4F6663;--text-accent:#072A31;--border-hairline:#072A31;--border-subtle:#C9D6D1;--qb-navy-300:#7F9C98;
+}
