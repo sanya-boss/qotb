@@ -5,6 +5,7 @@ Marketing website for **Queen of the Baltic International** (qotb.eu), a beauty 
 
 Pages:
 - `Queen of the Baltic.dc.html` — Home (single long scroll page).
+- `Gallery.dc.html` — Gallery page (photoshoot chapters), linked from nav “Gallery 04” and “View the gallery”.
 - `404.dc.html` — Not-found page.
 
 ## About the design files
@@ -53,7 +54,7 @@ Shape
 11. **Side panel (dialog)** — right-aligned 640px panel, slides in from +56px with blur, backdrop blur 6px. Variants: Apply form, Partner form, Event ("Season 2026 is over — thank you…"), **Privacy policy** (7 numbered GDPR sections; opened from footer, cookie banner, mobile menu, form consent link — never a separate page), Contestant profile.
 12. **Cookie banner** — bottom-left, Accept / Essential only; analytics load only after Accept.
 
-## Screens — Gallery (not included; nav “Gallery 04” link target to be built separately)
+## Screens — Gallery
 Fixed header (logo left, chapter nav centred, "Main page" pill right; mobile burger menu). Hero with blurred background + floating blue-tinted photos and **Shuffle** button (button bg = icon-circle navy, white text, white circle with blue icon; shuffle animates without changing photo formats). Chapters in uniform layout (same as "Finals 2025"): numbered label (Manrope) · title · caps description · Instagram-linked photographer handles · carousel/lightbox. Chapters: Finals 2025, September shootings, China Fashion Week, Elitcar & Hearts *Diamonds*, Harley-Davidson, Yacht. All photos shown uncropped at native ratio. Lightbox with larger images on mobile. Closing "See you next season" + back to main.
 
 ## Interactions & behaviour
@@ -69,8 +70,19 @@ Fixed header (logo left, chapter nav centred, "Main page" pill right; mobile bur
 `assets/` — brand marks (crown, monogram, wordmarks, mermaid), partner logos, photos (`assets/photos/webp/*` optimised WebP, `season/`, founder, winners). Fonts from Google Fonts + `_ds` tokens. Hero video is external (YouTube embed) — replace with self-hosted MP4/WebM in production.
 
 ## Files
-- `Queen of the Baltic.dc.html`, `404.dc.html` — design references
+- `Queen of the Baltic.dc.html`, `Gallery.dc.html`, `404.dc.html` — design references
 - `siteContent.v4.js` — content/data
 - `_ds/` — design-system tokens & components bundle
 - `assets/`, `robots.txt`, `sitemap.xml`
-- `support.js`, `image-slot.js` — prototype runtime only (do not port)
+- `support.js` — prototype runtime only (do not port)
+
+## Motion model (latest)
+- All reveals are **in-view triggered, play once** (IntersectionObserver, rootMargin bottom −10%): headings line-by-line (110ms stagger, blur 12→0, translateY 28%→0), About paragraph word-by-word (≤45ms stagger, dim navy → paper/pearl), body/blocks blur 16→0 + fade 1000ms, media rise-in (perspective rotateX 24°→0, blur 28→0, 1.6s), recap numbers count up from 0 (1.8s, easeOutQuart).
+- Light (paper) theme on Charity/Partners toggles when the section crosses viewport centre, tweened 900ms — not scrubbed.
+- Hero video blurs (22px, opacity .38, scale 1.06) once scrolled past ~45% of the hero, 900ms transition.
+- **Exception — Winners on desktop (≥768px):** pinned 440vh scroll sequence; Juta/Luiza photos rise out of their contestant cells, move to centre, captions + side text + mermaid blur in, pearl progress indicator on the right.
+- **Winners on mobile:** two navy “?” cards (inner 1px pearl line inset 10px, Manrope 200 “?”) gently shake every 2.6s like gifts; hint text “Tap the cards to reveal the winners” above. Tap → cards flip in sequence (rotateY 0→90 swap →0), photos go grayscale→colour, numbers count 04/11, “The winner” tags drop in, text + duo photo blur in.
+- Gallery carousel (home): middle row static on desktop and draggable (inertia); outer rows auto-drift. On mobile the middle row also auto-drifts.
+- Gallery page chapter covers: one viewport tall, frame expands automatically (2.6s) when the chapter reaches mid-viewport.
+- Page loader 0→100% (min 1.8s, max 6s); hero odometer 2026→2027 and video start after the loader.
+- Respect `prefers-reduced-motion`: no loader, final states immediately.
