@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Gallery — Queen of the Baltic</title>
+<meta name="description" content="All photoshoots of Queen of the Baltic: finals, September shootings, China Fashion Week, partner shoots with Elitcar, Hearts Fine Jewelry and Harley-Davidson, and the yacht photoshoot.">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors-sea.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/typography.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/base.css">
+<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/styles.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500..700&amp;family=EB+Garamond:ital,wght@0,400..600;1,400..600&amp;display=swap">
+<script src="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/_ds_bundle.js"></script>
+<style>
+html,body{margin:0;background:#041E3A;overflow-x:clip}
+body{color:#C9D6E6}
+a{color:#F6F5F2;text-decoration:none}a:hover{opacity:.75}
+:focus-visible{outline:2px solid #9FC6EC;outline-offset:3px}
+img{-webkit-user-drag:none}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;background:#041E3A;color:#C9D6E6;font-family:'Manrope',var(--font-sans),sans-serif;min-height:100vh;">
+
+  <header style="position:fixed;z-index:30;top:0;left:0;right:0;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:24px;padding:18px clamp(16px,1.8vw,32px);background:linear-gradient(180deg,rgba(4,30,58,.85),rgba(4,30,58,0));pointer-events:none;">
+    <a href="./" aria-label="Queen of the Baltic — main page" style="grid-column:1;grid-row:1;justify-self:start;align-self:center;pointer-events:auto;display:flex;align-items:center;height:44px;"><img src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display: block; height: 31px; width: 224px"></a>
+    <nav aria-label="Photoshoots" style="grid-column:2;grid-row:1;pointer-events:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(12px,1.4vw,22px);"><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
+          <a href="#{{ c.id }}" onClick="{{ c.go }}" style="display:inline-flex;align-items:flex-start;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;"><span style="font-family:'Manrope',var(--font-sans),sans-serif;font-size:10px;font-weight:600;color:#9FC6EC;">{{ c.n }}</span>{{ c.short }}</a>
+        </sc-for>
+      </sc-if></nav>
+    <div style="grid-column:3;grid-row:1;justify-self:end;pointer-events:auto;display:flex;align-items:center;gap:clamp(8px,1.2vw,16px);">
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ menu.toggle }}" aria-label="Open menu" aria-expanded="{{ menu.exp }}" style="display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.12);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:block;"><path d="M4 8h16M4 16h16"></path></svg></button></sc-if>
+      
+      <a href="./" style="display:inline-flex;align-items:center;gap:12px;height:44px;padding:0 4px 0 18px;border-radius:999px;background:#F6F5F2;color:#041E3A;text-transform:uppercase;letter-spacing:.06em;font-size:13px;font-weight:600;letter-spacing:.06em;white-space:nowrap;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
+    </div>
+  </header>
+
+  <sc-if value="{{ menu.open }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;z-index:50;inset:0;display:flex;flex-direction:column;gap:clamp(24px,4vh,40px);padding:18px clamp(16px,1.8vw,32px) 32px;background:#041E3A;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;">
+        <a href="./" aria-label="Queen of the Baltic — main page" style="display:flex;align-items:center;height:44px;"><img src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;height:28px;width:auto;"></a>
+        <button type="button" onClick="{{ menu.toggle }}" aria-label="Close menu" style="display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.12);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:block;"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">Photoshoots</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid rgba(246,245,242,.18);">
+        <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
+          <li style="border-bottom:1px solid rgba(246,245,242,.18);"><a href="#{{ c.id }}" onClick="{{ c.goMenu }}" style="display:flex;align-items:baseline;gap:16px;min-height:56px;padding:14px 4px;color:#F6F5F2;"><span style="font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span><span style="font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(28px,7vw,44px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span></a></li>
+        </sc-for>
+      </ol>
+      <a href="./" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
+    </div>
+  </sc-if>
+
+  <section data-screen-label="01 Gallery hero" style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(40px,7vh,88px);padding:clamp(120px,16vh,180px) clamp(16px,1.8vw,32px) clamp(40px,6vh,72px);box-sizing:border-box;">
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(18px,2.4vw,32px);">
+      <p data-in="" style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">Discover the vision behind the project · {{ total }} photographs</p>
+      <h1 data-in="" style="margin:0;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(64px,12.5vw,232px);line-height:.84;letter-spacing:-.035em;color:#F6F5F2;">All <em style="color:#9FC6EC;">photoshoots.</em></h1>
+    </div>
+    <ol data-index="" style="position:relative;z-index:1;list-style:none;margin:0;padding:0;border-top:1px solid rgba(246,245,242,.18);">
+      <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
+        <li data-in="" style="border-bottom:1px solid rgba(246,245,242,.18);">
+          <a href="#{{ c.id }}" onClick="{{ c.go }}" data-pv="{{ c.cover }}" style="position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(28px,auto) minmax(0,1fr) auto;align-items:center;gap:12px clamp(16px,3vw,48px);padding:clamp(14px,1.8vw,24px) 4px;color:#F6F5F2;transition:padding-left 500ms cubic-bezier(.22,.61,.36,1),opacity 300ms;" style-hover="padding-left:clamp(12px,2vw,32px);opacity:1">
+            <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;"><img src="{{ c.cover }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.32;"><span style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,30,58,.85) 0%,rgba(4,30,58,.35) 100%);"></span></span></sc-if>
+            <span style="position:relative;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span>
+            <span style="position:relative;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 24px;min-width:0;"><span style="font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(28px,3.8vw,64px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span><span style="font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8FA6C0;">{{ c.sub }}</span></span>
+            <span style="position:relative;display:flex;align-items:center;gap:14px;"><span style="font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C0;white-space:nowrap;">{{ c.count }}</span></span>
+          </a>
+        </li>
+      </sc-for>
+    </ol>
+    <div data-pv-float="" aria-hidden="true" style="position:fixed;z-index:5;left:0;top:0;width:clamp(180px,17vw,280px);aspect-ratio:3 / 4;border-radius:16px;overflow:hidden;pointer-events:none;opacity:0;transform:translate3d(-999px,-999px,0);box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transition:opacity 300ms cubic-bezier(.22,.61,.36,1);background:#0A2A4D;">
+      <img data-pv-img="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" style="display:block;width:100%;height:100%;object-fit:cover;">
+    </div>
+  </section>
+
+  <section id="finals" data-ch="0" data-screen-label="02 Finals" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="0" data-ex-frame="" aria-label="Open photo: Finals" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.0.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP" alt="Finals" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">01 · Finals photoshoot · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Finals</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Finals <em style="color:#9FC6EC;">photoshoot.</em></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Photoshoot of the final competition of «Queen of the Baltic» in 2025 — the night every rehearsal led up to.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.0.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Finals</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="september" data-ch="1" data-screen-label="03 September shootings" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="9" data-ex-frame="" aria-label="Open photo: September" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.1.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg" alt="September" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">02 · September 17–20, 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">September</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">September <em style="color:#9FC6EC;">shootings.</em></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Four days of sessions, a style lesson, the pre-party and rehearsals before the final — and a visit to the Children’s Foundation.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      <div data-rv="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px 48px;margin-bottom:clamp(40px,5vw,72px);">
+        <ul aria-label="Sessions" style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;">
+          <sc-for list="{{ sessions }}" as="t" hint-placeholder-count="6">
+            <li style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(246,245,242,.22);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;">{{ t }}</li>
+          </sc-for>
+        </ul>
+        <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;color:#8FA6C0;">Photo:
+          <a href="https://www.instagram.com/sash2rush/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@sash2rush</a>
+          <a href="https://www.instagram.com/photos_golovan/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@photos_golovan</a>
+          <a href="https://www.instagram.com/by.pribytkova/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@by.pribytkova</a>
+          <a href="https://www.instagram.com/marina_danilove/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@marina_danilove</a>
+        </p>
+      </div>
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.1.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>September</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="china" data-ch="2" data-screen-label="04 China Fashion Week" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="23" data-ex-frame="" aria-label="Open photo: China Fashion Week" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.2.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp" alt="China Fashion Week" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">03 · April 17–19, 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">China</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Fashion Week</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">China <em style="color:#9FC6EC;">Fashion Week.</em></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">The organizer of «Queen of the Baltic» walked at China Fashion Week as a model, April 17–19, 2025.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.2.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>China Fashion Week</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners-shoot" data-ch="3" data-screen-label="05 Elitcar &amp; Hearts" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="33" data-ex-frame="" aria-label="Open photo: Elitcar &amp; Hearts" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3661-6665-4264-a263-363333386261/477A9159jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.3.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3661-6665-4264-a263-363333386261/477A9159jpg.webp" alt="Elitcar &amp; Hearts" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">04 · With our general partners · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Elitcar</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">&amp; Hearts</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Elitcar <em style="color:#9FC6EC;">&amp;</em> Hearts Fine Jewelry <span style="color:#F6F5F2;">&amp; Diamonds</span></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A promotional photoshoot with our general partners that shapes the visual identity of the contest: elegance, strength, freedom of expression.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.3.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Elitcar &amp; Hearts</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="harley" data-ch="4" data-screen-label="06 Harley-Davidson" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="40" data-ex-frame="" aria-label="Open photo: Harley-Davidson" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.4.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp" alt="Harley-Davidson" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">05 · General partner · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Harley</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Davidson</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Harley-Davidson <em style="color:#9FC6EC;">Motorcycles.</em></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Aleksandra Turashova’s photoshoot with «Queen of the Baltic» general partner Harley-Davidson — chrome, leather and a crown.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.4.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Harley-Davidson</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="yacht" data-ch="5" data-screen-label="07 Yacht" style="position:relative;">
+    <div data-ex="" style="position:relative;">
+      <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
+        <button type="button" data-lb="49" data-ex-frame="" aria-label="Open photo: Yacht" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
+          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild6530-3737-4338-b763-356139333262/477A6273jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
+            <sc-for list="{{ sh.5.fly }}" as="f" hint-placeholder-count="0">
+              <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
+            </sc-for>
+          </span>
+          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild6530-3737-4338-b763-356139333262/477A6273jpg.webp" alt="Yacht" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
+        </button>
+        <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
+          <p style="margin:0;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">06 · At sea · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Yacht</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">at sea</em></div>
+        </div>
+        <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
+          <h2 style="margin:0;max-width:14ch;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Yacht <em style="color:#9FC6EC;">photoshoot.</em></h2>
+          <p style="margin:0;max-width:420px;font-family:var(--font-mono,'Geist Mono'),ui-monospace,monospace;text-transform:uppercase;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A photoshoot on a yacht as part of the «Queen of the Baltic» competition — the Baltic itself as the backdrop.</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:clamp(64px,8vw,140px) clamp(16px,1.8vw,32px) clamp(96px,12vw,200px);">
+      
+      <div style="columns:3 300px;column-gap:clamp(14px,1.6vw,28px);">
+        <sc-for list="{{ sh.5.grid }}" as="s" hint-placeholder-count="3">
+          <figure data-rv="" style="break-inside:avoid;margin:0 0 clamp(20px,2.4vw,40px);display:flex;flex-direction:column;gap:12px;">
+            <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
+              <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
+            </button>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Yacht</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="08 Gallery outro" style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px,4vw,48px);padding:clamp(96px,12vw,200px) clamp(16px,1.8vw,32px) clamp(48px,6vw,80px);border-top:1px solid rgba(246,245,242,.12);">
+    <img data-rv="" src="assets/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:48px;height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
+    <p data-rv="" style="margin:0;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(48px,8vw,140px);line-height:.88;letter-spacing:-.03em;color:#F6F5F2;">See you <em style="color:#9FC6EC;">next season.</em></p>
+    <div data-rv="" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
+      <a href="./" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Back to main page<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
+      <button type="button" onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border:0;border-radius:999px;background:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Manrope',var(--font-sans),sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">Back to top<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(246,245,242,.14);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></button>
+    </div>
+    <p style="margin:0;font-size:13px;color:#8FA6C0;">+372 5878 8841 · contest@qotb.eu</p>
+  </footer>
+
+  <div aria-live="polite" data-chip="" style="position:fixed;z-index:25;left:clamp(16px,1.8vw,32px);bottom:clamp(16px,2.4vh,28px);display:flex;align-items:center;gap:14px;padding:10px 16px 10px 14px;border-radius:999px;background:rgba(4,30,58,.72);box-shadow:0 0 0 1px rgba(246,245,242,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(16px);transition:opacity 500ms cubic-bezier(.22,.61,.36,1),transform 500ms cubic-bezier(.22,.61,.36,1);pointer-events:none;">
+    <span style="font-family:'Manrope',var(--font-sans),sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;color:#9FC6EC;">{{ chip.n }} / 06</span>
+    <span style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;">{{ chip.title }}</span>
+    <span style="position:relative;width:56px;height:2px;border-radius:2px;background:rgba(246,245,242,.18);overflow:hidden;"><span data-chip-bar="" style="position:absolute;inset:0;background:#9FC6EC;transform-origin:0 50%;transform:scaleX(0);"></span></span>
+  </div>
+
+  <div data-cursor="" aria-hidden="true" style="position:fixed;z-index:40;left:0;top:0;width:84px;height:84px;margin:-42px 0 0 -42px;border-radius:50%;display:grid;place-items:center;background:#F6F5F2;color:#041E3A;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transform:translate3d(-200px,-200px,0) scale(0);">View</div>
+
+  <sc-if value="{{ lb.open }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Photo viewer" onClick="{{ lb.close }}" style="position:fixed;z-index:60;inset:0;display:flex;flex-direction:column;background:rgba(2,16,32,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
+      <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px clamp(16px,1.8vw,32px);">
+        <span style="font-family:'Manrope',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ lb.pos }}</span>
+        <button type="button" data-lb-close="" onClick="{{ lb.close }}" aria-label="Close" style="display:grid;place-items:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.1);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:block;"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+      </div>
+      <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(0px,5vw,96px);">
+        <button type="button" onClick="{{ lb.prev }}" aria-label="Previous photo" style="position:absolute;z-index:2;left:clamp(8px,1.8vw,32px);top:50%;transform:translateY(-50%);display:grid;place-items:center;width:52px;height:52px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.1);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button>
+        <img ref="{{ lbImg }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ lb.cap }}" onClick="{{ lb.stop }}" style="display:block;max-width:min(100%,1400px);max-height:100%;min-width:0;object-fit:contain;border-radius:10px;">
+        <button type="button" onClick="{{ lb.next }}" aria-label="Next photo" style="position:absolute;z-index:2;right:clamp(8px,1.8vw,32px);top:50%;transform:translateY(-50%);display:grid;place-items:center;width:52px;height:52px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.1);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+      </div>
+      <p style="flex:none;margin:0;padding:16px clamp(16px,1.8vw,32px) 24px;text-align:center;font-family:var(--qs,'EB Garamond'),Georgia,serif;font-size:clamp(20px,2vw,28px);color:#F6F5F2;">{{ lb.cap }}</p>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  T = 'https://static.tildacdn.net/';
+  rootRef = React.createRef();
+  lbImg = React.createRef();
+  componentDidUpdate() { const im = this.lbImg.current, P = this.build(); if (im && this.state.lb !== null) { const src = P.all[this.state.lb].src; if (im.getAttribute('src') !== src) im.src = src; } }
+  state = { lb: null, chap: 0, wide: true, mob: false, menu: false };
+  CH = [
+    { n: '01', id: 'finals', title: 'Finals Photoshoot', short: 'Finals', sub: '2025' },
+    { n: '02', id: 'september', title: 'September Shootings', short: 'September', sub: 'September 17–20, 2025' },
+    { n: '03', id: 'china', title: 'China Fashion Week', short: 'China FW', sub: 'April 17–19, 2025' },
+    { n: '04', id: 'partners-shoot', title: 'Elitcar & Hearts Fine Jewelry', short: 'Elitcar & Hearts', sub: '2025' },
+    { n: '05', id: 'harley', title: 'Harley-Davidson', short: 'Harley', sub: '2025' },
+    { n: '06', id: 'yacht', title: 'Yacht Photoshoot', short: 'Yacht', sub: '2025' }
+  ];
+  SRC = {
+    finals: ['tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP', 'tild6632-6134-4633-b964-373961313863/IMG_7122.webp', 'tild6162-6336-4133-b932-356166663464/IMG_7445.WEBP', 'tild6236-6464-4665-b830-373664663539/IMG_7461.WEBP', 'tild6666-3437-4862-b666-336433656131/IMG_7447.WEBP', 'tild3739-3863-4063-b866-626638393762/IMG_6418.WEBP', 'tild3837-3061-4831-b465-346431616663/IMG_7114.WEBP', 'tild6366-3864-4239-b832-376539353038/IMG_7111.webp', 'tild6262-6537-4732-b633-313731333038/IMG_7120.WEBP'],
+    september: ['tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg', 'tild3166-6230-4563-b261-303637643639/QueenOfTheBaltic81.jpg', 'tild3238-6162-4834-a231-336561613063/477A7549jpg.webp', 'tild3436-6138-4265-b937-343936613537/477A7530jpg.webp', 'tild6366-3530-4339-b039-336135626336/sash2rush39jpg.webp', 'tild3138-3466-4064-a266-656463613364/QueenOfTheBaltic309.jpg', 'tild3630-3636-4434-b837-333261663131/sash2rush4jpg.webp', 'tild3131-3036-4331-b836-366464626435/QueenOfTheBaltic193.jpg', 'tild3632-6262-4264-b866-616335616334/477A7575jpg.webp', 'tild3038-3063-4865-a139-623936366233/477A7525jpg.webp', 'tild3839-3635-4936-b061-306665346162/477A7588jpg.webp', 'tild6235-6536-4437-b234-633864633566/sash2rush46jpg.webp', 'tild3865-6432-4536-a430-666632613265/QueenOfTheBaltic324.jpg', 'tild6535-6130-4634-b830-643866393435/QueenOfTheBaltic68.jpg'],
+    china: ['tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp', 'tild3833-3562-4934-b332-626437316564/E2F269B2-C3EB-4B58-B.webp', 'tild6463-3165-4363-b934-653739366232/03F66DC9-D7EF-4561-B.webp', 'tild6238-3534-4432-b066-393335643235/IMG_0047JPG.webp', 'tild6638-3331-4039-b665-323133366637/9352506F-CA80-450B-A.webp', 'tild3566-3561-4534-b631-313561303532/8E177B8B-87DD-499A-B.webp', 'tild3739-3733-4565-b738-376530656635/7C77ED35-336E-4B2C-8.webp', 'tild3834-3530-4538-b539-653336643531/C114B753-BB67-4355-9.webp', 'tild3832-6230-4966-a638-376461643139/0DA0CE31-4A47-4A13-8.webp', 'tild3130-3233-4437-b839-656632353266/73EA4455-86FE-4AB5-8.webp'],
+    partners: ['tild3661-6665-4264-a263-363333386261/477A9159jpg.webp', 'tild3361-3362-4434-b838-306333626663/477A0983jpg.webp', 'tild3865-3163-4232-b661-306338653961/477A0232jpg.webp', 'tild6262-3836-4932-a637-653138653439/477A9410jpg.webp', 'tild3537-6130-4138-b932-383833663333/477A9444jpg.webp', 'tild3930-3131-4430-b161-336536303037/477A9424jpg.webp', 'tild6430-6266-4466-a661-303932383236/477A9509jpg.webp'],
+    harley: ['tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp', 'tild3133-3761-4166-b239-356165643238/sash2rush10jpg.webp', 'tild3765-3237-4464-b234-376662393735/sash2rush26jpg.webp', 'tild3836-3035-4434-b431-313932396330/sash2rush22jpg.webp', 'tild6635-6236-4538-b136-633136343866/sash2rush15jpg.webp', 'tild3638-6131-4266-a238-383931643338/sash2rush9jpg.webp', 'tild3630-3539-4634-b934-633764653261/sash2rush56jpg.webp', 'tild6130-6365-4939-a634-363030643431/sash2rush39jpg_1.webp', 'tild6530-3539-4934-b261-643633393939/sash2rush35jpg.webp'],
+    yacht: ['tild6530-3737-4338-b763-356139333262/477A6273jpg.webp', 'tild6238-6437-4864-a137-643863373333/477A7563jpg.webp', 'tild6132-6161-4466-a230-376164613139/477A6858jpg.webp', 'tild3739-3131-4434-a163-373461356433/477A6681jpg.webp', 'tild6533-6363-4239-a164-313863646236/477A7826jpg.webp', 'tild6364-6266-4431-b537-373136376465/477A7732jpg.webp', 'tild3639-3632-4239-a661-663434363762/477A6926jpg.webp']
+  };
+  GRID = [
+    { col: '1 / span 5', ar: '4 / 5', top: '0px', px: '-0.05' }, { col: '7 / span 6', ar: '3 / 2', top: '12vh', px: '0.08' },
+    { col: '2 / span 4', ar: '3 / 4', top: '-4vh', px: '0.03' }, { col: '7 / span 4', ar: '4 / 5', top: '6vh', px: '-0.06' },
+    { col: '1 / span 7', ar: '16 / 10', top: '4vh', px: '0.05' }, { col: '9 / span 4', ar: '3 / 4', top: '16vh', px: '-0.04' },
+    { col: '3 / span 4', ar: '4 / 5', top: '0px', px: '0.07' }, { col: '8 / span 5', ar: '3 / 4', top: '-8vh', px: '-0.05' }
+  ];
+  build() {
+    if (this.P) return this.P;
+    const T = this.T, S = this.SRC, all = [], pad = i => String(i + 1).padStart(2, '0');
+    const add = (src, title, i, extra) => { const o = Object.assign({ src: T + src, n: pad(i), cap: title + ' · ' + pad(i), k: String(all.length) }, extra || {}); all.push(o); return o; };
+    const fin = S.finals.map((s, i) => add(s, 'Finals photoshoot', i));
+    const ars = ['3 / 4', '4 / 5', '2 / 3', '4 / 5', '3 / 4'], drops = ['0px', '6vh', '2vh', '8vh', '3vh'];
+    const sep = S.september.map((s, i) => add(s, 'September shootings', i, { ar: ars[i % 5], drop: drops[i % 5] }));
+    const chi = S.china.map((s, i) => add(s, 'China Fashion Week', i, { ar: i % 3 === 1 ? '4 / 5' : '3 / 4', top: i % 2 ? '12vh' : '0px', px: i % 2 ? '0.08' : '-0.05' }));
+    const par = S.partners.map((s, i) => add(s, 'Elitcar & Hearts Fine Jewelry', i));
+    const har = S.harley.map((s, i) => add(s, 'Harley-Davidson', i, { ar: i % 3 === 0 ? '4 / 5' : '3 / 2' }));
+    const yac = S.yacht.map((s, i) => add(s, 'Yacht photoshoot', i, { top: 'calc(' + (84 + i * 14) + 'px + 1vh)' }));
+    this.P = { all, fin, sep, chi, par, yac, har, groups: [fin, sep, chi, par, har, yac],
+      counts: [fin.length, sep.length, chi.length, par.length, har.length, yac.length],
+      covers: [fin[0].src, sep[0].src, chi[0].src, par[0].src, har[0].src, yac[0].src] };
+    return this.P;
+  }
+  grid(list, mob) { return list.map((s, i) => { const g = this.GRID[i % this.GRID.length]; return Object.assign({}, s, mob ? { col: i % 3 === 2 ? '1 / -1' : (i % 3 === 0 ? '1 / span 8' : '5 / span 8'), ar: g.ar, top: '0px', px: i % 2 ? '0.04' : '-0.03' } : g); }); }
+  tideTo(i) { const td = document.querySelector('[data-tide]'); if (!td) return; const n = this.build().yac.length, top = td.getBoundingClientRect().top + scrollY, span = td.offsetHeight - innerHeight;
+    scrollTo({ top: top + span * (n > 1 ? i / (n - 1) : 0) + 2, behavior: this.motion() ? 'smooth' : 'auto' }); }
+  fly(kind, mob) { const P = this.build();
+    const H = [{ x: 4, y: 12, w: 11, r: -6, d: .6 }, { x: 24, y: 3, w: 8, r: 4, d: 1 }, { x: 60, y: 7, w: 10, r: -3, d: .8 }, { x: 84, y: 13, w: 12, r: 5, d: .5 }, { x: 72, y: 38, w: 9, r: -5, d: 1.2 }, { x: 42, y: 22, w: 7, r: 3, d: 1.4 }, { x: 90, y: 50, w: 8, r: -4, d: .9 }, { x: 10, y: 44, w: 8, r: 6, d: 1.1 }];
+    const F = [{ x: 3, y: 10, w: 10, r: -6, d: .8 }, { x: 5, y: 58, w: 12, r: 5, d: 1.1 }, { x: 15, y: 32, w: 8, r: 3, d: 1.4 }, { x: 85, y: 8, w: 11, r: 5, d: .9 }, { x: 88, y: 46, w: 9, r: -4, d: 1.2 }, { x: 79, y: 66, w: 12, r: -7, d: .7 }];
+    const srcH = [P.fin[2], P.sep[1], P.chi[1], P.par[1], P.har[1], P.yac[1], P.sep[4], P.chi[3]], srcF = P.fin.slice(1, 7);
+    const FM = [{ x: 2, y: 5, w: 26, r: -6, d: .8 }, { x: 70, y: 4, w: 26, r: 5, d: 1 }, { x: 3, y: 74, w: 30, r: 5, d: 1.1 }, { x: 37, y: 80, w: 26, r: -3, d: .7 }, { x: 68, y: 72, w: 30, r: -6, d: 1.3 }, { x: 40, y: 2, w: 20, r: 3, d: 1.2 }];
+    const L = kind === 'hero' ? H : (mob ? FM : F), S = kind === 'hero' ? srcH : srcF, k = mob && kind === 'hero' ? 2.2 : 1;
+    return L.map((q, i) => ({ src: S[i % S.length].src, x: (mob && q.x > 50 ? Math.min(q.x, 78) : q.x) + '%', y: q.y + '%', w: (q.w * k) + 'vw', r: String(q.r), d: String(q.d) })); }
+  flyFor(list, mob) {
+    const F = [{ x: 3, y: 10, w: 10, r: -6, d: .8 }, { x: 5, y: 58, w: 12, r: 5, d: 1.1 }, { x: 15, y: 32, w: 8, r: 3, d: 1.4 }, { x: 85, y: 8, w: 11, r: 5, d: .9 }, { x: 88, y: 46, w: 9, r: -4, d: 1.2 }, { x: 79, y: 66, w: 12, r: -7, d: .7 }];
+    const FM = [{ x: 2, y: 5, w: 26, r: -6, d: .8 }, { x: 70, y: 4, w: 26, r: 5, d: 1 }, { x: 3, y: 74, w: 30, r: 5, d: 1.1 }, { x: 37, y: 80, w: 26, r: -3, d: .7 }, { x: 68, y: 72, w: 30, r: -6, d: 1.3 }, { x: 40, y: 2, w: 20, r: 3, d: 1.2 }];
+    const L = mob ? FM : F, src = list.slice(1, 7);
+    return L.map((q, i) => ({ src: src[i % src.length].src, x: q.x + '%', y: q.y + '%', w: q.w + 'vw', r: String(q.r), d: String(q.d) })); }
+  motion() { return !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); }
+  go = id => e => { if (e) e.preventDefault(); const el = document.getElementById(id); if (!el) return; scrollTo({ top: el.getBoundingClientRect().top + scrollY - 10, behavior: this.motion() ? 'smooth' : 'auto' }); };
+  openLb = i => { this._lbOpener = document.activeElement; this.setState({ lb: i }); };
+  closeLb = () => { this.setState({ lb: null }); const o = this._lbOpener; if (o && o.focus) setTimeout(() => o.focus({ preventScroll: true }), 0); };
+  step = d => this.setState(s => { const n = this.build().all.length; return { lb: ((s.lb || 0) + d + n) % n }; });
+
+  componentDidMount() {
+    const root = this.rootRef.current; if (!root) return;
+    const mm = () => this.setState(s => ({ wide: innerWidth >= 1440, mob: innerWidth < 700, menu: innerWidth >= 1440 ? false : s.menu })); mm(); addEventListener('resize', mm); this._mm = mm;
+    this._key = e => { if (this.state.menu && e.key === 'Escape') { this.setState({ menu: false }); return; } if (this.state.lb === null) return; if (e.key === 'Escape') this.closeLb(); else if (e.key === 'ArrowRight') this.step(1); else if (e.key === 'ArrowLeft') this.step(-1); };
+    addEventListener('keydown', this._key);
+    this._click = e => { const b = e.target.closest && e.target.closest('[data-lb]'); if (b && root.contains(b)) { e.preventDefault(); this.openLb(+b.getAttribute('data-lb')); } };
+    root.addEventListener('click', this._click);
+    setTimeout(() => { if (!this.dead) this.setupReveal(root); }, 0);
+    this.mouse = { x: -999, y: -999, cx: -999, cy: -999, px: -999, py: -999, pv: false, cur: false, cs: 0 };
+    this._mv = e => { const m = this.mouse; m.x = e.clientX; m.y = e.clientY; const t = e.target;
+      const row = t.closest && t.closest('[data-pv]'); const fine = e.pointerType === 'mouse';
+      if (row && fine) { const src = row.getAttribute('data-pv'); if (this._pvSrc !== src) { this._pvSrc = src; const im = root.querySelector('[data-pv-img]'); if (im) im.src = src; } m.pv = true; } else m.pv = false;
+      m.cur = fine && !!(t.closest && t.closest('[data-lb]')) && this.state.lb === null; };
+    addEventListener('pointermove', this._mv, { passive: true });
+    this._lastX = 0; this._skew = 0;
+    const loop = () => { if (this.dead) return; this._raf = requestAnimationFrame(loop); try { this.frame(root); } catch (e) { if (!this._err) { this._err = 1; console.warn(e); } } };
+    this._raf = requestAnimationFrame(loop);
+  }
+  componentWillUnmount() { this.dead = true; cancelAnimationFrame(this._raf); removeEventListener('resize', this._mm); removeEventListener('keydown', this._key); removeEventListener('pointermove', this._mv); if (this._io) this._io.disconnect(); }
+
+  setupReveal(root) {
+    if (!this.motion() || !('IntersectionObserver' in window)) return;
+    const ez = 'cubic-bezier(.22,.61,.36,1)';
+    Array.from(root.querySelectorAll('[data-rv],[data-in]')).forEach(el => { el.style.opacity = '0'; el.style.filter = 'blur(14px)'; el.style.transform = 'translate3d(0,28px,0)';
+      el.style.transition = 'opacity 900ms ' + ez + ', filter 900ms ' + ez + ', transform 1100ms ' + ez; });
+    const show = el => { el.style.opacity = ''; el.style.filter = ''; el.style.transform = ''; };
+    root.querySelectorAll('[data-in]').forEach((el, i) => setTimeout(() => show(el), 150 + i * 90));
+    this._io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { show(en.target); this._io.unobserve(en.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    root.querySelectorAll('[data-rv]').forEach(el => this._io.observe(el));
+  }
+
+  frame(root) {
+    const vh = innerHeight, vw = innerWidth, mo = this.motion(), cl = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v)), L = (a, b, t) => a + (b - a) * t, eio = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const m = this.mouse;
+    const pf = root.querySelector('[data-pv-float]');
+    if (pf) { m.px = m.px < -900 ? m.x : L(m.px, m.x, .14); m.py = m.py < -900 ? m.y : L(m.py, m.y, .14); const rot = cl((m.x - m.px) * .08, -10, 10);
+      pf.style.opacity = m.pv ? '1' : '0'; pf.style.transform = 'translate3d(' + (m.px + 28).toFixed(1) + 'px,' + (m.py - 140).toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg)'; }
+    const cu = root.querySelector('[data-cursor]');
+    if (cu) { m.cx = m.cx < -900 ? m.x : L(m.cx, m.x, .22); m.cy = m.cy < -900 ? m.y : L(m.cy, m.y, .22); m.cs = L(m.cs, m.cur ? 1 : 0, .18);
+      cu.style.transform = 'translate3d(' + m.cx.toFixed(1) + 'px,' + m.cy.toFixed(1) + 'px,0) scale(' + m.cs.toFixed(3) + ')'; }
+    const hz = root.querySelector('[data-hz]'), tr = hz && hz.querySelector('[data-hz-track]');
+    if (hz && tr) {
+      const max = Math.max(0, tr.scrollWidth - vw), H = Math.round(vh + max); if (this._hzH !== H) { this._hzH = H; hz.style.height = H + 'px'; }
+      const r = hz.getBoundingClientRect(), p = max ? cl(-r.top / max) : 0, x = -p * max;
+      const v = x - this._lastX; this._lastX = x; this._skew = L(this._skew, mo ? cl(v * .06, -5, 5) : 0, .12);
+      tr.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
+      const bar = hz.querySelector('[data-hz-bar]'); if (bar) bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      if (r.bottom > 0 && r.top < vh) hz.querySelectorAll('[data-hz-card]').forEach(card => {
+        const b = card.getBoundingClientRect(), off = (b.left + b.width / 2 - vw / 2) / vw;
+        card.style.transform = mo ? 'skewX(' + this._skew.toFixed(2) + 'deg) translate3d(0,' + (Math.abs(off) * 18).toFixed(1) + 'px,0)' : '';
+        const im = card.querySelector('[data-hz-img]'); if (im) im.style.transform = mo ? 'translate3d(' + (off * -8).toFixed(2) + '%,0,0)' : ''; });
+    }
+    root.querySelectorAll('[data-ex]').forEach(ex => { const r = ex.getBoundingClientRect(), tn = performance.now(); if (!ex.__t0 && r.top < vh * .55 && r.bottom > vh * .45) ex.__t0 = tn; const p = mo ? (ex.__t0 ? cl((tn - ex.__t0) / 2600) : 0) : 1;
+      if (r.bottom > -50 && r.top < vh + 50) {
+        const q = s => ex.querySelector(s), e = eio(cl(p / .62)), fr = q('[data-ex-frame]'), im = q('[data-ex-img]'), sh = q('[data-ex-shade]'), pre = q('[data-ex-pre]'), t = q('[data-ex-t]'), l = q('[data-ex-l]'), rr = q('[data-ex-r]');
+        const iy = L(vw < 700 ? 26 : 22, 0, e), ix = L(vw < 700 ? 14 : 32, 0, e);
+        fr.style.clipPath = 'inset(' + iy.toFixed(2) + '% ' + ix.toFixed(2) + '% ' + iy.toFixed(2) + '% ' + ix.toFixed(2) + '% round ' + L(16, 0, e).toFixed(1) + 'px)';
+        im.style.transform = 'translate(-50%,-50%) scale(' + L(1.3, 1, e).toFixed(4) + ')';
+        pre.style.opacity = cl(1 - e * 1.6).toFixed(3); const fl = q('[data-ex-fly]'); if (fl) fl.style.opacity = cl((e - .35) / .5).toFixed(3);
+        l.style.transform = 'translate3d(' + (-e * 30).toFixed(2) + 'vw,0,0)'; rr.style.transform = 'translate3d(' + (e * 30).toFixed(2) + 'vw,0,0)';
+        const to = cl((p - .6) / .2); sh.style.opacity = to.toFixed(3); t.style.opacity = to.toFixed(3); t.style.transform = 'translate3d(0,' + ((1 - to) * 30).toFixed(1) + 'px,0)'; t.style.filter = to > .99 ? 'none' : 'blur(' + ((1 - to) * 12).toFixed(1) + 'px)';
+      } });
+    const mq = root.querySelector('[data-mq-wrap]');
+    if (mq) { const r = mq.getBoundingClientRect(); if (r.bottom > -100 && r.top < vh + 100) { const p = cl((vh - r.top) / (vh + r.height));
+      mq.querySelectorAll('[data-mq]').forEach(row => { const dir = +row.getAttribute('data-mq'), span = Math.max(0, row.scrollWidth - vw), t = mo ? (dir > 0 ? p : 1 - p) : .3;
+        row.style.transform = 'translate3d(' + (-(span * (.15 + .5 * t))).toFixed(1) + 'px,0,0)'; }); } }
+    if (mo) root.querySelectorAll('[data-px]').forEach(el => { const b = el.parentElement.getBoundingClientRect(); if (b.bottom < -vh || b.top > vh * 2) return;
+      const f = parseFloat(el.getAttribute('data-px')) || 0, pr = el.getBoundingClientRect(), cur = el.__py || 0, c = pr.top - cur + pr.height / 2 - vh / 2, y = -c * f; el.__py = y; el.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0)'; });
+    const now = performance.now() / 1000;
+    root.querySelectorAll('[data-fly]').forEach((el, i) => { const d = parseFloat(el.getAttribute('data-fly')) || 1, rot = parseFloat(el.getAttribute('data-rot')) || 0;
+      const b = el.getBoundingClientRect(); if (b.bottom < -200 || b.top > vh + 200) return;
+      const fy = mo ? Math.sin(now * .5 * d + i * 1.7) * 14 * d : 0, fx = mo ? Math.cos(now * .35 * d + i) * 8 * d : 0;
+      const mx = mo && m.x > -900 ? (m.x - vw / 2) * -.02 * d : 0, my = mo && m.y > -900 ? (m.y - vh / 2) * -.02 * d : 0;
+      el.style.transform = 'translate3d(' + (fx + mx).toFixed(1) + 'px,' + (fy + my).toFixed(1) + 'px,0) rotate(' + (rot + (mo ? Math.sin(now * .3 + i) * 2 : 0)).toFixed(2) + 'deg)'; });
+    const td = root.querySelector('[data-tide]');
+    if (td) { const r = td.getBoundingClientRect(); if (r.bottom > -50 && r.top < vh + 50) {
+      const sl = Array.from(td.querySelectorAll('[data-tide-slide]')), n = sl.length, p = cl(-r.top / Math.max(1, r.height - vh)), f = p * (n - 1), ez = t => 1 - Math.pow(1 - t, 3);
+      const rv = sl.map((_, i) => i ? ez(cl(f - (i - 1))) : 1);
+      sl.forEach((s, i) => { const k = rv[i], nx = rv[i + 1] || 0, im = s.querySelector('[data-tide-img]');
+        s.style.clipPath = 'inset(' + ((1 - k) * 100).toFixed(2) + '% 0 0 0)';
+        s.style.filter = nx > 0 ? 'brightness(' + (1 - .5 * nx).toFixed(3) + ')' : '';
+        if (im) im.style.transform = 'translate3d(0,' + ((1 - k) * 10).toFixed(2) + '%,0) scale(' + (1 + (1 - k) * .08 - nx * .05).toFixed(4) + ')'; });
+      const cur = Math.min(n - 1, Math.round(f)), nEl = td.querySelector('[data-tide-n]'), lab = String(cur + 1).padStart(2, '0'); if (nEl && nEl.textContent !== lab) nEl.textContent = lab;
+      td.querySelectorAll('[data-tide-fill]').forEach((el, i) => { el.style.transform = 'scaleX(' + rv[i].toFixed(4) + ')'; });
+    } }
+    const st = Array.from(root.querySelectorAll('[data-stack]'));
+    st.forEach((li, i) => { const card = li.firstElementChild, nx = st[i + 1]; let k = 0;
+      if (nx && mo) { const a = li.getBoundingClientRect(), b = nx.getBoundingClientRect(); k = cl(1 - (b.top - a.top) / Math.max(1, a.height)); }
+      card.style.transform = k ? 'scale(' + (1 - .06 * k).toFixed(4) + ')' : ''; card.style.filter = k ? 'brightness(' + (1 - .5 * k).toFixed(3) + ')' : ''; });
+    const chs = Array.from(root.querySelectorAll('[data-ch]')); let cur = -1, prog = 0;
+    chs.forEach((s, i) => { const r = s.getBoundingClientRect(); if (r.top < vh * .5 && r.bottom > vh * .5) { cur = i; prog = cl((vh * .5 - r.top) / r.height); } });
+    const chip = root.querySelector('[data-chip]');
+    if (chip) { chip.style.opacity = cur >= 0 && this.state.lb === null ? '1' : '0'; chip.style.transform = cur >= 0 ? 'none' : 'translateY(16px)'; const cb = chip.querySelector('[data-chip-bar]'); if (cb) cb.style.transform = 'scaleX(' + prog.toFixed(4) + ')'; }
+    if (cur >= 0 && cur !== this.state.chap) this.setState({ chap: cur });
+  }
+
+  renderVals() {
+    const P = this.build(), s = this.state, it = s.lb !== null ? P.all[s.lb] : null;
+    return {
+      rootRef: this.rootRef, lbImg: this.lbImg, wide: s.wide, narrow: !s.wide, mob: s.mob, total: String(P.all.length),
+      menu: { open: s.menu, exp: s.menu ? 'true' : 'false', toggle: () => this.setState(st => ({ menu: !st.menu })) },
+      sh: P.groups.map(g => ({ hero: g[0], grid: g.slice(1), fly: this.flyFor(g, s.mob) })),
+      chapters: this.CH.map((c, i) => Object.assign({}, c, { go: this.go(c.id), goMenu: e => { this.setState({ menu: false }); setTimeout(() => this.go(c.id)(), 30); if (e) e.preventDefault(); }, cover: P.covers[i], count: String(P.counts[i]).padStart(2, '0') + ' photos' })),
+      finals: { hero: P.fin[0], grid: this.grid(P.fin.slice(1), s.mob) },
+      sessions: ['Medavita', 'Style lesson with Tania Momot', 'Pre-party', 'Rehearsal', 'OGO center', 'Children’s Foundation'],
+      september: P.sep, septCount: String(P.sep.length),
+      china: P.chi.map(c => s.mob ? Object.assign({}, c, { top: c.top === '0px' ? '0px' : '6vh' }) : c),
+      partners: this.grid(P.par, s.mob),
+      harley: P.har, gray: s.mob ? 'none' : 'grayscale(1)', heroFly: this.fly('hero', s.mob), finalsFly: this.fly('fin', s.mob),
+      yacht: P.yac.map((c, i) => Object.assign({}, c, { i: String(i), clip: i ? 'inset(100% 0 0 0)' : 'inset(0 0 0 0)', jump: () => this.tideTo(i) })), yachtCount: String(P.yac.length).padStart(2, '0'),
+      chip: { n: this.CH[s.chap].n, title: this.CH[s.chap].title },
+      toTop: () => scrollTo({ top: 0, behavior: this.motion() ? 'smooth' : 'auto' }),
+      lb: { open: !!it, src: it ? it.src : '', cap: it ? it.cap : '', pos: it ? String(s.lb + 1).padStart(2, '0') + ' / ' + P.all.length : '',
+        close: e => { if (e && e.target && e.target.closest && e.target.closest('button') && !e.target.closest('[data-lb-close]')) return; this.closeLb(); },
+        stop: e => e.stopPropagation(),
+        prev: e => { e.stopPropagation(); this.step(-1); }, next: e => { e.stopPropagation(); this.step(1); } }
+    };
+  }
+}
+</script>
+</body>
+</html>
