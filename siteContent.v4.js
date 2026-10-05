@@ -8,7 +8,7 @@ export default {
   seo: {
     title: 'Queen of the Baltic — International beauty & self-expression contest',
     description: 'An international platform celebrating individuality, confidence and the power to make a difference.',
-    ogImage: 'assets/photos/webp/footer.webp'
+    ogImage: 'assets/og/og-image.jpg'
   },
 
   // Shown in the hero and the "Attend the event" panel only when filled.

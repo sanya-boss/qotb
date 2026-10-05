@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /uploads/
-Disallow: /scraps/
 
-Sitemap: https://qotb.eu/sitemap.xml
+Sitemap: https://sanya-boss.github.io/qotb/sitemap.xml
