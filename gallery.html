@@ -33,6 +33,13 @@
 <body>
 <x-dc>
 <helmet>
+<link rel="preload" href="assets/fonts/TildaSans-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="assets/fonts/TildaSans-Medium.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="assets/fonts/TildaSans-Semibold.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/assets/fonts/CaneNero.otf" as="font" type="font/otf" crossorigin="">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>html:not(.qb-fonts) #dc-root{opacity:0}#dc-root{transition:opacity 500ms cubic-bezier(.22,.61,.36,1)}</style>
+<script>(function(){var d=document.documentElement,done=function(){d.classList.add('qb-fonts')};setTimeout(done,2000);if(document.fonts){var L=["400 16px 'Tilda Sans'","500 16px 'Tilda Sans'","600 16px 'Tilda Sans'","400 64px 'Cane Nero QB'","400 32px 'Times New Roman'","400 32px 'Tinos'"];Promise.all(L.map(function(s){return document.fonts.load(s).catch(function(){})})).then(function(){return document.fonts.ready}).then(function(){requestAnimationFrame(function(){requestAnimationFrame(done)})})}else done()})();</script>
 <link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/fonts.css">
 <link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors.css">
 <link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors-sea.css">
@@ -44,6 +51,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400..700&amp;family=Marcellus&amp;family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap">
 <script src="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/_ds_bundle.js"></script>
 <style>
+
 @font-face{font-family:'Cane Nero QB';font-style:normal;font-weight:400;font-display:swap;src:url('_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/assets/fonts/CaneNero.otf') format('opentype');unicode-range:U+0020-0025, U+0027-002B, U+002D, U+002F, U+003F, U+0041-005A, U+0061-007A, U+2014, U+2019;}
 [style*="Cane Nero"] em,[style*="Cane Nero"] i{font-style:normal!important}
 html,body{margin:0;background:#041E3A;overflow-x:clip}
@@ -52,20 +60,21 @@ a{color:#F6F5F2;text-decoration:none}a:hover{opacity:.75}
 :focus-visible{outline:2px solid #9FC6EC;outline-offset:3px}
 img{-webkit-user-drag:none}
 </style>
+
 </helmet>
-<div ref="{{ rootRef }}" style="position:relative;background:#041E3A;color:#C9D6E6;font-family:'Jost',var(--font-sans),sans-serif;min-height:100vh;">
+<div ref="{{ rootRef }}" style="position:relative;background:#041E3A;color:#C9D6E6;font-family:'Tilda Sans',var(--font-sans),sans-serif;min-height:100vh;">
 
   <header style="position:fixed;z-index:30;top:0;left:0;right:0;display:grid;grid-template-columns:minmax(224px,1fr) auto minmax(0,1fr);align-items:center;gap:24px;padding:18px clamp(16px,1.8vw,32px);background:linear-gradient(180deg,rgba(4,30,58,.85),rgba(4,30,58,0));pointer-events:none;">
     <a href="./" aria-label="Queen of the Baltic — main page" style="grid-column:1;grid-row:1;justify-self:start;align-self:center;pointer-events:auto;display:flex;flex:none;align-items:center;height:44px;"><img src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
     <nav aria-label="Photoshoots" style="grid-column:2;grid-row:1;pointer-events:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(12px,1.4vw,22px);"><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
         <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
-          <a href="#{{ c.id }}" onClick="{{ c.go }}" style="display:inline-flex;align-items:flex-start;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;"><span style="font-family:'Jost',var(--font-sans),sans-serif;font-size:10px;font-weight:600;color:#9FC6EC;">{{ c.n }}</span>{{ c.short }}</a>
+          <a href="#{{ c.id }}" onClick="{{ c.go }}" style="display:inline-flex;align-items:flex-start;gap:6px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;"><span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:10px;font-weight:600;color:#9FC6EC;">{{ c.n }}</span>{{ c.short }}</a>
         </sc-for>
       </sc-if></nav>
     <div style="grid-column:3;grid-row:1;justify-self:end;pointer-events:auto;display:flex;align-items:center;gap:clamp(8px,1.2vw,16px);">
       <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><span style="display:block;width:48px;height:48px;"></span><button type="button" onClick="{{ menu.toggle }}" onMouseEnter="{{ menu.hvOn }}" onMouseLeave="{{ menu.hvOff }}" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="{{ menu.exp }}" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:40;pointer-events:auto;box-shadow:0 8px 24px -8px rgba(1,9,20,.5);transition:transform 500ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.btn }};"><img src="assets/crown-navy.svg" alt="" aria-hidden="true" width="345" height="220" style="display:block;width:26px;height:auto;pointer-events:none;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.crown }};"></button></sc-if>
       
-      <a href="./" style="display:{{ mainBtnDisp }};align-items:center;gap:12px;height:44px;padding:0 4px 0 18px;border-radius:999px;background:#F6F5F2;color:#041E3A;text-transform:uppercase;letter-spacing:.06em;font-size:13px;font-weight:600;letter-spacing:.06em;white-space:nowrap;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
+      <a href="./" style="display:{{ mainBtnDisp }};align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background:#F6F5F2;color:#041E3A;text-transform:uppercase;letter-spacing:.06em;font-size:14px;font-weight:600;letter-spacing:.06em;white-space:nowrap;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
     </div>
   </header>
 
@@ -78,10 +87,10 @@ img{-webkit-user-drag:none}
         <a href="./" aria-label="Queen of the Baltic — main page" style="display:flex;flex:none;align-items:center;height:44px;"><img src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
         
       </div>
-      <p style="transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d1 }};margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">Photoshoots</p>
+      <p style="transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d1 }};margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">Photoshoots</p>
       <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid rgba(246,245,242,.18);transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d1 }};">
         <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
-          <li style="border-bottom:1px solid rgba(246,245,242,.18);transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ c.md }};"><a href="#{{ c.id }}" onClick="{{ c.goMenu }}" style="display:flex;align-items:baseline;gap:16px;min-height:56px;padding:14px 4px;color:#F6F5F2;"><span style="font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span><span style="font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(28px,7vw,44px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span></a></li>
+          <li style="border-bottom:1px solid rgba(246,245,242,.18);transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ c.md }};"><a href="#{{ c.id }}" onClick="{{ c.goMenu }}" style="display:flex;align-items:baseline;gap:16px;min-height:56px;padding:14px 4px;color:#F6F5F2;"><span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span><span style="font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(28px,7vw,44px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span></a></li>
         </sc-for>
       </ol>
       <a href="./" style="transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d8 }};align-self:flex-start;display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
@@ -90,18 +99,18 @@ img{-webkit-user-drag:none}
   </sc-if>
 
   <section data-screen-label="01 Gallery hero" style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(40px,7vh,88px);padding:clamp(120px,16vh,180px) clamp(16px,1.8vw,32px) clamp(40px,6vh,72px);box-sizing:border-box;">
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(18px,2.4vw,32px);">
-      <p data-in="" style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:none;color:#9FC6EC;">Discover the vision behind the project · {{ total }} photographs</p>
-      <h1 data-in="" data-fit="" style="margin:0;max-width:100%;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,10.5vw,232px);line-height:.84;letter-spacing:-.035em;color:#F6F5F2;">All <em style="color:#9FC6EC;">photoshoots.</em></h1>
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(32px,4vw,64px);">
+      <p data-in="" style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:clamp(16px,1.25vw,18px);font-weight:500;line-height:1.65;letter-spacing:.02em;text-transform:none;color:#9FC6EC;">Discover the vision behind the project · {{ total }} photographs</p>
+      <h1 data-in="" data-fit="" style="margin:0;max-width:100%;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,10.5vw,232px);line-height:.84;letter-spacing:-.035em;color:#F6F5F2;">All <em style="color:#9FC6EC;">photoshoots.</em></h1>
     </div>
     <ol data-index="" style="position:relative;z-index:1;list-style:none;margin:0;padding:0;border-top:1px solid rgba(246,245,242,.18);">
       <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
         <li data-in="" style="border-bottom:1px solid rgba(246,245,242,.18);">
           <a href="#{{ c.id }}" onClick="{{ c.go }}" data-pv="{{ c.cover }}" style="position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(28px,auto) minmax(0,1fr) auto;align-items:center;gap:12px clamp(16px,3vw,48px);padding:clamp(14px,1.8vw,24px) 4px;color:#F6F5F2;transition:padding-left 500ms cubic-bezier(.22,.61,.36,1),opacity 300ms;" style-hover="padding-left:clamp(12px,2vw,32px);opacity:1">
             <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position:absolute;inset:0;z-index:0;pointer-events:none;"><img src="{{ c.cover }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.32;"><span style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,30,58,.85) 0%,rgba(4,30,58,.35) 100%);"></span></span></sc-if>
-            <span style="position:relative;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span>
-            <span style="position:relative;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 24px;min-width:0;"><span style="font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(28px,3.8vw,64px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span><span style="font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8FA6C0;">{{ c.sub }}</span></span>
-            <span style="position:relative;display:flex;align-items:center;gap:14px;"><span style="font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C0;white-space:nowrap;">{{ c.count }}</span></span>
+            <span style="position:relative;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ c.n }}</span>
+            <span style="position:relative;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 24px;min-width:0;"><span style="font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(28px,3.8vw,64px);line-height:1;letter-spacing:-.02em;">{{ c.title }}</span><span style="font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#8FA6C0;">{{ c.sub }}</span></span>
+            <span style="position:relative;display:flex;align-items:center;gap:14px;"><span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8FA6C0;white-space:nowrap;">{{ c.count }}</span></span>
           </a>
         </li>
       </sc-for>
@@ -115,22 +124,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="0" data-ex-frame="" aria-label="Open photo: Finals" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/01.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.0.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP" alt="Finals" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/01.webp" alt="Finals" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">01 · Finals photoshoot · 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Finals</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">01 · Finals photoshoot · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Finals</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Finals <em style="color:#9FC6EC;">photoshoot.</em></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Photoshoot of the final competition of «Queen of the Baltic» in 2025 — the night every rehearsal led up to.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Finals <em style="color:#9FC6EC;">photoshoot.</em></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Photoshoot of the final competition of «Queen of the Baltic» in 2025 — the night every rehearsal led up to.</p>
         </div>
       </div>
     </div>
@@ -142,7 +151,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Finals</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Finals</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -153,22 +162,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="9" data-ex-frame="" aria-label="Open photo: September" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/02.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.1.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg" alt="September" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/02.webp" alt="September" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">02 · September 17–20, 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">September</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">02 · September 17–20, 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">September</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">2025</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">September <em style="color:#9FC6EC;">shootings.</em></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Four days of sessions, a style lesson, the pre-party and rehearsals before the final — and a visit to the Children’s Foundation.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">September <em style="color:#9FC6EC;">shootings.</em></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Four days of sessions, a style lesson, the pre-party and rehearsals before the final — and a visit to the Children’s Foundation.</p>
         </div>
       </div>
     </div>
@@ -179,7 +188,7 @@ img{-webkit-user-drag:none}
             <li style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(246,245,242,.22);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;">{{ t }}</li>
           </sc-for>
         </ul>
-        <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;color:#8FA6C0;">Photo:
+        <p style="margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;color:#8FA6C0;">Photo:
           <a href="https://www.instagram.com/sash2rush/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@sash2rush</a>
           <a href="https://www.instagram.com/photos_golovan/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@photos_golovan</a>
           <a href="https://www.instagram.com/by.pribytkova/" target="_blank" rel="noopener" style="color:#F6F5F2;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(246,245,242,.35);">@by.pribytkova</a>
@@ -192,7 +201,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>September</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>September</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -203,22 +212,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="23" data-ex-frame="" aria-label="Open photo: China Fashion Week" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/03.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.2.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp" alt="China Fashion Week" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/03.webp" alt="China Fashion Week" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">03 · April 17–19, 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">China</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Fashion Week</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">03 · April 17–19, 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">China</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Fashion Week</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">China <em style="color:#9FC6EC;">Fashion Week.</em></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">The organizer of «Queen of the Baltic» walked at China Fashion Week as a model, April 17–19, 2025.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">China <em style="color:#9FC6EC;">Fashion Week.</em></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">The organizer of «Queen of the Baltic» walked at China Fashion Week as a model, April 17–19, 2025.</p>
         </div>
       </div>
     </div>
@@ -230,7 +239,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>China Fashion Week</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>China Fashion Week</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -241,22 +250,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="33" data-ex-frame="" aria-label="Open photo: Elitcar &amp; Hearts" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3661-6665-4264-a263-363333386261/477A9159jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/04.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.3.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3661-6665-4264-a263-363333386261/477A9159jpg.webp" alt="Elitcar &amp; Hearts" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/04.webp" alt="Elitcar &amp; Hearts" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">04 · With our general partners · 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Elitcar</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">&amp; Hearts</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">04 · With our general partners · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Elitcar</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">&amp; Hearts</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Elitcar <em style="color:#9FC6EC;">&amp;</em> Hearts Fine Jewelry <span style="color:#F6F5F2;">&amp; Diamonds</span></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A promotional photoshoot with our general partners that shapes the visual identity of the contest: elegance, strength, freedom of expression.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Elitcar <em style="color:#9FC6EC;">&amp;</em> Hearts Fine Jewelry <span style="color:#F6F5F2;">&amp; Diamonds</span></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A promotional photoshoot with our general partners that shapes the visual identity of the contest: elegance, strength, freedom of expression.</p>
         </div>
       </div>
     </div>
@@ -268,7 +277,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Elitcar &amp; Hearts</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Elitcar &amp; Hearts</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -279,22 +288,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="40" data-ex-frame="" aria-label="Open photo: Harley-Davidson" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/05.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.4.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp" alt="Harley-Davidson" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/05.webp" alt="Harley-Davidson" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">05 · General partner · 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Harley</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Davidson</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">05 · General partner · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Harley</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">Davidson</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Harley-Davidson <em style="color:#9FC6EC;">Motorcycles.</em></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Aleksandra Turashova’s photoshoot with «Queen of the Baltic» general partner Harley-Davidson — chrome, leather and a crown.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Harley-Davidson <em style="color:#9FC6EC;">Motorcycles.</em></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">Aleksandra Turashova’s photoshoot with «Queen of the Baltic» general partner Harley-Davidson — chrome, leather and a crown.</p>
         </div>
       </div>
     </div>
@@ -306,7 +315,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Harley-Davidson</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Harley-Davidson</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -317,22 +326,22 @@ img{-webkit-user-drag:none}
     <div data-ex="" style="position:relative;">
       <div style="position:relative;height:100vh;height:100svh;overflow:hidden;">
         <button type="button" data-lb="49" data-ex-frame="" aria-label="Open photo: Yacht" style="position:absolute;inset:0;padding:0;border:0;background:#0B0B10;cursor:zoom-in;will-change:clip-path;clip-path:inset(22% 32% 22% 32% round 16px);">
-          <img loading="lazy" decoding="async" src="https://static.tildacdn.net/tild6530-3737-4338-b763-356139333262/477A6273jpg.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
+          <img loading="lazy" decoding="async" src="assets/photos/gallery/06.webp" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(40px) brightness(.4) saturate(1.2);transform:scale(1.2);">
           <span data-ex-fly="" aria-hidden="true" style="position:absolute;inset:0;opacity:0;">
             <sc-for list="{{ sh.5.fly }}" as="f" hint-placeholder-count="0">
               <span data-fly="{{ f.d }}" data-rot="{{ f.r }}" style="position:absolute;left:{{ f.x }};top:{{ f.y }};width:{{ f.w }};display:block;will-change:transform;"><img src="{{ f.src }}" alt="" loading="lazy" style="display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 20px 40px -16px rgba(1,9,20,.7);"></span>
             </sc-for>
           </span>
-          <img loading="lazy" decoding="async" data-ex-img="" src="https://static.tildacdn.net/tild6530-3737-4338-b763-356139333262/477A6273jpg.webp" alt="Yacht" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
+          <img loading="lazy" decoding="async" data-ex-img="" src="assets/photos/gallery/06.webp" alt="Yacht" style="position:absolute;left:50%;top:calc((clamp(80px,11vh,110px) + 100% - clamp(110px,18vh,190px)) / 2);width:auto;height:auto;max-width:calc(100% - 2 * clamp(16px,1.8vw,32px));max-height:calc(100% - clamp(80px,11vh,110px) - clamp(110px,18vh,190px));border-radius:14px;box-shadow:0 30px 70px -30px rgba(1,9,20,.8);transform:translate(-50%,-50%) scale(1.3);will-change:transform;">
           <span data-ex-shade="" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,30,58,.1) 30%,rgba(4,30,58,.9) 100%);opacity:0;"></span>
         </button>
         <div data-ex-pre="" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(96px,14vh,150px) clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);pointer-events:none;">
-          <p style="margin:0;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">06 · At sea · 2025</p>
-          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Yacht</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">at sea</em></div>
+          <p style="margin:0;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#9FC6EC;">06 · At sea · 2025</p>
+          <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(52px,9.4vw,180px);line-height:.85;letter-spacing:-.03em;color:#F6F5F2;"><span data-ex-l="">Yacht</span><em data-ex-r="" style="color:#9FC6EC;text-align:right;">at sea</em></div>
         </div>
         <div data-ex-t="" style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 64px;padding:0 clamp(16px,1.8vw,32px) clamp(32px,6vh,64px);opacity:0;pointer-events:none;">
-          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Yacht <em style="color:#9FC6EC;">photoshoot.</em></h2>
-          <p style="margin:0;max-width:420px;font-family:'Jost',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:13px;line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A photoshoot on a yacht as part of the «Queen of the Baltic» competition — the Baltic itself as the backdrop.</p>
+          <h2 style="margin:0;max-width:14ch;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(40px,5.6vw,100px);line-height:.95;letter-spacing:-.025em;color:#F6F5F2;text-wrap:balance;">Yacht <em style="color:#9FC6EC;">photoshoot.</em></h2>
+          <p style="margin:0;max-width:560px;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:none;letter-spacing:.04em;font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#E1E8F1;text-wrap:pretty;">A photoshoot on a yacht as part of the «Queen of the Baltic» competition — the Baltic itself as the backdrop.</p>
         </div>
       </div>
     </div>
@@ -344,7 +353,7 @@ img{-webkit-user-drag:none}
             <button type="button" data-lb="{{ s.k }}" aria-label="Open photo: {{ s.cap }}" style="display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;background:rgba(246,245,242,.06);cursor:zoom-in;">
               <img src="{{ s.src }}" alt="{{ s.cap }}" loading="lazy" style="display:block;width:100%;height:auto;transition:transform 1200ms cubic-bezier(.22,.61,.36,1);" style-hover="transform:scale(1.04)">
             </button>
-            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Yacht</figcaption>
+            <figcaption style="display:flex;gap:10px;padding:0 4px;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8FA6C0;"><span style="color:#9FC6EC;">{{ s.n }}</span>Yacht</figcaption>
           </figure>
         </sc-for>
       </div>
@@ -353,16 +362,16 @@ img{-webkit-user-drag:none}
 
   <footer data-screen-label="08 Gallery outro" style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px,4vw,48px);padding:clamp(96px,12vw,200px) clamp(16px,1.8vw,32px) clamp(48px,6vw,80px);border-top:1px solid rgba(246,245,242,.12);">
     <img data-rv="" src="assets/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:48px;height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
-    <p data-rv="" style="margin:0;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(48px,8vw,140px);line-height:.88;letter-spacing:-.03em;color:#F6F5F2;">See you <em style="color:#9FC6EC;">next season.</em></p>
+    <p data-rv="" style="margin:0;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(48px,8vw,140px);line-height:.88;letter-spacing:-.03em;color:#F6F5F2;">See you <em style="color:#9FC6EC;">next season.</em></p>
     <div data-rv="" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
       <a href="./" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Back to main page<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
-      <button type="button" onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border:0;border-radius:999px;background:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Jost',var(--font-sans),sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">Back to top<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(246,245,242,.14);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></button>
+      <button type="button" onClick="{{ toTop }}" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border:0;border-radius:999px;background:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;">Back to top<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:rgba(246,245,242,.14);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></span></button>
     </div>
-    <p style="margin:0;font-size:13px;color:#8FA6C0;">+372 5878 8841 · contest@qotb.eu</p>
+    <p style="margin:0;font-size:15px;color:#8FA6C0;">+372 5878 8841 · contest@qotb.eu</p>
   </footer>
 
   <div aria-live="polite" data-chip="" style="position:fixed;z-index:25;left:clamp(16px,1.8vw,32px);bottom:clamp(16px,2.4vh,28px);display:flex;align-items:center;gap:14px;padding:10px 16px 10px 14px;border-radius:999px;background:rgba(4,30,58,.72);box-shadow:0 0 0 1px rgba(246,245,242,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transform:translateY(16px);transition:opacity 500ms cubic-bezier(.22,.61,.36,1),transform 500ms cubic-bezier(.22,.61,.36,1);pointer-events:none;">
-    <span style="font-family:'Jost',var(--font-sans),sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;color:#9FC6EC;">{{ chip.n }} / 06</span>
+    <span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:11px;font-weight:600;letter-spacing:.1em;color:#9FC6EC;">{{ chip.n }} / 06</span>
     <span style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;">{{ chip.title }}</span>
     <span style="position:relative;width:56px;height:2px;border-radius:2px;background:rgba(246,245,242,.18);overflow:hidden;"><span data-chip-bar="" style="position:absolute;inset:0;background:#9FC6EC;transform-origin:0 50%;transform:scaleX(0);"></span></span>
   </div>
@@ -372,7 +381,7 @@ img{-webkit-user-drag:none}
   <sc-if value="{{ lb.open }}" hint-placeholder-val="{{ false }}">
     <div role="dialog" aria-modal="true" aria-label="Photo viewer" onClick="{{ lb.close }}" style="position:fixed;z-index:60;inset:0;display:flex;flex-direction:column;background:rgba(2,16,32,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);">
       <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px clamp(16px,1.8vw,32px);">
-        <span style="font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ lb.pos }}</span>
+        <span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;color:#9FC6EC;">{{ lb.pos }}</span>
         <button type="button" data-lb-close="" onClick="{{ lb.close }}" aria-label="Close" style="display:grid;place-items:center;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.1);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:block;"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
       </div>
       <div style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 clamp(0px,5vw,96px);">
@@ -380,14 +389,14 @@ img{-webkit-user-drag:none}
         <img ref="{{ lbImg }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="{{ lb.cap }}" onClick="{{ lb.stop }}" style="display:block;max-width:min(100%,1400px);max-height:100%;min-width:0;object-fit:contain;border-radius:10px;">
         <button type="button" onClick="{{ lb.next }}" aria-label="Next photo" style="position:absolute;z-index:2;right:clamp(8px,1.8vw,32px);top:50%;transform:translateY(-50%);display:grid;place-items:center;width:52px;height:52px;padding:0;border:0;border-radius:50%;background:rgba(246,245,242,.1);color:#F6F5F2;cursor:pointer;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
       </div>
-      <p style="flex:none;margin:0;padding:16px clamp(16px,1.8vw,32px) 24px;text-align:center;font-family:var(--qs,'Crimson Pro'),Georgia,serif;font-size:clamp(20px,2vw,28px);color:#F6F5F2;">{{ lb.cap }}</p>
+      <p style="flex:none;margin:0;padding:16px clamp(16px,1.8vw,32px) 24px;text-align:center;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(20px,2vw,28px);color:#F6F5F2;">{{ lb.cap }}</p>
     </div>
   </sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  T = 'https://static.tildacdn.net/';
+  T = '';
   rootRef = React.createRef();
   lbImg = React.createRef();
   componentDidUpdate() { const im = this.lbImg.current, P = this.build(); if (im && this.state.lb !== null) { const src = P.all[this.state.lb].src; if (im.getAttribute('src') !== src) im.src = src; } }
@@ -401,12 +410,12 @@ class Component extends DCLogic {
     { n: '06', id: 'yacht', title: 'Yacht Photoshoot', short: 'Yacht', sub: '2025' }
   ];
   SRC = {
-    finals: ['tild3433-3063-4932-a463-643862663763/IMG_6382.WEBP', 'tild6632-6134-4633-b964-373961313863/IMG_7122.webp', 'tild6162-6336-4133-b932-356166663464/IMG_7445.WEBP', 'tild6236-6464-4665-b830-373664663539/IMG_7461.WEBP', 'tild6666-3437-4862-b666-336433656131/IMG_7447.WEBP', 'tild3739-3863-4063-b866-626638393762/IMG_6418.WEBP', 'tild3837-3061-4831-b465-346431616663/IMG_7114.WEBP', 'tild6366-3864-4239-b832-376539353038/IMG_7111.webp', 'tild6262-6537-4732-b633-313731333038/IMG_7120.WEBP'],
-    september: ['tild3835-3964-4666-a535-313838386663/QueenOfTheBaltic227.jpg', 'tild3166-6230-4563-b261-303637643639/QueenOfTheBaltic81.jpg', 'tild3238-6162-4834-a231-336561613063/477A7549jpg.webp', 'tild3436-6138-4265-b937-343936613537/477A7530jpg.webp', 'tild6366-3530-4339-b039-336135626336/sash2rush39jpg.webp', 'tild3138-3466-4064-a266-656463613364/QueenOfTheBaltic309.jpg', 'tild3630-3636-4434-b837-333261663131/sash2rush4jpg.webp', 'tild3131-3036-4331-b836-366464626435/QueenOfTheBaltic193.jpg', 'tild3632-6262-4264-b866-616335616334/477A7575jpg.webp', 'tild3038-3063-4865-a139-623936366233/477A7525jpg.webp', 'tild3839-3635-4936-b061-306665346162/477A7588jpg.webp', 'tild6235-6536-4437-b234-633864633566/sash2rush46jpg.webp', 'tild3865-6432-4536-a430-666632613265/QueenOfTheBaltic324.jpg', 'tild6535-6130-4634-b830-643866393435/QueenOfTheBaltic68.jpg'],
-    china: ['tild3035-3466-4065-a439-326133376132/46774E33-1941-41A3-9.webp', 'tild3833-3562-4934-b332-626437316564/E2F269B2-C3EB-4B58-B.webp', 'tild6463-3165-4363-b934-653739366232/03F66DC9-D7EF-4561-B.webp', 'tild6238-3534-4432-b066-393335643235/IMG_0047JPG.webp', 'tild6638-3331-4039-b665-323133366637/9352506F-CA80-450B-A.webp', 'tild3566-3561-4534-b631-313561303532/8E177B8B-87DD-499A-B.webp', 'tild3739-3733-4565-b738-376530656635/7C77ED35-336E-4B2C-8.webp', 'tild3834-3530-4538-b539-653336643531/C114B753-BB67-4355-9.webp', 'tild3832-6230-4966-a638-376461643139/0DA0CE31-4A47-4A13-8.webp', 'tild3130-3233-4437-b839-656632353266/73EA4455-86FE-4AB5-8.webp'],
-    partners: ['tild3661-6665-4264-a263-363333386261/477A9159jpg.webp', 'tild3361-3362-4434-b838-306333626663/477A0983jpg.webp', 'tild3865-3163-4232-b661-306338653961/477A0232jpg.webp', 'tild6262-3836-4932-a637-653138653439/477A9410jpg.webp', 'tild3537-6130-4138-b932-383833663333/477A9444jpg.webp', 'tild3930-3131-4430-b161-336536303037/477A9424jpg.webp', 'tild6430-6266-4466-a661-303932383236/477A9509jpg.webp'],
-    harley: ['tild3438-3932-4965-b338-323832616361/sash2rush33jpg.webp', 'tild3133-3761-4166-b239-356165643238/sash2rush10jpg.webp', 'tild3765-3237-4464-b234-376662393735/sash2rush26jpg.webp', 'tild3836-3035-4434-b431-313932396330/sash2rush22jpg.webp', 'tild6635-6236-4538-b136-633136343866/sash2rush15jpg.webp', 'tild3638-6131-4266-a238-383931643338/sash2rush9jpg.webp', 'tild3630-3539-4634-b934-633764653261/sash2rush56jpg.webp', 'tild6130-6365-4939-a634-363030643431/sash2rush39jpg_1.webp', 'tild6530-3539-4934-b261-643633393939/sash2rush35jpg.webp'],
-    yacht: ['tild6530-3737-4338-b763-356139333262/477A6273jpg.webp', 'tild6238-6437-4864-a137-643863373333/477A7563jpg.webp', 'tild6132-6161-4466-a230-376164613139/477A6858jpg.webp', 'tild3739-3131-4434-a163-373461356433/477A6681jpg.webp', 'tild6533-6363-4239-a164-313863646236/477A7826jpg.webp', 'tild6364-6266-4431-b537-373136376465/477A7732jpg.webp', 'tild3639-3632-4239-a661-663434363762/477A6926jpg.webp']
+    finals: ['assets/photos/gallery/01.webp', 'assets/photos/gallery/07.webp', 'assets/photos/gallery/08.webp', 'assets/photos/gallery/09.webp', 'assets/photos/gallery/10.webp', 'assets/photos/gallery/11.webp', 'assets/photos/gallery/12.webp', 'assets/photos/gallery/13.webp', 'assets/photos/gallery/14.webp'],
+    september: ['assets/photos/gallery/02.webp', 'assets/photos/gallery/15.webp', 'assets/photos/gallery/16.webp', 'assets/photos/gallery/17.webp', 'assets/photos/gallery/18.webp', 'assets/photos/gallery/19.webp', 'assets/photos/gallery/20.webp', 'assets/photos/gallery/21.webp', 'assets/photos/gallery/22.webp', 'assets/photos/gallery/23.webp', 'assets/photos/gallery/24.webp', 'assets/photos/gallery/25.webp', 'assets/photos/gallery/26.webp', 'assets/photos/gallery/27.webp'],
+    china: ['assets/photos/gallery/03.webp', 'assets/photos/gallery/28.webp', 'assets/photos/gallery/29.webp', 'assets/photos/gallery/30.webp', 'assets/photos/gallery/31.webp', 'assets/photos/gallery/32.webp', 'assets/photos/gallery/33.webp', 'assets/photos/gallery/34.webp', 'assets/photos/gallery/35.webp', 'assets/photos/gallery/36.webp'],
+    partners: ['assets/photos/gallery/04.webp', 'assets/photos/gallery/37.webp', 'assets/photos/gallery/38.webp', 'assets/photos/gallery/39.webp', 'assets/photos/gallery/40.webp', 'assets/photos/gallery/41.webp', 'assets/photos/gallery/42.webp'],
+    harley: ['assets/photos/gallery/05.webp', 'assets/photos/gallery/43.webp', 'assets/photos/gallery/44.webp', 'assets/photos/gallery/45.webp', 'assets/photos/gallery/46.webp', 'assets/photos/gallery/47.webp', 'assets/photos/gallery/48.webp', 'assets/photos/gallery/49.webp', 'assets/photos/gallery/50.webp'],
+    yacht: ['assets/photos/gallery/06.webp', 'assets/photos/gallery/51.webp', 'assets/photos/gallery/52.webp', 'assets/photos/gallery/53.webp', 'assets/photos/gallery/54.webp', 'assets/photos/gallery/55.webp', 'assets/photos/gallery/56.webp']
   };
   GRID = [
     { col: '1 / span 5', ar: '4 / 5', top: '0px', px: '-0.05' }, { col: '7 / span 6', ar: '3 / 2', top: '12vh', px: '0.08' },
@@ -456,7 +465,7 @@ class Component extends DCLogic {
       const box = h.parentElement.clientWidth - parseFloat(getComputedStyle(h.parentElement).paddingLeft) - parseFloat(getComputedStyle(h.parentElement).paddingRight);
       h.style.fontSize = '100px'; em.style.whiteSpace = 'nowrap'; em.style.display = 'inline-block'; const w = em.getBoundingClientRect().width; em.style.display = '';
       if (w > 0 && box > 0) h.style.fontSize = Math.floor(100 * box / w * .99) + 'px'; };
-    this.fitH(); addEventListener('resize', this.fitH); if (document.fonts) document.fonts.ready.then(() => { if (this.fitH) this.fitH(); });
+    this.fitH(); addEventListener('resize', this.fitH); if (document.fonts) { document.fonts.ready.then(() => { if (this.fitH) this.fitH(); }); document.fonts.addEventListener && document.fonts.addEventListener('loadingdone', () => { if (this.fitH) this.fitH(); }); }
     const root = this.rootRef.current; if (!root) return;
     const mm = () => this.setState(s => ({ wide: innerWidth >= 1440, mob: innerWidth < 700, menu: innerWidth >= 1440 ? false : s.menu })); mm(); addEventListener('resize', mm); this._mm = mm;
     this._key = e => { if (this.state.menu && e.key === 'Escape') { this.closeMenu(); return; } if (this.state.lb === null) return; if (e.key === 'Escape') this.closeLb(); else if (e.key === 'ArrowRight') this.step(1); else if (e.key === 'ArrowLeft') this.step(-1); };
