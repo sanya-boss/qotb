@@ -279,7 +279,7 @@ button,input,textarea,select{text-transform:inherit}
           <h2 id="winner-h" style="margin:0;font-family:'Cane Nero QB','Crimson Pro',serif;font-weight:400;font-size:clamp(44px,6vw,104px);line-height:.88;letter-spacing:-.025em;color:#F6F5F2;">Three <em style="color:var(--qa,#9FC6EC);">queens.</em></h2>
           <span aria-hidden="true" style="flex:none;height:clamp(0px,calc((700px - 100vw) * 1000),10px);margin-top:auto;"></span><a href="https://www.facebook.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background-color:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Jost',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.06em;text-decoration:none;white-space:nowrap;transition:background-color 280ms cubic-bezier(.22,.61,.36,1);" style-hover="background-color:rgba(246,245,242,.2);opacity:1">Facebook post<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#F6F5F2;color:#041E3A;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:block;"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z"></path></svg></span></a>
         </div>
-        <p data-win-reveal="" style="flex:1 1 100%;margin:0;text-align:center;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);">Tap the cards to reveal the winners</p>
+        <p data-win-reveal="" style="flex:1 1 100%;margin:0;text-align:center;font-family:'Jost',var(--font-sans),sans-serif;font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);">{{ winHint }}</p>
         <div data-win-pair="" style="position:relative;flex:none;width:100%;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:16px;perspective:1100px;">
           <figure data-win-f="j" style="flex:none;margin:0;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,1.6vh,18px);">
             <div data-win-photo="j" style="position:relative;height:min(60vh,60svh,calc((100vw - 56px) * .769));aspect-ratio:13 / 20;border-radius:16px;overflow:hidden;background:#0B0B10;box-shadow:0 40px 90px -40px rgba(1,9,20,.8);transform-style:preserve-3d;">
@@ -880,7 +880,7 @@ class Component extends DCLogic {
     });
   }
   componentDidUpdate(pp) {
-    if (this._winOn && this._winMobPrev !== undefined && this._winMobPrev !== !!this.state.mob) { this._winPlayed = false; requestAnimationFrame(() => { if (!this.dead) this.setupWinner(); }); this._winMobPrev = !!this.state.mob; }
+    if (this._winOn && this._winMobPrev !== undefined && this._winMobPrev !== !!this.state.mob) { requestAnimationFrame(() => { if (!this.dead) this.setupWinner(); }); this._winMobPrev = !!this.state.mob; }
     const s = this.state; this.syncCaps();
     if (this.applyFont()) setTimeout(() => (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { if (!this.dead) this.init(); }), 150);
     if (this._bgOn !== (!this.state.reduced && this.props.animatedBackground !== false)) this.startBg();
@@ -1455,7 +1455,7 @@ class Component extends DCLogic {
   setupWinner() {
     if (this._winOff) { this._winOff(); this._winOff = null; }
     this._winMobPrev = !!this.state.mob;
-    if (this.state.mob) { if (this.state.cwClosed) this.setState({ cwClosed: false }); this.setupWinnerNew(); } else this.setupWinnerOld();
+    if (this.state.cwClosed) this.setState({ cwClosed: false }); this.setupWinnerNew();
   }
   setupWinnerOld() {
     if (this._winOff) this._winOff();
@@ -1573,6 +1573,24 @@ class Component extends DCLogic {
     const r0 = pair.getBoundingClientRect(); pair.style.margin = m; const dx = r0.left - pair.getBoundingClientRect().left;
     if (anim && dx && pair.animate && this.motionOn()) pair.animate([{ transform: 'translate3d(' + dx + 'px,0,0)' }, { transform: 'none' }], { duration: 1100, easing: 'cubic-bezier(.76,0,.24,1)' });
   }
+  winDeskLayout(sec, on) {
+    const box = sec.firstElementChild, g = s => sec.querySelector(s);
+    const A = g('[data-win-a]'), B = g('[data-win-b]'), pair = g('[data-win-pair]'), hint = g('[data-win-reveal]'), duo = g('[data-win-duo]');
+    const set = (el, css) => { if (!el) return; if (el.__ws === undefined) el.__ws = el.getAttribute('style') || ''; el.setAttribute('style', on ? el.__ws + ';' + css : el.__ws); };
+    set(box, 'display:grid;grid-template-columns:minmax(260px,400px) auto;grid-template-rows:auto 1fr;justify-content:space-between;align-content:center;column-gap:clamp(32px,4vw,80px);row-gap:clamp(20px,3vh,32px)');
+    set(A, 'grid-column:1;grid-row:1;flex:none;max-width:none;align-self:start');
+    set(B, 'grid-column:1;grid-row:2;flex:none;max-width:none;align-self:start');
+    set(pair, 'grid-column:2;grid-row:1 / 3;align-self:center;width:auto;margin:0;flex-wrap:nowrap;gap:clamp(12px,1.2vw,20px)');
+    set(hint, 'position:absolute;left:0;right:0;bottom:clamp(28px,6vh,64px);flex:none');
+    set(duo, 'display:none');
+    sec.querySelectorAll('[data-win-photo]').forEach(ph => set(ph, 'height:min(58vh,58svh,calc((100vw - 640px) * .513))'));
+  }
+  winCenterDx(sec, pair) {
+    const box = sec.firstElementChild, cs = getComputedStyle(box), br = box.getBoundingClientRect();
+    const prev = pair.style.transform; pair.style.transform = 'none'; const pr = pair.getBoundingClientRect(); pair.style.transform = prev;
+    const cx = br.left + parseFloat(cs.paddingLeft) + (br.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight)) / 2;
+    return cx - (pr.left + pr.width / 2);
+  }
   setupWinnerNew() {
     const sec = document.querySelector('[data-win]'); if (!sec) return;
     const q = s => Array.from(sec.querySelectorAll(s)), ez = 'cubic-bezier(.22,.61,.36,1)';
@@ -1580,10 +1598,13 @@ class Component extends DCLogic {
     const cards = q('[data-win-f]').map(f => ({ f, ph: f.querySelector('[data-win-photo]'), im: f.querySelector('[data-win-img]'), bk: f.querySelector('[data-win-back]'), n: f.querySelector('[data-win-n]'), tag: f.querySelector('[data-win-tag]'), cap: f.querySelector('[data-win-cap]') }));
     const text = [].concat(A ? Array.from(A.children) : [], cards.map(c => c.cap), [B, duo]).filter(Boolean);
     const timers = [], later = (fn, d) => timers.push(setTimeout(fn, d));
+    const desk = !this.state.mob; this.winDeskLayout(sec, desk);
+    let dx = 0; const center = () => { if (!desk || this._winPlayed || !pair) return; pair.style.transform = 'none'; dx = this.winCenterDx(sec, pair); pair.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,0,0)'; };
+    if (pair) pair.style.transform = '';
     const final = () => { text.concat(cards.map(c => c.tag), cards.map(c => c.n)).forEach(el => el && (el.style.opacity = '')); cards.forEach(c => { if (c.bk) c.bk.style.display = 'none'; c.ph.style.transform = ''; }); if (mm) mm.style.opacity = '.14'; };
     const noBtn = () => { if (btn) btn.style.display = 'none'; };
     if (!this.motionOn() || !pair || !pair.animate) { final(); noBtn(); this._winOff = () => {}; return; }
-    if (this._winPlayed) { final(); noBtn(); this.winPairLeft(pair, false); const rz = () => this.winPairLeft(pair, false); addEventListener('resize', rz); this._winOff = () => removeEventListener('resize', rz); return; }
+    if (this._winPlayed) { final(); noBtn(); if (!desk) this.winPairLeft(pair, false); const rz = () => this.winPairLeft(pair, false); addEventListener('resize', rz); this._winOff = () => removeEventListener('resize', rz); return; }
     text.concat(cards.map(c => c.tag), cards.map(c => c.n)).forEach(el => el && (el.style.opacity = '0')); if (mm) mm.style.opacity = '0';
     cards.forEach(c => { if (c.bk) c.bk.style.display = 'grid'; c.im.style.filter = 'grayscale(1)'; if (c.cap) { c.cap.style.height = '0px'; c.cap.style.marginTop = '-12px'; c.cap.style.overflow = 'hidden'; } });
     const blurIn = (el, dl) => { if (!el) return; later(() => { el.style.opacity = ''; el.animate([{ opacity: 0, filter: 'blur(14px)', transform: 'translate3d(0,24px,0)' }, { opacity: 1, filter: 'blur(0px)', transform: 'none' }], { duration: 1000, easing: ez }); }, dl); };
@@ -1608,15 +1629,17 @@ class Component extends DCLogic {
       cards.forEach((c, i) => { count(c.n, T + i * 120);
         later(() => { if (!c.tag) return; c.tag.style.opacity = ''; c.tag.animate([{ opacity: 0, transform: 'translateX(-50%) translateY(-24px) scale(.8)', filter: 'blur(8px)' }, { opacity: 1, transform: 'translateX(-50%) translateY(0) scale(1)', filter: 'blur(0px)' }], { duration: 700, easing: ez }); }, T + 200 + i * 120); });
       if (mm) later(() => { mm.style.opacity = '.14'; mm.animate([{ opacity: 0, filter: 'blur(24px)' }, { opacity: .14, filter: 'blur(0px)' }], { duration: 1800, easing: ez }); }, T);
-      (A ? Array.from(A.children) : []).forEach((el, i) => blurIn(el, T + 300 + i * 110));
+      (A ? Array.from(A.children) : []).forEach((el, i) => blurIn(el, T + (desk ? 700 : 300) + i * 110));
       cards.forEach((c, i) => { if (!c.cap) return; later(() => { const hh = c.cap.scrollHeight; const a = c.cap.animate([{ height: '0px', marginTop: '-12px' }, { height: hh + 'px', marginTop: '0px' }], { duration: 900, easing: 'cubic-bezier(.76,0,.24,1)' }); c.cap.style.height = ''; c.cap.style.marginTop = ''; c.cap.style.overflow = ''; a.onfinish = () => {}; }, T + 300); blurIn(c.cap, T + 500 + i * 150); });
-      blurIn(B, T + 900); blurIn(duo, T + 1300);
-      later(() => this.winPairLeft(pair, true), T + 200);
+      if (desk) { later(() => { const a = pair.animate([{ transform: 'translate3d(' + dx.toFixed(1) + 'px,0,0)' }, { transform: 'translate3d(0,0,0)' }], { duration: 1200, easing: 'cubic-bezier(.76,0,.24,1)' }); pair.style.transform = ''; }, T - 100); }
+      blurIn(B, T + 900); if (!desk) blurIn(duo, T + 1300);
+      if (!desk) later(() => this.winPairLeft(pair, true), T + 200);
     };
     pair.style.cursor = 'pointer'; if (btn) btn.style.display = '';
+    center(); requestAnimationFrame(center); if (document.fonts) document.fonts.ready.then(center); addEventListener('resize', center);
     pair.addEventListener('click', play); if (btn) btn.addEventListener('click', play);
     this._winOn = true;
-    this._winOff = () => { clearInterval(shIv); pair.removeEventListener('click', play); if (btn) btn.removeEventListener('click', play); timers.forEach(clearTimeout); };
+    this._winOff = () => { removeEventListener('resize', center); clearInterval(shIv); pair.removeEventListener('click', play); if (btn) btn.removeEventListener('click', play); timers.forEach(clearTimeout); };
   }
 
   cwRail = React.createRef();
@@ -2049,7 +2072,7 @@ class Component extends DCLogic {
       submitForm: this.submitForm, clearErr: this.clearErr,
       tm: { has: (c.testimonials || []).length > 0, items: c.testimonials || [] },
       ck: { show: !s.consent, showFixed: !s.consent && s.navFull, showInline: !s.consent && !s.navFull, hideBtn: !!s.consent, left: s.navFull ? 'auto' : 'clamp(12px,1.8vw,32px)', right: s.navFull ? 'clamp(16px,1.8vw,32px)' : 'auto', bottom: s.navFull ? 'calc(clamp(20px,2.4vw,40px) + 74px)' : 'clamp(12px,1.8vw,32px)', accept: () => this.setConsent('all'), decline: () => this.setConsent('essential'), reopen: () => { const m = this.menuRef && this.menuRef.current; if (m && m.open && this.closeMenu) this.closeMenu(); else if (m && m.open) m.close(); this.setState({ consent: null, menuOpen: false }); } },
-      winDesk: !s.mob, winMob: !!s.mob,
+      winDesk: false, winMob: true, winHint: s.mob ? 'Tap the cards to reveal the winners' : 'Click the cards to reveal the winners',
       goWinners: () => { const t = document.getElementById('winner'); if (!t) return; const r = t.getBoundingClientRect(); scrollTo({ top: Math.max(0, scrollY + r.top), behavior: this.state.reduced ? 'auto' : 'smooth' }); }
     };
   }
