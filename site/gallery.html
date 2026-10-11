@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="All photoshoots of Queen of the Baltic: finals, September shootings, China Fashion Week, partner shoots with Elitcar, Hearts Fine Jewelry and Harley-Davidson, and the yacht photoshoot.">
 <meta name="twitter:image" content="https://sanya-boss.github.io/qotb/assets/og/og-image.jpg">
 <meta name="twitter:image:alt" content="Queen of the Baltic International — winners of season 2026 with their crowns">
-<script src="./support.js"></script>
+<script src="assets/js/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -37,7 +37,7 @@
 <link rel="preload" href="assets/fonts/TildaSans-Regular.woff2" as="font" type="font/woff2" crossorigin="">
 <link rel="preload" href="assets/fonts/TildaSans-Medium.woff2" as="font" type="font/woff2" crossorigin="">
 <link rel="preload" href="assets/fonts/TildaSans-Semibold.woff2" as="font" type="font/woff2" crossorigin="">
-<link rel="preload" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/assets/fonts/CaneNero.otf" as="font" type="font/otf" crossorigin="">
+<link rel="preload" href="assets/design-system/assets/fonts/CaneNero.otf" as="font" type="font/otf" crossorigin="">
 <link rel="preload" as="font" href="assets/fonts/TildaSans-Regular.woff2" type="font/woff2" crossorigin="">
 <link rel="preload" as="font" href="assets/fonts/TildaSans-Semibold.woff2" type="font/woff2" crossorigin="">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -45,19 +45,19 @@
 *{-webkit-tap-highlight-color:transparent}
 html:not(.qb-fonts) #dc-root{opacity:0}#dc-root{transition:opacity 500ms cubic-bezier(.22,.61,.36,1)}</style>
 <script>(function(){var d=document.documentElement,done=function(){d.classList.add('qb-fonts')};setTimeout(done,2000);if(document.fonts){var L=["400 16px 'Tilda Sans'","500 16px 'Tilda Sans'","600 16px 'Tilda Sans'","400 64px 'Cane Nero QB'","400 32px 'Times New Roman'","400 32px 'Tinos'"];Promise.all(L.map(function(s){return document.fonts.load(s).catch(function(){})})).then(function(){return document.fonts.ready}).then(function(){requestAnimationFrame(function(){requestAnimationFrame(done)})})}else done()})();</script>
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors-sea.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/typography.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/base.css">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/styles.css">
+<link rel="stylesheet" href="assets/design-system/tokens/fonts.css">
+<link rel="stylesheet" href="assets/design-system/tokens/colors.css">
+<link rel="stylesheet" href="assets/design-system/tokens/colors-sea.css">
+<link rel="stylesheet" href="assets/design-system/tokens/typography.css">
+<link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
+<link rel="stylesheet" href="assets/design-system/tokens/base.css">
+<link rel="stylesheet" href="assets/design-system/styles.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&amp;display=swap">
-<script src="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/_ds_bundle.js"></script>
+<script src="assets/design-system/_ds_bundle.js"></script>
 <style>
 
-@font-face{font-family:'Cane Nero QB';font-style:normal;font-weight:400;font-display:swap;src:url('_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/assets/fonts/CaneNero.otf') format('opentype');unicode-range:U+0020-0025, U+0027-002B, U+002D, U+002F, U+003F, U+0041-005A, U+0061-007A, U+2014, U+2019;}
+@font-face{font-family:'Cane Nero QB';font-style:normal;font-weight:400;font-display:swap;src:url('assets/design-system/assets/fonts/CaneNero.otf') format('opentype');unicode-range:U+0020-0025, U+0027-002B, U+002D, U+002F, U+003F, U+0041-005A, U+0061-007A, U+2014, U+2019;}
 [style*="Cane Nero"] em,[style*="Cane Nero"] i{font-style:normal!important}
 html,body{margin:0;background:#041E3A;overflow-x:clip}
 body{color:#C9D6E6}
@@ -70,14 +70,14 @@ img{-webkit-user-drag:none}
 <div ref="{{ rootRef }}" style="position:relative;background:#041E3A;color:#C9D6E6;font-family:'Tilda Sans',var(--font-sans),sans-serif;min-height:100vh;">
 
   <header style="position:fixed;z-index:30;top:0;left:0;right:0;display:grid;grid-template-columns:minmax(224px,1fr) auto minmax(0,1fr);align-items:center;gap:24px;padding:18px clamp(16px,1.8vw,32px);background:linear-gradient(180deg,rgba(4,30,58,.85),rgba(4,30,58,0));pointer-events:none;">
-    <a href="./" aria-label="Queen of the Baltic — main page" style="grid-column:1;grid-row:1;justify-self:start;align-self:center;pointer-events:auto;display:flex;flex:none;align-items:center;height:44px;"><img decoding="async" src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
+    <a href="./" aria-label="Queen of the Baltic — main page" style="grid-column:1;grid-row:1;justify-self:start;align-self:center;pointer-events:auto;display:flex;flex:none;align-items:center;height:44px;"><img decoding="async" src="assets/brand/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
     <nav aria-label="Photoshoots" style="grid-column:2;grid-row:1;pointer-events:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(12px,1.4vw,22px);"><sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
         <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
           <a href="#{{ c.id }}" onClick="{{ c.go }}" style="display:inline-flex;align-items:flex-start;gap:6px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#F6F5F2;white-space:nowrap;"><span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:10px;font-weight:600;color:#9FC6EC;">{{ c.n }}</span>{{ c.short }}</a>
         </sc-for>
       </sc-if></nav>
     <div style="grid-column:3;grid-row:1;justify-self:end;pointer-events:auto;display:flex;align-items:center;gap:clamp(8px,1.2vw,16px);">
-      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><span style="display:block;width:48px;height:48px;"></span><button type="button" onClick="{{ menu.toggle }}" onMouseEnter="{{ menu.hvOn }}" onMouseLeave="{{ menu.hvOff }}" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="{{ menu.exp }}" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:40;pointer-events:auto;box-shadow:0 8px 24px -8px rgba(1,9,20,.5);transition:transform 500ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.btn }};"><img decoding="async" src="assets/crown-navy.svg" alt="" aria-hidden="true" width="345" height="220" style="display:block;width:26px;height:auto;pointer-events:none;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.crown }};"></button></sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}"><span style="display:block;width:48px;height:48px;"></span><button type="button" onClick="{{ menu.toggle }}" onMouseEnter="{{ menu.hvOn }}" onMouseLeave="{{ menu.hvOff }}" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="{{ menu.exp }}" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:40;pointer-events:auto;box-shadow:0 8px 24px -8px rgba(1,9,20,.5);transition:transform 500ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.btn }};"><img decoding="async" src="assets/brand/crown-navy.svg" alt="" aria-hidden="true" width="345" height="220" style="display:block;width:26px;height:auto;pointer-events:none;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ menu.crown }};"></button></sc-if>
       
       <a href="./" style="display:{{ mainBtnDisp }};align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background:#F6F5F2;color:#041E3A;text-transform:uppercase;letter-spacing:.06em;font-size:14px;font-weight:600;letter-spacing:.06em;white-space:nowrap;">Main page<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
     </div>
@@ -89,7 +89,7 @@ img{-webkit-user-drag:none}
     <button type="button" onClick="{{ menu.toggle }}" aria-label="Close menu" style="position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px;width:48px;height:48px;padding:0 13px;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ mm.btn }};"><span aria-hidden="true" style="display:block;width:100%;height:1.5px;border-radius:2px;background:#041E3A;transform-origin:50% 50%;transition:transform 550ms cubic-bezier(.76,0,.24,1) 120ms,width 450ms cubic-bezier(.76,0,.24,1) 120ms;transform:{{ mm.l1 }};"></span><span aria-hidden="true" style="display:block;height:1.5px;border-radius:2px;background:#041E3A;transform-origin:50% 50%;transition:transform 550ms cubic-bezier(.76,0,.24,1) 120ms,width 450ms cubic-bezier(.76,0,.24,1) 120ms;transform:{{ mm.l2 }};width:{{ mm.w2 }};"></span></button>
     <div style="position:relative;height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(24px,4vh,40px);padding:16px clamp(16px,1.8vw,32px) 32px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:48px;transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d0 }};">
-        <a href="./" aria-label="Queen of the Baltic — main page" style="display:flex;flex:none;align-items:center;height:44px;"><img decoding="async" src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
+        <a href="./" aria-label="Queen of the Baltic — main page" style="display:flex;flex:none;align-items:center;height:44px;"><img decoding="async" src="assets/brand/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" style="display:block;flex:none;height:31px;width:224px;max-width:none;"></a>
         
       </div>
       <p style="font-family:'Times New Roman','Tinos',serif;font-style:italic;transition:opacity 600ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.22,.61,.36,1),filter 600ms cubic-bezier(.22,.61,.36,1);opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};transition-delay:{{ mm.d1 }};margin:0;font-size:clamp(14px,calc(17px - (100vw - 600px) * 999),17px);font-weight:600;letter-spacing:.01em;text-transform:none;color:#9FC6EC;">Photoshoots</p>
@@ -366,7 +366,7 @@ img{-webkit-user-drag:none}
   </section>
 
   <footer data-screen-label="08 Gallery outro" style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(28px,4vw,48px);padding:clamp(96px,12vw,200px) clamp(16px,1.8vw,32px) clamp(48px,6vw,80px);border-top:1px solid rgba(246,245,242,.12);">
-    <img decoding="async" data-rv="" src="assets/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:48px;height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
+    <img decoding="async" data-rv="" src="assets/brand/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:48px;height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
     <p data-rv="" style="margin:0;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-size:clamp(48px,8vw,140px);line-height:.88;letter-spacing:-.03em;color:#F6F5F2;">See you <em style="color:#9FC6EC;">next season.</em></p>
     <div data-rv="" style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
       <a href="./" style="display:inline-flex;align-items:center;gap:18px;height:56px;padding:0 6px 0 26px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-size:15px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;">Back to main page<span aria-hidden="true" style="display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></span></a>
