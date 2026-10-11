@@ -29,7 +29,7 @@
 <meta name="twitter:description" content="Season 2026 is complete. Meet the winners and apply for 2027.">
 <meta name="twitter:image" content="https://sanya-boss.github.io/qotb/assets/og/og-image.jpg">
 <meta name="twitter:image:alt" content="Queen of the Baltic International — winners of season 2026 with their crowns">
-<script src="./support.js"></script>
+<script src="assets/js/support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -40,33 +40,33 @@
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="preload" as="image" href="assets/photos/webp/mermaid-light.webp">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/fonts.css">
+<link rel="stylesheet" href="assets/design-system/tokens/fonts.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors.css">
+<link rel="stylesheet" href="assets/design-system/tokens/colors.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/colors-sea.css">
+<link rel="stylesheet" href="assets/design-system/tokens/colors-sea.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/typography.css">
+<link rel="stylesheet" href="assets/design-system/tokens/typography.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/spacing.css">
+<link rel="stylesheet" href="assets/design-system/tokens/spacing.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/tokens/base.css">
+<link rel="stylesheet" href="assets/design-system/tokens/base.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
-<link rel="stylesheet" href="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/styles.css">
+<link rel="stylesheet" href="assets/design-system/styles.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&amp;display=swap">
-<script src="_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/_ds_bundle.js"></script>
+<script src="assets/design-system/_ds_bundle.js"></script>
 <style>
 *{-webkit-tap-highlight-color:transparent}
 
 
-@font-face{font-family:'Cane Nero QB';font-style:normal;font-weight:400;font-display:swap;src:url('_ds/queen-of-the-baltic-design-system-68b93734-4830-4f1b-8cb6-29f72e6d830b/assets/fonts/CaneNero.otf') format('opentype');unicode-range:U+0020-0025, U+0027-002B, U+002D, U+002F, U+003F, U+0041-005A, U+0061-007A, U+2014, U+2019;}
+@font-face{font-family:'Cane Nero QB';font-style:normal;font-weight:400;font-display:swap;src:url('assets/design-system/assets/fonts/CaneNero.otf') format('opentype');unicode-range:U+0020-0025, U+0027-002B, U+002D, U+002F, U+003F, U+0041-005A, U+0061-007A, U+2014, U+2019;}
 html,body{margin:0;background:#041E3A;overflow-anchor:none}
 html{scrollbar-gutter:stable}
 dialog{overflow-x:hidden}
@@ -118,7 +118,7 @@ button,input,textarea,select{text-transform:inherit}
     <sc-if value="{{ vp.navCompact }}" hint-placeholder-val="{{ false }}"></sc-if>
     <sc-if value="{{ vp.navCompact }}" hint-placeholder-val="{{ false }}">
       <div style="margin-left:auto;display:flex;align-items:center;width:48px;height:48px;">
-        <button type="button" onClick="{{ openMenu }}" data-fixed-burger="" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="{{ menuExpanded }}" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:60;box-shadow:0 8px 24px -8px rgba(1,9,20,.5);transition:transform 500ms cubic-bezier(.34,1.56,.64,1),background-color 400ms cubic-bezier(.22,.61,.36,1),box-shadow 400ms cubic-bezier(.22,.61,.36,1);transform:{{ bg.btn }};" onMouseEnter="{{ bgHoverOn }}" onMouseLeave="{{ bgHoverOff }}"><img decoding="async" src="assets/crown-navy.svg" alt="" aria-hidden="true" width="345" height="220" style="display:block;width:26px;height:auto;pointer-events:none;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ bg.crown }};"></button>
+        <button type="button" onClick="{{ openMenu }}" data-fixed-burger="" aria-label="Open menu" aria-haspopup="dialog" aria-expanded="{{ menuExpanded }}" style="display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;box-sizing:border-box;border:0;border-radius:50%;background-color:#F6F5F2;cursor:pointer;position:fixed;top:14px;right:clamp(16px,1.8vw,32px);z-index:60;box-shadow:0 8px 24px -8px rgba(1,9,20,.5);transition:transform 500ms cubic-bezier(.34,1.56,.64,1),background-color 400ms cubic-bezier(.22,.61,.36,1),box-shadow 400ms cubic-bezier(.22,.61,.36,1);transform:{{ bg.btn }};" onMouseEnter="{{ bgHoverOn }}" onMouseLeave="{{ bgHoverOff }}"><img decoding="async" src="assets/brand/crown-navy.svg" alt="" aria-hidden="true" width="345" height="220" style="display:block;width:26px;height:auto;pointer-events:none;transition:transform 600ms cubic-bezier(.34,1.56,.64,1);transform:{{ bg.crown }};"></button>
       </div>
     </sc-if>
   </div>
@@ -135,7 +135,7 @@ button,input,textarea,select{text-transform:inherit}
         <img decoding="async" src="assets/photos/webp/mermaid-light.webp" alt="" width="304" height="718" fetchpriority="high" style="display:block;height:clamp(64px,calc(20svh - 30px),209px);width:auto;">
         <span style="margin-left:.5em;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:{{ vp.yearSize }};line-height:1;letter-spacing:-.02em;color:#F6F5F2;display:inline-flex;">2<span data-odo="" style="display:inline-block;height:1em;overflow:hidden;"><span data-odo-col="" style="display:flex;flex-direction:column;will-change:transform,filter;"><span style="display:block;height:1em;">6</span><span style="display:block;height:1em;">7</span></span></span></span>
       </span>
-      <img decoding="async" src="assets/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" fetchpriority="high" style="display:block;width:min(100%,calc((100svh - 430px) * 6));height:auto;"><span style="display:block;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:clamp(12px,1.1vw,18px);font-weight:500;line-height:1;letter-spacing:.6em;padding-left:.6em;color:#F6F5F2;">INTERNATIONAL</span>
+      <img decoding="async" src="assets/brand/qob-wordmark.svg" alt="Queen of the Baltic" width="1000" height="140" fetchpriority="high" style="display:block;width:min(100%,calc((100svh - 430px) * 6));height:auto;"><span style="display:block;font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:clamp(12px,1.1vw,18px);font-weight:500;line-height:1;letter-spacing:.6em;padding-left:.6em;color:#F6F5F2;">INTERNATIONAL</span>
       
     </h1>
     <div data-hero-content="" style="flex:none;display:grid;grid-template-columns:{{ vp.heroCols }};justify-content:space-between;align-items:end;justify-items:{{ vp.heroJustify }};text-align:{{ vp.heroAlign }};gap:32px 48px;">
@@ -165,7 +165,7 @@ button,input,textarea,select{text-transform:inherit}
   <div data-sheet-inner="" style="max-width:none;margin:0 auto;padding:0 clamp(16px,1.8vw,32px) clamp(157px,16.8vw,269px);">
     <div data-pin-wrap="">
       <div data-pin="" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(39px,4.8vw,67px);padding:clamp(96px,10vw,140px) 0 clamp(24px,2.4vw,40px);">
-        <h2 id="about-h" style="margin:0;font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);"><img loading="lazy" decoding="async" src="assets/qb-monogram.svg" alt="QB — The contest" width="268" height="310" data-logo-in="" style="display:block;width:clamp(56px,5vw,84px);height:auto;"></h2>
+        <h2 id="about-h" style="margin:0;font-size:12px;font-weight:500;line-height:1.5;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);"><img loading="lazy" decoding="async" src="assets/brand/qb-monogram.svg" alt="QB — The contest" width="268" height="310" data-logo-in="" style="display:block;width:clamp(56px,5vw,84px);height:auto;"></h2>
         <p data-words="" style="margin:0;max-width:max(20ch,calc((768px - 100vw) * 999));font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:max(clamp(26px,4.4vw,72px),min(9vw,calc((768px - 100vw) * 999)));line-height:.94;letter-spacing:-.02em;color:#F6F5F2;text-align:center;text-wrap:balance;"><span data-src="">More than a crown.<br> A celebration of <em>individuality, confidence</em> and <em>purpose.</em></span></p>
       </div>
     </div>
@@ -219,7 +219,7 @@ button,input,textarea,select{text-transform:inherit}
         
         <div data-win-m="" aria-hidden="true" style="position:absolute;z-index:-1;right:0;top:50%;will-change:opacity,transform,filter;width:min(56vw,760px);height:92%;transform:translateY(-50%);background:#2C6BC4;opacity:.14;-webkit-mask:url(assets/photos/webp/mermaid-light.webp) center / contain no-repeat;mask:url(assets/photos/webp/mermaid-light.webp) center / contain no-repeat;pointer-events:none;"></div>
         <div data-win-a="" style="flex:1 1 200px;max-width:380px;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2vh,24px);will-change:opacity,transform,filter;">
-          <img loading="lazy" decoding="async" src="assets/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:clamp(34px,3vw,48px);height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
+          <img loading="lazy" decoding="async" src="assets/brand/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:clamp(34px,3vw,48px);height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
           <p style="font-family:'Times New Roman','Tinos',serif;font-style:italic;margin:0;font-size:clamp(14px,calc(17px - (100vw - 600px) * 999),17px);font-weight:500;line-height:1.5;letter-spacing:.01em;text-transform:none;color:var(--qa,#9FC6EC);">Queen of the Baltic 2026</p>
           <h2 id="winner-h" style="margin:0;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(44px,6vw,104px);line-height:.88;letter-spacing:-.025em;color:#F6F5F2;">Three <em style="color:var(--qa,#9FC6EC);">queens.</em></h2>
           <span aria-hidden="true" style="flex:none;height:clamp(0px,calc((700px - 100vw) * 1000),10px);margin-top:auto;"></span><a href="https://www.facebook.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background-color:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.06em;text-decoration:none;white-space:nowrap;transition:background-color 280ms cubic-bezier(.22,.61,.36,1);" style-hover="background-color:rgba(246,245,242,.2);opacity:1">Facebook post<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#F6F5F2;color:#041E3A;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:block;"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z"></path></svg></span></a>
@@ -281,7 +281,7 @@ button,input,textarea,select{text-transform:inherit}
       <div style="position:relative;min-height:100vh;min-height:100svh;display:flex;flex-wrap:wrap;align-content:center;align-items:center;justify-content:flex-start;gap:clamp(24px,4vh,48px) clamp(20px,3.4vw,64px);padding:clamp(64px,9vh,110px) clamp(16px,1.8vw,32px);box-sizing:border-box;">
         <div data-win-m="" aria-hidden="true" style="position:absolute;z-index:-1;right:0;top:50%;will-change:opacity,transform,filter;width:min(56vw,760px);height:92%;transform:translateY(-50%);background:#2C6BC4;opacity:0;-webkit-mask:url(assets/photos/webp/mermaid-light.webp) center / contain no-repeat;mask:url(assets/photos/webp/mermaid-light.webp) center / contain no-repeat;pointer-events:none;"></div>
         <div data-win-a="" style="flex:1 1 100%;max-width:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;gap:clamp(12px,2vh,24px);">
-          <img loading="lazy" decoding="async" src="assets/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:clamp(34px,3vw,48px);height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
+          <img loading="lazy" decoding="async" src="assets/brand/crown-light.svg" alt="" aria-hidden="true" style="display:block;width:clamp(34px,3vw,48px);height:auto;filter:drop-shadow(0 0 10px rgba(255,255,255,.45));">
           <p style="font-family:'Times New Roman','Tinos',serif;font-style:italic;margin:0;font-size:clamp(14px,calc(17px - (100vw - 600px) * 999),17px);font-weight:500;line-height:1.5;letter-spacing:.01em;text-transform:none;color:var(--qa,#9FC6EC);">Queen of the Baltic 2026</p>
           <h2 id="winner-h" style="margin:0;font-family:'Cane Nero QB','Times New Roman','Tinos',Times,serif;font-weight:400;font-size:clamp(44px,6vw,104px);line-height:.88;letter-spacing:-.025em;color:#F6F5F2;">Three <em style="color:var(--qa,#9FC6EC);">queens.</em></h2>
           <span aria-hidden="true" style="flex:none;height:clamp(0px,calc((700px - 100vw) * 1000),10px);margin-top:auto;"></span><a href="https://www.facebook.com/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:14px;height:52px;padding:0 5px 0 22px;border-radius:999px;background-color:rgba(246,245,242,.1);color:#F6F5F2;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.06em;text-decoration:none;white-space:nowrap;transition:background-color 280ms cubic-bezier(.22,.61,.36,1);" style-hover="background-color:rgba(246,245,242,.2);opacity:1">Facebook post<span aria-hidden="true" style="display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#F6F5F2;color:#041E3A;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:block;"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z"></path></svg></span></a>
@@ -295,7 +295,7 @@ button,input,textarea,select{text-transform:inherit}
               <span data-win-sweep="" aria-hidden="true" style="position:absolute;top:-10%;bottom:-10%;left:0;width:55%;background:linear-gradient(100deg,rgba(214,232,250,0),rgba(214,232,250,.42),rgba(214,232,250,0));mix-blend-mode:soft-light;transform:translateX(-140%) skewX(-14deg);pointer-events:none;"></span>
               <span data-win-n="" data-to="01" aria-hidden="true" style="position:absolute;left:clamp(6px,1.4vw,16px);top:clamp(6px,1vw,10px);font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1;color:#041E3A;font-variant-numeric:tabular-nums;">01</span>
               <span data-win-tag="" aria-hidden="true" style="display:none;"></span>
-              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/crown-light.svg) center / contain no-repeat;mask:url(assets/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
+              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/brand/crown-light.svg) center / contain no-repeat;mask:url(assets/brand/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
             </div>
             <figcaption data-win-cap="" style="display:flex;flex-direction:column;gap:6px;padding:0 4px;align-self:stretch;width:0;min-width:100%;box-sizing:border-box;">
               <span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);">Category 1</span>
@@ -309,7 +309,7 @@ button,input,textarea,select{text-transform:inherit}
               <span data-win-sweep="" aria-hidden="true" style="position:absolute;top:-10%;bottom:-10%;left:0;width:55%;background:linear-gradient(100deg,rgba(214,232,250,0),rgba(214,232,250,.42),rgba(214,232,250,0));mix-blend-mode:soft-light;transform:translateX(-140%) skewX(-14deg);pointer-events:none;"></span>
               <span data-win-n="" data-to="02" aria-hidden="true" style="position:absolute;left:clamp(6px,1.4vw,16px);top:clamp(6px,1vw,10px);font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1;color:#041E3A;font-variant-numeric:tabular-nums;">02</span>
               <span data-win-tag="" aria-hidden="true" style="display:none;"></span>
-              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/crown-light.svg) center / contain no-repeat;mask:url(assets/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
+              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/brand/crown-light.svg) center / contain no-repeat;mask:url(assets/brand/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
             </div>
             <figcaption data-win-cap="" style="display:flex;flex-direction:column;gap:6px;padding:0 4px;align-self:stretch;width:0;min-width:100%;box-sizing:border-box;">
               <span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);">Category 2</span>
@@ -323,7 +323,7 @@ button,input,textarea,select{text-transform:inherit}
               <span data-win-sweep="" aria-hidden="true" style="position:absolute;top:-10%;bottom:-10%;left:0;width:55%;background:linear-gradient(100deg,rgba(214,232,250,0),rgba(214,232,250,.42),rgba(214,232,250,0));mix-blend-mode:soft-light;transform:translateX(-140%) skewX(-14deg);pointer-events:none;"></span>
               <span data-win-n="" data-to="03" aria-hidden="true" style="position:absolute;left:clamp(6px,1.4vw,16px);top:clamp(6px,1vw,10px);font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1;color:#041E3A;font-variant-numeric:tabular-nums;">03</span>
               <span data-win-tag="" aria-hidden="true" style="display:none;"></span>
-              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/crown-light.svg) center / contain no-repeat;mask:url(assets/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
+              <div data-win-back="" aria-hidden="true" style="position:absolute;inset:0;border-radius:16px;background:#041E3A;box-shadow:inset 0 0 0 1px rgba(159,198,236,.35);display:none;place-items:center;"><span aria-hidden="true" style="position:absolute;inset:10px;border:1px solid rgba(159,198,236,.45);border-radius:10px;pointer-events:none;"></span><span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;"><span aria-hidden="true" style="display:block;width:clamp(30px,9vw,44px);aspect-ratio:1 / .62;background:#9FC6EC;-webkit-mask:url(assets/brand/crown-light.svg) center / contain no-repeat;mask:url(assets/brand/crown-light.svg) center / contain no-repeat;filter:drop-shadow(0 0 10px rgba(159,198,236,.6));"></span><span style="font-family:'Marcellus',var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(84px,24vw,132px);line-height:1;color:var(--qa,#9FC6EC);">?</span></span></div>
             </div>
             <figcaption data-win-cap="" style="display:flex;flex-direction:column;gap:6px;padding:0 4px;align-self:stretch;width:0;min-width:100%;box-sizing:border-box;">
               <span style="font-family:'Tilda Sans',var(--font-sans),sans-serif;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--qa,#9FC6EC);">Category 3</span>
@@ -535,7 +535,7 @@ button,input,textarea,select{text-transform:inherit}
       </div>
     </div>
     <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:64px clamp(32px,5vw,96px);">
-      <div style="flex:1 1 360px;max-width:560px;display:flex;flex-direction:column;gap:clamp(36px,4vw,64px);"><p style="margin:0;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1.04;letter-spacing:-.02em;color:#F6F5F2;text-wrap:balance;">An international beauty and self-expression contest — <em style="color:var(--qa,#9FC6EC);">in the name of charity.</em></p><img loading="lazy" decoding="async" src="assets/qob-wordmark-mermaid.svg" alt="Queen of the Baltic" style="display: block; width: 276px; height: 65px"></div>
+      <div style="flex:1 1 360px;max-width:560px;display:flex;flex-direction:column;gap:clamp(36px,4vw,64px);"><p style="margin:0;font-family:var(--qs,'Times New Roman'),'Tinos',Times,serif;font-weight:400;font-size:clamp(34px,3.4vw,56px);line-height:1.04;letter-spacing:-.02em;color:#F6F5F2;text-wrap:balance;">An international beauty and self-expression contest — <em style="color:var(--qa,#9FC6EC);">in the name of charity.</em></p><img loading="lazy" decoding="async" src="assets/brand/qob-wordmark-mermaid.svg" alt="Queen of the Baltic" style="display: block; width: 276px; height: 65px"></div>
       <div style="flex:1.6 1 520px;max-width:860px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:40px 32px;">
         <nav aria-label="Footer">
           <p style="font-family:'Times New Roman','Tinos',serif;font-style:italic;margin:0 0 14px;font-size:clamp(14px,calc(17px - (100vw - 600px) * 999),17px);font-weight:500;letter-spacing:.01em;text-transform:none;color:var(--qa,#9FC6EC);">Explore</p>
@@ -756,7 +756,7 @@ button,input,textarea,select{text-transform:inherit}
     </nav>
     <div style="transition:opacity 700ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.16,1,.3,1),filter 700ms cubic-bezier(.22,.61,.36,1);transition-delay:{{ mm.d7 }};opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px;margin:0 auto;">
       <span role="link" aria-disabled="true" title="Applications open soon" style="opacity:.62;cursor:not-allowed;display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 6px 0 24px;border-radius:999px;background:#F6F5F2;color:#041E3A;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.08em;"><span style="display:flex;flex-direction:column;gap:2px;line-height:1.1;"><span style="font-size:10px;font-weight:500;letter-spacing:.18em;color:#2F5E92;">Season 2027</span><span style="display:inline-flex;align-items:center;gap:8px;">Apply now<span aria-hidden="true" style="display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:999px;background:rgba(4,30,58,.08);color:#2F5E92;font-size:10px;font-weight:600;letter-spacing:.16em;">Soon</span></span></span><span aria-hidden="true" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#041E3A;color:#F6F5F2;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><path d="M7 17 17 7M8 7h9v9"></path></svg></span></span>
-      <a href="#winner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 6px 0 24px;border-radius:999px;background:rgba(159,198,236,.14);color:#F6F5F2;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.08em;" style-active="background:rgba(159,198,236,.12)"><span style="display:flex;flex-direction:column;gap:2px;line-height:1.1;"><span style="font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--qa,#9FC6EC);">Queen of the Baltic 2026</span>Meet the winners</span><span aria-hidden="true" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(159,198,236,.16);"><span style="display:block;width:22px;height:14px;background:#9FC6EC;-webkit-mask:url(assets/crown-light.svg) center / contain no-repeat;mask:url(assets/crown-light.svg) center / contain no-repeat;"></span></span></a>
+      <a href="#winner" style="display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px;padding:0 6px 0 24px;border-radius:999px;background:rgba(159,198,236,.14);color:#F6F5F2;font-family:'Tilda Sans',var(--font-sans),sans-serif;text-transform:uppercase;font-size:14px;font-weight:600;letter-spacing:.08em;" style-active="background:rgba(159,198,236,.12)"><span style="display:flex;flex-direction:column;gap:2px;line-height:1.1;"><span style="font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--qa,#9FC6EC);">Queen of the Baltic 2026</span>Meet the winners</span><span aria-hidden="true" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(159,198,236,.16);"><span style="display:block;width:22px;height:14px;background:#9FC6EC;-webkit-mask:url(assets/brand/crown-light.svg) center / contain no-repeat;mask:url(assets/brand/crown-light.svg) center / contain no-repeat;"></span></span></a>
     </div>
     <div style="transition:opacity 700ms cubic-bezier(.22,.61,.36,1),transform 800ms cubic-bezier(.16,1,.3,1),filter 700ms cubic-bezier(.22,.61,.36,1);transition-delay:{{ mm.d8 }};opacity:{{ mm.o }};transform:{{ mm.t }};filter:{{ mm.f }};display:flex;flex-wrap:wrap;justify-content:center;align-items:center;text-align:center;gap:4px 28px;padding-top:8px;margin-top:0;font-size:12px;color:var(--qb-navy-200);">
       <a href="#privacy" style="display:inline-flex;align-items:center;min-height:44px;font-size:13px;color:#F6F5F2;">Privacy policy</a>
@@ -922,8 +922,8 @@ class Component extends DCLogic {
   }
 
   loadContent() {
-    let url = './siteContent.v4.js';
-    try { url = new URL('siteContent.v4.js', document.baseURI).href; } catch (e) {}
+    let url = './assets/js/siteContent.v4.js';
+    try { url = new URL('assets/js/siteContent.v4.js', document.baseURI).href; } catch (e) {}
     url += (url.includes('?') ? '&' : '?') + 'v=20261008c';
     import(url).then(mod => { if (!this.dead) this.setState({ content: (mod && mod.default) || {} }); })
       .catch(() => { if (!this.dead) this.setState({ content: {} }); });
@@ -1034,7 +1034,7 @@ class Component extends DCLogic {
         bg.style.backgroundColor = on ? '#041E3A' : '#F6F5F2';
         bg.style.boxShadow = on ? '0 0 0 1px rgba(246,245,242,.28), 0 8px 24px -8px rgba(1,9,20,.5)' : '0 8px 24px -8px rgba(1,9,20,.5)';
         if (bg.animate && this.motionOn()) bg.animate([{ scale: '.86' }, { scale: '1' }], { duration: 420, easing: 'cubic-bezier(.34,1.56,.64,1)' });
-        bg.querySelectorAll('img').forEach(im => { im.src = on ? 'assets/crown-light.svg' : 'assets/crown-navy.svg'; im.style.width = '26px'; im.style.filter = on ? 'drop-shadow(0 0 6px rgba(255,255,255,.4))' : 'drop-shadow(0 0 6px rgba(46,110,210,.55))'; });
+        bg.querySelectorAll('img').forEach(im => { im.src = on ? 'assets/brand/crown-light.svg' : 'assets/brand/crown-navy.svg'; im.style.width = '26px'; im.style.filter = on ? 'drop-shadow(0 0 6px rgba(255,255,255,.4))' : 'drop-shadow(0 0 6px rgba(46,110,210,.55))'; });
         bg.querySelectorAll('span').forEach(l => { l.style.transition += l.__invT ? '' : ',background-color 400ms ease'; l.__invT = 1; l.style.background = on ? '#F6F5F2' : '#041E3A'; });
       }
     }
