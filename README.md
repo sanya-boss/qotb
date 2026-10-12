@@ -14,7 +14,7 @@ site/                     ← всё, что публикуется на сай�
     ├── brand/            логотипы, корона, монограмма (SVG)
     ├── design-system/    токены, стили, бандл и шрифт Cane Nero
     ├── favicon/          иконки вкладки и для телефонов
-    ├── fonts/            Tilda Sans, Tinos
+    ├── fonts/            Tilda Sans
     ├── js/               support.js (рантайм страниц), siteContent.v4.js (тексты и данные)
     ├── og/               картинка для превью в соцсетях
     ├── partners/logos/   логотипы партнёров
@@ -48,7 +48,7 @@ python3 tools/import_export.py путь/к/export_папке
 - раскладывает файлы по папкам выше (`Queen of the Baltic.dc.html` → `site/index.html`, `Gallery.dc.html` → `site/gallery.html`, `_ds/…` → `site/assets/design-system/`, логотипы → `site/assets/brand/`);
 - переписывает пути и ссылки между страницами;
 - добавляет в `<head>` favicon, теги для соцсетей и canonical;
-- не трогает `robots.txt` и `sitemap.xml`, пропускает `CHANGES.md`, `CLAUDE.md` и файлы Times New Roman (лицензия Monotype не разрешает их публиковать — сайт берёт шрифт из системы, запасной — Tinos).
+- не трогает `robots.txt` и `sitemap.xml`, пропускает `CHANGES.md`, `CLAUDE.md` и файлы Times New Roman (лицензия Monotype не разрешает их публиковать — сайт берёт шрифт из системы, запасной — STIX Two Text с Google Fonts).
 
 Затем проверьте сайт локально: `cd site && python3 -m http.server`, откройте http://localhost:8000.
 
