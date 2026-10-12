@@ -34,7 +34,7 @@ PAGES = {
 # Export files that never go into site/
 SKIP = {"README.md", "CHANGES.md", "CLAUDE.md", "robots.txt", "sitemap.xml"}  # last two are repo-managed
 # Monotype Times New Roman is not licensed for public redistribution;
-# the site uses the system font and STIX Two Text (Google Fonts) as fallback.
+# the site uses Crimson Pro (Google Fonts) for serif text.
 SKIP_PATTERNS = [re.compile(r"assets/fonts/TimesNewRoman-.*\.ttf$")]
 
 
