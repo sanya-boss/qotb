@@ -11,24 +11,14 @@ site/                     ← всё, что публикуется на сай�
 ├── 404.html              страница «не найдено»
 ├── favicon.ico, site.webmanifest, robots.txt, sitemap.xml
 └── assets/
-    ├── brand/            логотипы, корона, монограмма (SVG)
-    ├── design-system/    токены, стили, бандл и шрифт Cane Nero
+    ├── img/              фото (WebP) и логотипы (SVG) из дизайна
+    ├── fonts/            CaneNero
+    ├── js/support.js     рантайм страниц
     ├── favicon/          иконки вкладки и для телефонов
-    ├── fonts/            Tilda Sans
-    ├── js/               support.js (рантайм страниц), siteContent.v4.js (тексты и данные)
-    ├── og/               картинка для превью в соцсетях
-    ├── partners/logos/   логотипы партнёров
-    └── photos/
-        ├── webp/         фото главной, победительниц, основателя
-        └── gallery/      56 фото галереи
+    └── og/               картинка для превью в соцсетях
 
-design/                   исходники, которые на сайт не попадают
-├── brand/                логотипы в других цветах и форматах
-└── design-system/        служебные файлы дизайн-системы
-
-docs/design-handoff.md    описание дизайна из дизайн-тула
+docs/design-handoff.md    описание дизайна: токены, экраны, поведение, TODO
 tools/import_export.py    импорт новой выгрузки из дизайн-тула
-tools/design-runtime/     рантайм редактора (сайтом не используется)
 .github/workflows/        автопубликация на GitHub Pages
 ```
 
@@ -41,19 +31,22 @@ tools/design-runtime/     рантайм редактора (сайтом не �
 Распакуйте архив и запустите:
 
 ```
-python3 tools/import_export.py путь/к/export_папке
+python3 tools/import_export.py путь/к/design_handoff_папке
 ```
 
 Скрипт:
-- раскладывает файлы по папкам выше (`Queen of the Baltic.dc.html` → `site/index.html`, `Gallery.dc.html` → `site/gallery.html`, `_ds/…` → `site/assets/design-system/`, логотипы → `site/assets/brand/`);
-- переписывает пути и ссылки между страницами;
-- добавляет в `<head>` favicon, теги для соцсетей и canonical;
-- не трогает `robots.txt` и `sitemap.xml`, пропускает `CHANGES.md`, `CLAUDE.md` и файлы Times New Roman (лицензия Monotype не разрешает их публиковать; шрифт с засечками на сайте — Crimson Pro с Google Fonts).
+- раскладывает файлы: `Main.dc.html` → `site/index.html`, `Gallery.dc.html` → `site/gallery.html`, `404.dc.html` → `site/404.html`, `support.js` → `site/assets/js/`, `assets/` → `site/assets/`, `README.md` → `docs/design-handoff.md`;
+- переписывает ссылки между страницами;
+- добавляет в `<head>` favicon, описание, теги для соцсетей и canonical;
+- не трогает `robots.txt` и `sitemap.xml`;
+- пропускает файлы шрифта Times New Roman: лицензия Monotype не разрешает их публиковать. Страницы берут Times New Roman из системы, а где его нет (Android) — похожий Tinos с Google Fonts.
+
+С флагом `--clean` скрипт ещё и удаляет из `site/assets/img` картинки, которых нет в новой выгрузке.
 
 Затем проверьте сайт локально: `cd site && python3 -m http.server`, откройте http://localhost:8000.
 
 ## Что ещё не готово
 
-- Победительница 2-й категории: имя и фото (сейчас заглушка «Jane Doe»).
-- Новое видео для первого экрана.
-- Адреса для отправки форм (`siteContent.forms`) и включение кнопки «Apply for 2027».
+- Отправка форм (анкета участницы, форма партнёра) — сейчас показывают «Thank you», но никуда не отправляют.
+- Кнопки «Apply now!» и «Buy a ticket» временно отключены, «Become a Partner» скрыта.
+- Реальная ссылка на Facebook, русская версия (ссылка ведёт на qotb.eu/ru), Privacy Policy.
