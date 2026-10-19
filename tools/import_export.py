@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""Import a design-tool export of the Queen of the Baltic site into this repo.
+"""Import a design handoff of the Queen of the Baltic site into this repo.
 
 The design tool exports a flat prototype folder:
 
-    Queen of the Baltic.dc.html, Gallery.dc.html, 404.dc.html
-    support.js, image-slot.js, siteContent.v4.js
-    _ds/queen-of-the-baltic-design-system-<id>/...
-    assets/<brand>.svg, assets/fonts, assets/photos, assets/partners ...
+    Main.dc.html, Gallery.dc.html, 404.dc.html
+    support.js
+    assets/img/*        photos (WebP) and SVG logos
+    assets/fonts/*.woff CaneNero + Times New Roman
+    README.md           handoff notes
 
 This script copies it into the repo layout (everything published lives in
-site/), rewrites the paths the pages use, and re-applies the repo-only
+site/), rewrites links between pages, and re-applies the repo-only
 additions: favicon / Open Graph / canonical tags in the static <head>.
 
 Usage:
-    python3 tools/import_export.py path/to/export_folder
-    python3 tools/import_export.py --rewrite site/index.html ...   # paths only
+    python3 tools/import_export.py path/to/design_handoff_folder
+    python3 tools/import_export.py --clean path/to/folder   # also delete site/assets/img files the export no longer has
 """
 import argparse
 import re
@@ -27,67 +28,66 @@ SITE = REPO / "site"
 BASE_URL = "https://sanya-boss.github.io/qotb"
 
 PAGES = {
-    "Queen of the Baltic.dc.html": "index.html",
+    "Main.dc.html": "index.html",
     "Gallery.dc.html": "gallery.html",
     "404.dc.html": "404.html",
 }
-# Export files that never go into site/
-SKIP = {"README.md", "CHANGES.md", "CLAUDE.md", "robots.txt", "sitemap.xml"}  # last two are repo-managed
-# Monotype Times New Roman is not licensed for public redistribution;
-# the site uses Crimson Pro (Google Fonts) for serif text.
-SKIP_PATTERNS = [re.compile(r"assets/fonts/TimesNewRoman-.*\.ttf$")]
+# Repo-managed or not published
+SKIP = {"CHANGES.md", "CLAUDE.md", "robots.txt", "sitemap.xml"}
+# Monotype Times New Roman is not licensed for public redistribution: the
+# pages use the visitor's system Times New Roman, then Tinos (Google Fonts,
+# metric-compatible) where it is missing.
+SKIP_PATTERNS = [re.compile(r"^assets/fonts/times_new_roman.*\.woff2?$", re.I),
+                 re.compile(r"^assets/fonts/TimesNewRoman.*", re.I)]
 
 
 def map_path(rel: str) -> str | None:
     """Export-relative file path -> repo-relative path (None = skip)."""
     if rel in SKIP or any(p.search(rel) for p in SKIP_PATTERNS):
         return None
+    if rel == "README.md":
+        return "docs/design-handoff.md"
     if rel in PAGES:
         return f"site/{PAGES[rel]}"
-    if rel == "image-slot.js":
-        return "tools/design-runtime/image-slot.js"
-    if rel in ("support.js", "siteContent.v4.js"):
-        return f"site/assets/js/{rel}"
-    m = re.match(r"_ds/[^/]+/(.*)$", rel)
-    if m:
-        inner = m.group(1)
-        if inner in ("_adherence.oxlintrc.json", "_ds_manifest.json", "readme.md"):
-            return f"design/design-system/{inner}"
-        return f"site/assets/design-system/{inner}"
-    m = re.match(r"assets/([^/]+\.svg)$", rel)
-    if m:
-        return f"site/assets/brand/{m.group(1)}"
+    if rel == "support.js":
+        return "site/assets/js/support.js"
     return f"site/{rel}"
 
 
+TNR_FACES = {
+    "times_new_roman.woff": "local('Times New Roman'),local('TimesNewRomanPSMT')",
+    "times_new_roman_ital.woff": "local('Times New Roman Italic'),local('TimesNewRomanPS-ItalicMT')",
+}
+TINOS_CSS = "https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
+
+
 def rewrite(text: str) -> str:
-    """Rewrite the paths pages and scripts reference to the repo layout."""
-    text = re.sub(r"_ds/queen-of-the-baltic-design-system-[0-9a-f-]+/", "assets/design-system/", text)
+    """Rewrite page links, script path and fonts for the repo layout."""
     text = re.sub(r'(src=")\./support\.js"', r'\1assets/js/support.js"', text)
-    text = text.replace("'./siteContent.v4.js'", "'./assets/js/siteContent.v4.js'")
-    text = text.replace("new URL('siteContent.v4.js'", "new URL('assets/js/siteContent.v4.js'")
-    text = re.sub(r"(?<![\w/])assets/([A-Za-z0-9_-]+\.svg)", r"assets/brand/\1", text)
-    text = text.replace('href="Gallery.dc.html', 'href="gallery.html')
-    text = text.replace('href="Queen of the Baltic.dc.html', 'href="./')
-    text = text.replace("https://qotb.eu/assets/photos/webp/footer.webp", f"{BASE_URL}/assets/og/og-image.jpg")
-    text = text.replace('"url":"https://qotb.eu/"', f'"url":"{BASE_URL}/"')
-    text = text.replace("ogImage: 'assets/photos/webp/footer.webp'", "ogImage: 'assets/og/og-image.jpg'")
-    text = re.sub(r",url\('TimesNewRoman-[A-Za-z]+\.ttf'\) format\('truetype'\)", "", text)
+    text = text.replace("Main.dc.html", "./").replace("Gallery.dc.html", "gallery.html")
+    text = text.replace('href="./"#', 'href="./#')
+    # Times New Roman: system font only (see SKIP_PATTERNS), Tinos fallback
+    for f, local in TNR_FACES.items():
+        text = re.sub(rf"src:url\('assets/fonts/{re.escape(f)}'\) format\('woff'\)", f"src:{local}", text)
+    text = text.replace("'TNR',serif", "'TNR','Tinos',serif")
+    if "'TNR'" in text and "family=Tinos" not in text:
+        text = text.replace("<helmet>", f'<helmet>\n<link href="{TINOS_CSS}" rel="stylesheet">', 1)
     return text
 
 
-ICONS = """<meta name="theme-color" content="#041E3A">
+ICONS = """<meta name="theme-color" content="#041e3a">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">"""
 
-OG_ALT = "Queen of the Baltic International — winners of season 2026 with their crowns"
+OG_ALT = "Queen of the Baltic International — season 2026 queens with their crowns"
 
 
 def social(title: str, desc: str, url: str) -> str:
     img = f"{BASE_URL}/assets/og/og-image.jpg"
-    return f"""<link rel="canonical" href="{url}">
+    return f"""<meta name="description" content="{desc}">
+<link rel="canonical" href="{url}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Queen of the Baltic">
@@ -109,21 +109,23 @@ def social(title: str, desc: str, url: str) -> str:
 
 HEAD_EXTRA = {
     "index.html": ICONS + "\n" + social(
-        "Queen of the Baltic — International beauty &amp; self-expression contest",
-        "Season 2026 is complete. Meet the winners and apply for 2027.",
+        "Queen of the Baltic — International Beauty and Self-Expression Contest",
+        "An international beauty and self-expression contest from Tallinn — in the name of charity. "
+        "About the contest, its founder, partners and how to take part.",
         f"{BASE_URL}/"),
     "gallery.html": ICONS + "\n" + social(
         "Gallery — Queen of the Baltic",
         "All photoshoots of Queen of the Baltic: finals, September shootings, China Fashion Week, "
-        "partner shoots with Elitcar, Hearts Fine Jewelry and Harley-Davidson, and the yacht photoshoot.",
+        "partner shoots with Elitcar, Hearts and Harley-Davidson, and the yacht photoshoot.",
         f"{BASE_URL}/gallery"),
     "404.html": ICONS,
 }
 # Tags the design tool puts inside the JS-rendered <helmet>; crawlers and
 # social networks don't run JS, so they are moved into the static <head>.
-HELMET_MOVE = [r"<title>.*?</title>", r'<meta name="description"[^>]*>',
-               r'<meta name="robots"[^>]*>', r'<script type="application/ld\+json">.*?</script>']
-HELMET_DROP = [r'<link rel="canonical"[^>]*>', r'<meta property="og:[^>]*>',
+HELMET_MOVE = [r"<title>.*?</title>", r'<meta name="robots"[^>]*>',
+               r'<script type="application/ld\+json">.*?</script>']
+HELMET_DROP = [r'<meta name="viewport"[^>]*>', r'<meta name="description"[^>]*>',
+               r'<link rel="canonical"[^>]*>', r'<meta property="og:[^>]*>',
                r'<meta name="twitter:[^>]*>', r'<meta name="theme-color"[^>]*>']
 
 
@@ -146,36 +148,38 @@ def fix_head(name: str, s: str) -> str:
     return s.replace("<html>", '<html lang="en">', 1)
 
 
-def import_export(src: Path) -> None:
+def import_export(src: Path, clean: bool) -> None:
+    seen = set()
     for f in sorted(p for p in src.rglob("*") if p.is_file()):
         rel = f.relative_to(src).as_posix()
         dest = map_path(rel)
         if dest is None:
             print(f"skip  {rel}")
             continue
+        seen.add(dest)
         out = REPO / dest
         out.parent.mkdir(parents=True, exist_ok=True)
         if rel in PAGES:
             out.write_text(fix_head(PAGES[rel], rewrite(f.read_text(encoding="utf-8"))), encoding="utf-8")
-        elif rel == "siteContent.v4.js" or rel.endswith("fonts.css"):
-            out.write_text(rewrite(f.read_text(encoding="utf-8")), encoding="utf-8")
         else:
             shutil.copyfile(f, out)
         print(f"{rel} -> {dest}")
+    if clean:
+        for p in sorted((SITE / "assets" / "img").rglob("*")):
+            rel = p.relative_to(REPO).as_posix()
+            if p.is_file() and rel not in seen:
+                p.unlink()
+                print(f"removed {rel}")
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("export", nargs="?", type=Path, help="export folder from the design tool")
-    ap.add_argument("--rewrite", nargs="+", type=Path, metavar="FILE", help="only rewrite paths in these files")
+    ap.add_argument("export", type=Path, help="handoff folder from the design tool")
+    ap.add_argument("--clean", action="store_true", help="delete images in site/assets/img that the export no longer has")
     a = ap.parse_args()
-    if a.rewrite:
-        for p in a.rewrite:
-            p.write_text(rewrite(p.read_text(encoding="utf-8")), encoding="utf-8")
-        return 0
-    if not a.export or not a.export.is_dir():
+    if not a.export.is_dir():
         ap.error("pass the export folder")
-    import_export(a.export)
+    import_export(a.export, a.clean)
     return 0
 
 
