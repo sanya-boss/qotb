@@ -31,7 +31,7 @@ Responsive-переделка сайта qotb.eu (ранее Tilda) — три �
 2. **Marquee** — «She’s not just a queen — she’s a force. ⁄», TNR, navy на `#e6e6e6`, движется **слева направо** (animation reverse), 40s цикл. На мобиле стоит сразу под hero (перед About), на десктопе — после About.
 3. **About** (`#about`) — navy фон. Desktop: всё по центру (H2 CaneNero, курсивный лид, 2 абзаца, ссылка «Take a look at a Gallery! →» без подчёркивания). Mobile: выравнивание влево, другой лид, абзацы скрыты за кнопкой «More details / Less details», ссылка на галерею слева.
 4. **Charity** — абсолютная раскладка на артборде (desktop 1200×690, mobile 320×570), масштаб через `--u` и `container-type:inline-size`. 10 ч/б фото вокруг центрального текста (корона, «In the name of Charity.», H2 «True beauty lives at the heart of our contest», logotype_blue). Координаты — массив `CH` в JS ([src, [x,y,w] desktop, [x,y,w] mobile]). Параллакс: фото смещаются по мыши ×20px, текст ×5px, плюс по скроллу (`--sy`).
-5. **Founder** — круглое фото `noroot.png`, имя, роль, 4 соц-кнопки (mail, tel, Instagram, Spotify), 3 абзаца, «Founder’s Manifesto».
+5. **Founder** — круглое фото `kseniya-petrova.webp` (кроп по лицу), имя, роль, 4 соц-кнопки (mail, tel, Instagram, Spotify), 3 абзаца, «Founder’s Manifesto».
 6. **Partners** (`#partners`) — H2 + текст; 4 главных партнёра (Decus, Hearts, Elitcar, Medavita; Decus и Medavita на всю ширину); сетка 20 логотипов с границами (`auto-fill, minmax(max(22%,min(200px,45%)),1fr)`). Кнопка «Become a Partner» **временно скрыта** (закомментирована).
 7. **Contacts** (`#contacts`) — +372 5592 1134, contest@qotb.eu, соцсети (IG, FB, LinkedIn).
 8. **Footer** — navy, logo `qobi_alt_white.svg`, nav. «Become a Partner» **временно скрыта**.
