@@ -77,6 +77,7 @@ a:hover{color:#3b5998}
           </button>
           <h2 style="margin:6px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:clamp(24px,1.8vw,32px);line-height:1.15;color:#041e3a;">{{ a.title }}</h2>
           <p style="margin:0;font-size:clamp(14px,.9vw,16px);line-height:1.5;text-wrap:pretty;">{{ a.descr }}</p>
+          <sc-if value="{{ a.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.9vw,16px);line-height:1.5;">Photos by {{ a.credit }} <a href="{{ a.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">{{ a.ig }}</a></p></sc-if>
           <button onClick="{{ a.open }}" style="align-self:flex-start;margin-top:4px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:16px;color:#041e3a;background:transparent;border:1px solid #041e3a;border-radius:40px;padding:0 30px;height:46px;cursor:pointer;transition:background .2s,color .2s;" style-hover="background:#041e3a;color:#fff;">See more</button>
         </article>
       </sc-for>
@@ -114,8 +115,9 @@ a:hover{color:#3b5998}
           <button onClick="{{ closeAll }}" aria-label="Close" style="width:44px;height:44px;border-radius:50%;border:0;background:#041e3a;color:#fff;font-size:24px;line-height:1;cursor:pointer;">×</button>
         </div>
         <div style="max-width:760px;margin:0 auto clamp(28px,3vw,50px);text-align:center;display:flex;flex-direction:column;gap:12px;padding:0 44px;">
-          <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(30px,3.4vw,58px);line-height:1.05;text-transform:uppercase;color:#041e3a;text-wrap:balance;">{{ album.title }}</h3>
+          <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(30px,3.4vw,58px);line-height:1.05;text-transform:uppercase;color:#041e3a;text-wrap:balance;">{{ album.head }}<span style="font-family:'TNR','Tinos',serif;">{{ album.year }}</span></h3>
           <p style="margin:0;font-size:clamp(14px,.95vw,17px);line-height:1.55;text-wrap:pretty;">{{ album.long }}</p>
+          <sc-if value="{{ album.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.95vw,17px);line-height:1.5;">Photos by {{ album.credit }} <a href="{{ album.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">{{ album.ig }}</a></p></sc-if>
         </div>
         <div style="columns:clamp(150px,22vw,300px);column-gap:clamp(8px,1vw,16px);">
           <sc-for list="{{ albumPhotos }}" as="p" hint-placeholder-count="8">
@@ -164,6 +166,12 @@ a:hover{color:#3b5998}
 <script type="text/x-dc" data-dc-script>
 const IMG = 'assets/img/';
 const ALBUMS = [
+  { id: 'finals-2026', title: 'Finals 2026', descr: 'The Final of «Queen of the Baltic International» 2026 in Tallinn.', long: 'The Final of «Queen of the Baltic International» 2026 in Tallinn: red carpet, runway shows, evening gowns and the crowning of the winners.', credit: 'Aleksandra Turashova', ig: '@sash2rush', igHref: 'https://www.instagram.com/sash2rush/',
+    cover: 'final-2026-18.webp',
+    photos: ['final-2026-01.webp','final-2026-02.webp','final-2026-03.webp','final-2026-04.webp','final-2026-05.webp','final-2026-06.webp','final-2026-07.webp','final-2026-08.webp','final-2026-09.webp','final-2026-10.webp','final-2026-11.webp','final-2026-12.webp','final-2026-13.webp','final-2026-14.webp','final-2026-15.webp','final-2026-16.webp','final-2026-17.webp','final-2026-18.webp','final-2026-19.webp','final-2026-20.webp','final-2026-21.webp','final-2026-22.webp','final-2026-23.webp','final-2026-24.webp','final-2026-25.webp','final-2026-26.webp','final-2026-27.webp','final-2026-28.webp','final-2026-29.webp','final-2026-30.webp','final-2026-31.webp'] },
+  { id: 'yacht-2026', title: 'Yacht Photoshoot 2026', descr: 'Photoshoot on a yacht with the participants of «Queen of the Baltic» 2026.', long: 'Photoshoot on a yacht with the participants of «Queen of the Baltic» 2026.', credit: 'Aleksandra Turashova', ig: '@sash2rush', igHref: 'https://www.instagram.com/sash2rush/',
+    cover: 'yacht-2026-07.webp',
+    photos: ['yacht-2026-01.webp','yacht-2026-02.webp','yacht-2026-03.webp','yacht-2026-04.webp','yacht-2026-05.webp','yacht-2026-06.webp','yacht-2026-07.webp','yacht-2026-08.webp','yacht-2026-09.webp','yacht-2026-10.webp','yacht-2026-11.webp','yacht-2026-12.webp','yacht-2026-13.webp','yacht-2026-14.webp','yacht-2026-15.webp','yacht-2026-16.webp','yacht-2026-17.webp','yacht-2026-18.webp','yacht-2026-19.webp','yacht-2026-20.webp','yacht-2026-21.webp','yacht-2026-22.webp','yacht-2026-23.webp','yacht-2026-24.webp','yacht-2026-25.webp','yacht-2026-26.webp','yacht-2026-27.webp'] },
   { id: 'finals', title: 'Finals Photoshoot', descr: 'Photoshoot of Final competition of «Queen Of The Baltic» in 2025.', long: 'Photoshoot of Final competition of «Queen Of The Baltic» in 2025.',
     cover: 'tild3930-3265-4130-b730-646232306364__img_6382.webp',
     photos: ['tild6632-6134-4633-b964-373961313863__img_7122.webp','tild6162-6336-4133-b932-356166663464__img_7445.webp','tild6236-6464-4665-b830-373664663539__img_7461.webp','tild6666-3437-4862-b666-336433656131__img_7447.webp','tild3739-3863-4063-b866-626638393762__img_6418.webp','tild3837-3061-4831-b465-346431616663__img_7114.webp','tild6366-3864-4239-b832-376539353038__img_7111.webp','tild6262-6537-4732-b633-313731333038__img_7120.webp','tild3433-3063-4932-a463-643862663763__img_6382.webp'] },
@@ -191,6 +199,11 @@ const STRIP = [
   ['elitcar', 'tild3661-6665-4264-a263-363333386261__477a9159jpg.webp', 0]
 ];
 const SHOOTS = [
+  { title: 'Final 2026', ig: '@sash2rush', igHref: 'https://www.instagram.com/sash2rush/', links: [{ label: 'Final', href: 'https://sash2rush.gallery.photo/gallery/queen-of-the-baltic-2026-gdz3xy/' }, { label: 'Yacht', href: 'https://sash2rush.gallery.photo/gallery/qb-rhaykz/' }] },
+  { title: 'Final 2026', ig: '@volobuieva.photo', igHref: 'https://www.instagram.com/volobuieva.photo/', links: [{ label: 'Open gallery', href: 'https://69df4c84980369-68540927.gallery.photo/gallery/queen-of-the-baltic-yoj73s/' }] },
+  { title: 'Final 2026', ig: '@glossyframe_ph', igHref: 'https://www.instagram.com/glossyframe_ph/', links: [{ label: 'Open gallery', href: 'https://694a70bd412766-30954592.gallery.photo/gallery/queen-of-the-baltic-rhis3d/' }] },
+  { title: 'Final 2026', ig: '@aleksandra.m_photo', igHref: 'https://www.instagram.com/aleksandra.m_photo/', links: [{ label: 'Open gallery', href: 'https://65a4da14ea6180-35118256.gallery.photo/gallery/queen-of-the-baltic-jxf5g3/' }] },
+  { title: 'Final 2026', ig: '@marysary_photo', igHref: 'https://www.instagram.com/marysary_photo/', links: [{ label: 'Open gallery', href: 'https://mary3000.wfolio.pro/disk/16-09-2026-baltick-queen-kkcvl3' }] },
   { title: 'September shooting, September 17–19', ig: '@sash2rush', igHref: 'https://www.instagram.com/sash2rush/', links: [{ label: 'Open gallery', href: 'https://sash2rush.gallery.photo/gallery/queen-of-the-baltic-17-19/' }] },
   { title: 'All shootings from September 17–20', ig: '@photos_golovan', igHref: 'https://www.instagram.com/photos_golovan/', links: [{ label: 'Medavita', href: 'https://633dc8977008d4-12447370.gallery.photo/gallery/medavita/' }, { label: 'Style lesson from Tania Momot', href: 'https://633dc8977008d4-12447370.gallery.photo/gallery/style-lesson-from-tania-momot/' }] },
   { title: 'Pre-party, rehearsal & OGO center', ig: '@by.pribytkova', igHref: 'https://www.instagram.com/by.pribytkova/', links: [{ label: 'Pre-party', href: 'https://nasstassya.gallery.photo/gallery/pre-party-queen-of-the-baltic/' }, { label: 'Rehearsal', href: 'https://nasstassya.gallery.photo/gallery/repeticia/' }, { label: 'OGO center', href: 'https://nasstassya.gallery.photo/gallery/pod-nabludeniem-enota/' }] },
@@ -224,10 +237,10 @@ class Component extends DCLogic {
     return {
       strip: STRIP.map(([id, src, h]) => ({ src: IMG + src, title: ALBUMS.find(x => x.id === id).title, open: open(id),
         style: { padding: 0, border: 0, background: 'transparent', cursor: 'pointer', overflow: 'hidden', display: 'block', width: '100%', height: stripH[h] } })),
-      albums: ALBUMS.map(x => ({ ...x, cover: IMG + x.cover, open: open(x.id) })),
+      albums: ALBUMS.map(x => ({ ...x, hasCredit: !!x.credit, cover: IMG + x.cover, open: open(x.id) })),
       shoots: SHOOTS,
       albumOpen: !!a,
-      album: a || { title: '', long: '' },
+      album: a ? { ...a, hasCredit: !!a.credit, head: a.title.replace(/\s\d{4}$/, ''), year: (a.title.match(/\s\d{4}$/) || [''])[0] } : { title: '', head: '', year: '', long: '', hasCredit: false },
       columnWidth: 'clamp(150px,22vw,300px)',
       albumPhotos: a ? a.photos.map((p, i) => ({ src: IMG + p, view: () => this.setState({ viewer: i }) })) : [],
       viewerOpen: !!a && v != null,
