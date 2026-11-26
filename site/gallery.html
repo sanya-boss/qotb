@@ -77,7 +77,7 @@ a:hover{color:#3b5998}
           </button>
           <h2 style="margin:6px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:clamp(24px,1.8vw,32px);line-height:1.15;color:#041e3a;">{{ a.title }}</h2>
           <p style="margin:0;font-size:clamp(14px,.9vw,16px);line-height:1.5;text-wrap:pretty;">{{ a.descr }}</p>
-          <sc-if value="{{ a.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.9vw,16px);line-height:1.5;">Photos by {{ a.credit }} <a href="{{ a.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;" style-hover="color:#3b5998;">{{ a.ig }}</a></p></sc-if>
+          <sc-if value="{{ a.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.9vw,16px);line-height:1.5;">Photos by {{ a.credit }} <a href="{{ a.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">{{ a.ig }}</a></p></sc-if>
           <button onClick="{{ a.open }}" style="align-self:flex-start;margin-top:4px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:16px;color:#041e3a;background:transparent;border:1px solid #041e3a;border-radius:40px;padding:0 30px;height:46px;cursor:pointer;transition:background .2s,color .2s;" style-hover="background:#041e3a;color:#fff;">See more</button>
         </article>
       </sc-for>
@@ -117,7 +117,7 @@ a:hover{color:#3b5998}
         <div style="max-width:760px;margin:0 auto clamp(28px,3vw,50px);text-align:center;display:flex;flex-direction:column;gap:12px;padding:0 44px;">
           <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(30px,3.4vw,58px);line-height:1.05;text-transform:uppercase;color:#041e3a;text-wrap:balance;">{{ album.head }}<span style="font-family:'TNR','Tinos',serif;">{{ album.year }}</span></h3>
           <p style="margin:0;font-size:clamp(14px,.95vw,17px);line-height:1.55;text-wrap:pretty;">{{ album.long }}</p>
-          <sc-if value="{{ album.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.95vw,17px);line-height:1.5;">Photos by {{ album.credit }} <a href="{{ album.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;" style-hover="color:#3b5998;">{{ album.ig }}</a></p></sc-if>
+          <sc-if value="{{ album.hasCredit }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:clamp(14px,.95vw,17px);line-height:1.5;">Photos by {{ album.credit }} <a href="{{ album.igHref }}" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">{{ album.ig }}</a></p></sc-if>
         </div>
         <div style="columns:clamp(150px,22vw,300px);column-gap:clamp(8px,1vw,16px);">
           <sc-for list="{{ albumPhotos }}" as="p" hint-placeholder-count="8">
