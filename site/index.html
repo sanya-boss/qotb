@@ -325,15 +325,32 @@ a:hover{color:#3b5998}
               <sc-if value="{{ isApply }}" hint-placeholder-val="{{ true }}">
                 <div style="display:flex;flex-direction:column;gap:12px;">
                   <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Your country
-                    <select name="country" style="font:inherit;font-size:15px;height:52px;padding:0 12px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select>
+                    <span style="position:relative;display:block;"><select name="country" style="width:100%;font:inherit;font-size:15px;height:52px;padding:0 44px 0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;-webkit-appearance:none;appearance:none;color:#1a1a1a;cursor:pointer;"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#041e3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;"><path d="M6 9l6 6 6-6"/></svg></span>
                   </label>
                   <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Instagram
                     <input name="Instagram" placeholder="@" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
                   </label>
                   <textarea name="About" required="required" rows="3" placeholder="Write about yourself in two sentences." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
-                  <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Upload your photos <span style="font-size:12px;color:#3d4f66;">Attach 1-3 of your recent photos.</span>
-                    <input type="file" name="File" multiple="multiple" accept="image/*" style="font:inherit;font-size:13px;">
-                  </label>
+                  <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;">
+                    <span>Upload your photos <span style="display:block;margin-top:2px;font-size:12px;color:#3d4f66;">Attach 1–3 of your recent photos.</span></span>
+                    <label style="position:relative;display:flex;align-items:center;gap:14px;min-height:92px;padding:14px 16px;border:1px dashed #041e3a;border-radius:6px;background:#fff;color:#041e3a;cursor:pointer;transition:background .2s;" style-hover="background:#f1f4f8;">
+                      <input type="file" name="File" multiple="multiple" accept="image/*" onChange="{{ pickPhotos }}" aria-label="Upload your photos" style="position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;cursor:pointer;">
+                      <sc-if value="{{ noPhotos }}" hint-placeholder-val="{{ true }}">
+                        <span style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;">
+                          <span style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 24px;border-radius:40px;background:#041e3a;color:#fff;font-family:'TNR','Tinos',serif;font-style:italic;font-size:17px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Choose photos</span>
+                          <span style="font-size:13px;color:#3d4f66;">or drag them here</span>
+                        </span>
+                      </sc-if>
+                      <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                          <sc-for list="{{ photoPreviews }}" as="ph" hint-placeholder-count="2">
+                            <img src="{{ ph.src }}" alt="{{ ph.name }}" style="width:64px;height:64px;object-fit:cover;border-radius:4px;display:block;">
+                          </sc-for>
+                          <span style="font-size:14px;line-height:1.4;">{{ photosLabel }}<span style="display:block;font-family:'TNR','Tinos',serif;font-style:italic;font-size:16px;text-decoration:underline;text-underline-offset:3px;">Change</span></span>
+                        </span>
+                      </sc-if>
+                    </label>
+                  </div>
                 </div>
               </sc-if>
               <sc-if value="{{ isPartner }}" hint-placeholder-val="{{ false }}">
@@ -348,8 +365,8 @@ a:hover{color:#3b5998}
                   <textarea name="Interest" rows="3" placeholder="In a few sentences, please communicate what you are interested in." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
                 </div>
               </sc-if>
-              <div ref="{{ captchaRef }}" style="display:flex;justify-content:center;"></div>
-              <button type="submit" style="font:inherit;font-size:16px;height:56px;border:0;border-radius:6px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;" style-hover="background:#1d3d66;">{{ submitLabel }}</button>
+              <div ref="{{ captchaRef }}" style="display:flex;justify-content:flex-start;max-width:100%;overflow:hidden;"></div>
+              <button type="submit" style="font-family:'TNR','Tinos',serif;font-style:italic;font-size:20px;height:56px;border:0;border-radius:40px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;transition:background .2s;" style-hover="background:#1d3d66;">{{ submitLabel }}</button>
               <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;color:#a3122a;text-align:center;">{{ submitError }}</p></sc-if>
               <p style="margin:0;font-size:12px;color:#3d4f66;text-align:center;">By filling out this form you agree to the processing of personal data.</p>
             </form>
@@ -511,7 +528,7 @@ class Component extends DCLogic {
       this.setState({ sending: false, error: 'Sorry, the form could not be sent. Please try again or write to contest@qotb.eu.' });
     }
   }
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false, sending: false, error: '' };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false, sending: false, error: '', photos: [] };
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize);
@@ -546,6 +563,7 @@ class Component extends DCLogic {
     if (lock !== !!this.scrollLocked) { this.scrollLocked = lock; document.body.style.overflow = lock ? 'hidden' : ''; }
     this.mountCaptcha();
   }
+  clearPhotos() { (this.state.photos || []).forEach(p => URL.revokeObjectURL(p.src)); if (this.state.photos && this.state.photos.length) this.setState({ photos: [] }); }
   // Renders the reCAPTCHA checkbox into the form whenever the form is on screen.
   mountCaptcha() {
     const el = this.captchaRef && this.captchaRef.current;
@@ -626,7 +644,7 @@ class Component extends DCLogic {
       logos: LOGOS.map(([name, src, href]) => ({ name, src: IMG + src, href: href || '#partners', target: href ? '_blank' : '_self' })),
       partnerTypes: ['Franchising / National Director', 'Public Relations / Press Requests', 'Video and Image Licensing Requests', 'Titleholder and Brand Partnerships', 'Talent Appearance', 'Other Sponsorship', 'Other'],
       openJoin: () => this.setState({ modal: 'join' }),
-      openApply: () => this.setState({ modal: 'apply', submitted: false, error: '' }),
+      openApply: () => { this.clearPhotos(); this.setState({ modal: 'apply', submitted: false, error: '' }); },
       openPartner: () => this.setState({ modal: 'partner', submitted: false, error: '' }),
       closeModal: close,
       stop: ev => ev.stopPropagation(),
@@ -639,6 +657,14 @@ class Component extends DCLogic {
       submitLabel: this.state.sending ? 'Sending…' : 'Submit',
       hasError: !!this.state.error, submitError: this.state.error,
       captchaRef: this.captchaRef || (this.captchaRef = React.createRef()),
+      photoPreviews: this.state.photos, hasPhotos: this.state.photos.length > 0, noPhotos: !this.state.photos.length,
+      photosLabel: this.state.photos.length === 1 ? '1 photo selected' : this.state.photos.length + ' photos selected',
+      pickPhotos: ev => {
+        const files = Array.from(ev.target.files || []);
+        this.clearPhotos();
+        if (files.length > MAX_PHOTOS) { ev.target.value = ''; this.setState({ photos: [], error: 'Please choose no more than ' + MAX_PHOTOS + ' photos.' }); return; }
+        this.setState({ photos: files.map(f => ({ src: URL.createObjectURL(f), name: f.name })), error: '' });
+      },
       submit: ev => { ev.preventDefault(); this.sendForm(ev.currentTarget || ev.target, m === 'partner' ? 'partner' : 'apply'); }
     };
   }
