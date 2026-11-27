@@ -79,13 +79,14 @@ const MAX_TEXT = 5000;
 
 /** Run once from the Apps Script editor: creates and styles both sheets. Safe to run again. */
 function setup() {
-  const ss = SpreadsheetApp.getActive();
+  const ss = ss_();
   Object.keys(SHEETS).forEach(kind => prepareSheet_(ss, SHEETS[kind]));
   const first = ss.getSheets()[0];
   if (['Sheet1', 'Лист1'].indexOf(first.getName()) >= 0 && first.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(first);
   photosRoot_();
   ss.setActiveSheet(ss.getSheetByName(SHEETS.apply.name));
-  ss.toast('Листы готовы. Дальше: Deploy → New deployment → Web app.', 'Queen of the Baltic', 8);
+  try { ss.toast('Листы готовы. Дальше: Deploy → New deployment → Web app.', 'Queen of the Baltic', 8); } catch (err) { /* no open table window */ }
+  Logger.log('Таблица с заявками: ' + ss.getUrl());
 }
 
 /** Sends a fake application through the whole pipeline, so you can check the sheet and the e-mail. */
@@ -125,7 +126,7 @@ function handle_(body, opts) {
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
-    const ss = SpreadsheetApp.getActive();
+    const ss = ss_();
     const sh = ss.getSheetByName(spec.name) || prepareSheet_(ss, spec);
     data.n = nextNumber_(kind);
     data.date = new Date();
@@ -136,7 +137,7 @@ function handle_(body, opts) {
     const photos = [];
     let folder = null;
     if (kind === 'apply' && Array.isArray(body.photos) && body.photos.length) {
-      const day = Utilities.formatDate(data.date, SpreadsheetApp.getActive().getSpreadsheetTimeZone(), 'dd.MM.yyyy');
+      const day = Utilities.formatDate(data.date, ss.getSpreadsheetTimeZone(), 'dd.MM.yyyy');
       folder = photosRoot_().createFolder(data.Name.replace(/[\\/:*?"<>|]/g, ' ').trim() + ' — ' + day + ' (№ ' + data.n + ')');
       body.photos.slice(0, MAX_PHOTOS).forEach((p, i) => {
         if (!p || typeof p.data !== 'string') return;
@@ -327,6 +328,20 @@ function captchaOk_(token) {
     console.error('reCAPTCHA check failed: ' + err);
     return false;
   }
+}
+
+// The spreadsheet with the applications. If the script was created from the table (Extensions → Apps Script)
+// that table is used. If it was created directly on script.google.com, setup() creates the table itself
+// and remembers it (Script properties → SPREADSHEET_ID).
+function ss_() {
+  const active = SpreadsheetApp.getActiveSpreadsheet();
+  if (active) return active;
+  const props = PropertiesService.getScriptProperties();
+  const id = props.getProperty('SPREADSHEET_ID');
+  if (id) return SpreadsheetApp.openById(id);
+  const created = SpreadsheetApp.create('Queen of the Baltic — заявки');
+  props.setProperty('SPREADSHEET_ID', created.getId());
+  return created;
 }
 
 function nextNumber_(kind) {
