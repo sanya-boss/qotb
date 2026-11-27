@@ -314,9 +314,28 @@ a:hover{color:#3b5998}
         </div>
         <div style="padding:clamp(20px,4vw,40px) clamp(24px,4vw,48px) clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:12px;">
           <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:12px 0;text-align:center;font-family:'TNR','Tinos',serif;font-style:italic;font-size:24px;color:#041e3a;">Thank you! We will contact you soon.</p>
+            <div role="status" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:8px 0 4px;text-align:center;color:#041e3a;">
+              <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:#041e3a;color:#fff;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              <p style="margin:0;font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(24px,3vw,30px);line-height:1.2;">{{ successHead }}</p>
+              <p style="margin:0;max-width:420px;font-size:15px;line-height:1.6;color:#1a1a1a;">{{ successText }}</p>
+              <p style="margin:0;max-width:420px;font-size:14px;line-height:1.6;color:#3d4f66;">Meanwhile, follow the contest on Instagram <a href="https://www.instagram.com/queenbaltic/" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">@queenbaltic</a></p>
+              <button type="button" onClick="{{ closeModal }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;margin-top:8px;border:0;background:#041e3a;color:#fff;" style-hover="background:#1d3d66;">Close</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:8px 0 4px;text-align:center;color:#041e3a;">
+              <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;border:2px solid #a3122a;color:#a3122a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 6.5v7"/><path d="M12 17.5v.01"/></svg></span>
+              <p style="margin:0;font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(24px,3vw,30px);line-height:1.2;">Your application was not sent</p>
+              <p style="margin:0;max-width:420px;font-size:15px;line-height:1.6;color:#1a1a1a;">Something went wrong on the way. Please check your internet connection and try again — everything you entered is still there.</p>
+              <p style="margin:0;max-width:420px;font-size:14px;line-height:1.6;color:#3d4f66;">If it keeps happening, write to us at <a href="mailto:contest@qotb.eu?subject=Application%20to%20Queen%20of%20the%20Baltic" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">contest@qotb.eu</a> and we will help.</p>
+              <span style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;">
+                <button type="button" onClick="{{ tryAgain }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;border:0;background:#041e3a;color:#fff;" style-hover="background:#1d3d66;">Try again</button>
+                <button type="button" onClick="{{ closeModal }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;border:1px solid #041e3a;background:transparent;color:#041e3a;" style-hover="background:#041e3a;color:#fff;">Close</button>
+              </span>
+            </div>
           </sc-if>
           <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+            <div style="{{ formWrapStyle }}">
             <form onSubmit="{{ submit }}" style="position:relative;display:flex;flex-direction:column;gap:12px;">
               <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
               <input name="Name" required="required" placeholder="Your full name" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
@@ -370,6 +389,7 @@ a:hover{color:#3b5998}
               <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;color:#a3122a;text-align:center;">{{ submitError }}</p></sc-if>
               <p style="margin:0;font-size:12px;color:#3d4f66;text-align:center;">By filling out this form you agree to the processing of personal data.</p>
             </form>
+            </div>
           </sc-if>
         </div>
       </div>
@@ -523,12 +543,15 @@ class Component extends DCLogic {
         return;
       }
       if (!res.ok || out.ok === false) throw new Error(out.error || 'HTTP ' + res.status);
-      this.setState({ sending: false, submitted: true });
+      this.clearPhotos();
+      this.setState({ sending: false, submitted: true, failed: false, sentName: (data.Name || '').split(/\s+/)[0] });
     } catch (err) {
-      this.setState({ sending: false, error: 'Sorry, the form could not be sent. Please try again or write to contest@qotb.eu.' });
+      // Network or server failure: show the failure screen, keep everything the visitor typed.
+      if (window.grecaptcha && this.captchaId != null) window.grecaptcha.reset(this.captchaId);
+      this.setState({ sending: false, failed: true, error: '' });
     }
   }
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false, sending: false, error: '', photos: [] };
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false, sending: false, error: '', photos: [], failed: false, sentName: '' };
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize);
@@ -612,7 +635,7 @@ class Component extends DCLogic {
     const isDesktop = this.state.w >= 960;
     const isPhone = this.state.w < 640;
     const m = this.state.modal;
-    const close = () => this.setState({ modal: null, submitted: false });
+    const close = () => this.setState({ modal: null, submitted: false, failed: false, error: '' });
     return {
       isDesktop, isMobile: !isDesktop,
       isPhone, notPhone: !isPhone,
@@ -644,15 +667,22 @@ class Component extends DCLogic {
       logos: LOGOS.map(([name, src, href]) => ({ name, src: IMG + src, href: href || '#partners', target: href ? '_blank' : '_self' })),
       partnerTypes: ['Franchising / National Director', 'Public Relations / Press Requests', 'Video and Image Licensing Requests', 'Titleholder and Brand Partnerships', 'Talent Appearance', 'Other Sponsorship', 'Other'],
       openJoin: () => this.setState({ modal: 'join' }),
-      openApply: () => { this.clearPhotos(); this.setState({ modal: 'apply', submitted: false, error: '' }); },
-      openPartner: () => this.setState({ modal: 'partner', submitted: false, error: '' }),
+      openApply: () => { this.clearPhotos(); this.setState({ modal: 'apply', submitted: false, failed: false, error: '' }); },
+      openPartner: () => this.setState({ modal: 'partner', submitted: false, failed: false, error: '' }),
       closeModal: close,
+      failed: this.state.failed && !this.state.submitted,
+      formWrapStyle: { display: this.state.failed ? 'none' : 'block' },
+      tryAgain: () => this.setState({ failed: false, error: '' }),
+      successHead: this.state.sentName ? 'Thank you, ' + this.state.sentName + '!' : 'Thank you!',
+      successText: m === 'partner'
+        ? 'Your request has been received. Our team will get back to you by e-mail soon.'
+        : 'Your application to Queen of the Baltic has been received. Our team will review it and contact you by e-mail or phone soon.',
       stop: ev => ev.stopPropagation(),
       joinOpen: m === 'join',
       formOpen: m === 'apply' || m === 'partner',
       isApply: m === 'apply', isPartner: m === 'partner',
-      formTitle: m === 'partner' ? 'Let’s reign together.' : 'Become the Queen of the Baltic!',
-      formSub: m === 'partner' ? 'Type your contacts and a reason of your reach.' : 'Fill in the form and we will get back to you.',
+      formTitle: this.state.submitted ? (m === 'partner' ? 'Request received' : 'Application received') : m === 'partner' ? 'Let’s reign together.' : 'Become the Queen of the Baltic!',
+      formSub: this.state.submitted ? 'Queen of the Baltic International' : m === 'partner' ? 'Type your contacts and a reason of your reach.' : 'Fill in the form and we will get back to you.',
       submitted: this.state.submitted, notSubmitted: !this.state.submitted,
       submitLabel: this.state.sending ? 'Sending…' : 'Submit',
       hasError: !!this.state.error, submitError: this.state.error,
