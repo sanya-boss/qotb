@@ -44,6 +44,47 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 html,body{margin:0;padding:0;background:#e6e6e6;overflow-x:hidden}
 *{box-sizing:border-box}
 a{color:#041e3a}
+/* Application form */
+.qf{position:relative;display:flex;flex-direction:column;gap:18px;color:#041e3a}
+.qf-group{display:flex;flex-direction:column;gap:18px}
+.qf-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.qf-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.qf-label{font-size:13px;font-weight:500;letter-spacing:.02em;color:#041e3a}
+.qf-label em{font-style:normal;color:#a3122a;margin-left:2px}
+.qf-hint{display:block;margin-top:3px;font-size:12px;font-weight:400;letter-spacing:0;color:#5b6b80;line-height:1.45}
+.qf-input{width:100%;font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #b9c3d0;border-radius:8px;background:#fff;color:#1a1a1a;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s}
+.qf-input::placeholder{color:#8f9aab}
+.qf-input:hover{border-color:#7e8ca0}
+.qf-input:focus{border-color:#041e3a;box-shadow:0 0 0 3px rgba(4,30,58,.14)}
+.qf-input.qf-invalid,.qf-input:user-invalid{border-color:#a3122a}
+textarea.qf-input{height:auto;min-height:116px;padding:14px 16px;line-height:1.55;resize:vertical}
+.qf-select{position:relative;display:block}
+.qf-select select{padding-right:44px;cursor:pointer}
+.qf-select svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none}
+.qf-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.qf-photo{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:#cfd6df}
+.qf-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.qf-remove{position:absolute;top:6px;right:6px;width:30px;height:30px;padding:0;border:0;border-radius:50%;background:rgba(4,30,58,.8);color:#fff;font-size:19px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.qf-remove:hover,.qf-remove:focus-visible{background:#041e3a}
+.qf-add{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:3/4;padding:10px;border:1.5px dashed #8f9aab;border-radius:8px;background:#fff;color:#041e3a;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+.qf-add:hover,.qf-add:focus-within{border-color:#041e3a;background:#f3f6fa}
+.qf-add.qf-wide{grid-column:1/-1;aspect-ratio:auto;min-height:132px;flex-direction:row;gap:16px;text-align:left}
+.qf-add input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.qf-add-icon{flex:none;width:40px;height:40px;border-radius:50%;background:#041e3a;color:#fff;display:flex;align-items:center;justify-content:center}
+.qf-add-text{display:flex;flex-direction:column;gap:2px}
+.qf-add-title{font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;line-height:1.2}
+.qf-add-sub{font-size:12px;color:#5b6b80}
+.qf-options{display:flex;flex-direction:column;gap:10px}
+.qf-option{display:flex;gap:10px;align-items:center;font-size:14px;cursor:pointer}
+.qf-option input{accent-color:#041e3a;width:18px;height:18px;margin:0}
+.qf-captcha{display:flex;justify-content:flex-start;max-width:100%;overflow:hidden}
+.qf-captcha:empty{display:none}
+.qf-error{margin:0;padding:12px 14px;border-radius:8px;background:#fbeaec;color:#a3122a;font-size:14px;line-height:1.45}
+.qf-submit{height:56px;border:0;border-radius:40px;background:#041e3a;color:#fff;font-family:'TNR','Tinos',serif;font-style:italic;font-size:20px;cursor:pointer;transition:background .2s}
+.qf-submit:hover,.qf-submit:focus-visible{background:#1d3d66}
+.qf-legal{margin:-4px 0 0;font-size:12px;color:#5b6b80;text-align:center}
+@media (max-width:420px){.qf-photos{gap:8px}.qf-add-title{font-size:17px}}
+
 a:hover{color:#3b5998}
 @keyframes qbMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes qbFade{from{opacity:0}to{opacity:1}}
@@ -336,58 +377,73 @@ a:hover{color:#3b5998}
           </sc-if>
           <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
             <div style="{{ formWrapStyle }}">
-            <form onSubmit="{{ submit }}" style="position:relative;display:flex;flex-direction:column;gap:12px;">
+            <form onSubmit="{{ submit }}" onInput="{{ formInput }}" class="qf" novalidate="novalidate">
               <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
-              <input name="Name" required="required" placeholder="Your full name" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-              <input name="Email" type="email" required="required" placeholder="Your E-mail" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-              <input name="Phone" type="tel" required="required" placeholder="+1(000)000-0000" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
+              <label class="qf-field"><span class="qf-label">Full name<em>*</em></span>
+                <input class="qf-input" name="Name" required="required" autocomplete="name" placeholder="First and last name">
+              </label>
+              <div class="qf-row">
+                <label class="qf-field"><span class="qf-label">E-mail<em>*</em></span>
+                  <input class="qf-input" name="Email" type="email" required="required" autocomplete="email" placeholder="name@example.com">
+                </label>
+                <label class="qf-field"><span class="qf-label">Phone<em>*</em></span>
+                  <input class="qf-input" name="Phone" type="tel" required="required" autocomplete="tel" placeholder="+372 5555 5555">
+                </label>
+              </div>
               <sc-if value="{{ isApply }}" hint-placeholder-val="{{ true }}">
-                <div style="display:flex;flex-direction:column;gap:12px;">
-                  <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Your country
-                    <span style="position:relative;display:block;"><select name="country" style="width:100%;font:inherit;font-size:15px;height:52px;padding:0 44px 0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;-webkit-appearance:none;appearance:none;color:#1a1a1a;cursor:pointer;"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#041e3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;"><path d="M6 9l6 6 6-6"/></svg></span>
-                  </label>
-                  <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Instagram
-                    <input name="Instagram" placeholder="@" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-                  </label>
-                  <textarea name="About" required="required" rows="3" placeholder="Write about yourself in two sentences." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
-                  <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;">
-                    <span>Upload your photos <span style="display:block;margin-top:2px;font-size:12px;color:#3d4f66;">Attach 1–3 of your recent photos.</span></span>
-                    <label style="position:relative;display:flex;align-items:center;gap:14px;min-height:92px;padding:14px 16px;border:1px dashed #041e3a;border-radius:6px;background:#fff;color:#041e3a;cursor:pointer;transition:background .2s;" style-hover="background:#f1f4f8;">
-                      <input type="file" name="File" multiple="multiple" accept="image/*" onChange="{{ pickPhotos }}" aria-label="Upload your photos" style="position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;cursor:pointer;">
-                      <sc-if value="{{ noPhotos }}" hint-placeholder-val="{{ true }}">
-                        <span style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;">
-                          <span style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 24px;border-radius:40px;background:#041e3a;color:#fff;font-family:'TNR','Tinos',serif;font-style:italic;font-size:17px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Choose photos</span>
-                          <span style="font-size:13px;color:#3d4f66;">or drag them here</span>
-                        </span>
-                      </sc-if>
-                      <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ false }}">
-                        <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-                          <sc-for list="{{ photoPreviews }}" as="ph" hint-placeholder-count="2">
-                            <img src="{{ ph.src }}" alt="{{ ph.name }}" style="width:64px;height:64px;object-fit:cover;border-radius:4px;display:block;">
-                          </sc-for>
-                          <span style="font-size:14px;line-height:1.4;">{{ photosLabel }}<span style="display:block;font-family:'TNR','Tinos',serif;font-style:italic;font-size:16px;text-decoration:underline;text-underline-offset:3px;">Change</span></span>
-                        </span>
-                      </sc-if>
+                <div class="qf-group">
+                  <div class="qf-row">
+                    <label class="qf-field"><span class="qf-label">Country<em>*</em></span>
+                      <span class="qf-select"><select class="qf-input" name="country"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#041e3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
                     </label>
+                    <label class="qf-field"><span class="qf-label">Instagram</span>
+                      <input class="qf-input" name="Instagram" autocomplete="off" placeholder="@username">
+                    </label>
+                  </div>
+                  <label class="qf-field"><span class="qf-label">About you<em>*</em><span class="qf-hint">A couple of sentences: who you are and why you want to take part.</span></span>
+                    <textarea class="qf-input" name="About" required="required" rows="4" placeholder="Tell us about yourself"></textarea>
+                  </label>
+                  <div class="qf-field">
+                    <span class="qf-label">Photos<em>*</em><span class="qf-hint">Add 1–3 recent photos: a portrait and a full-length photo work best.</span></span>
+                    <div class="qf-photos">
+                      <sc-for list="{{ photoPreviews }}" as="ph" hint-placeholder-count="0">
+                        <div class="qf-photo">
+                          <img src="{{ ph.src }}" alt="{{ ph.name }}">
+                          <button type="button" class="qf-remove" onClick="{{ ph.remove }}" aria-label="Remove photo">×</button>
+                        </div>
+                      </sc-for>
+                      <sc-if value="{{ canAddPhoto }}" hint-placeholder-val="{{ true }}">
+                        <label class="{{ addTileClass }}">
+                          <input type="file" multiple="multiple" accept="image/*" onChange="{{ pickPhotos }}" aria-label="Add photos">
+                          <span class="qf-add-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+                          <span class="qf-add-text"><span class="qf-add-title">{{ addTitle }}</span><span class="qf-add-sub">{{ addSub }}</span></span>
+                        </label>
+                      </sc-if>
+                    </div>
                   </div>
                 </div>
               </sc-if>
               <sc-if value="{{ isPartner }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:12px;">
-                  <input name="company" placeholder="Company" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-                  <div style="font-size:14px;margin-top:4px;">What is your interest in Queen of the Baltic?</div>
-                  <div style="display:flex;flex-direction:column;gap:8px;font-size:14px;">
-                    <sc-for list="{{ partnerTypes }}" as="t" hint-placeholder-count="7">
-                      <label style="display:flex;gap:10px;align-items:center;cursor:pointer;"><input type="radio" name="type" value="{{ t }}" style="accent-color:#041e3a;width:18px;height:18px;margin:0;">{{ t }}</label>
-                    </sc-for>
+                <div class="qf-group">
+                  <label class="qf-field"><span class="qf-label">Company</span>
+                    <input class="qf-input" name="company" autocomplete="organization" placeholder="Company name">
+                  </label>
+                  <div class="qf-field"><span class="qf-label">What is your interest in Queen of the Baltic?</span>
+                    <div class="qf-options">
+                      <sc-for list="{{ partnerTypes }}" as="t" hint-placeholder-count="7">
+                        <label class="qf-option"><input type="radio" name="type" value="{{ t }}">{{ t }}</label>
+                      </sc-for>
+                    </div>
                   </div>
-                  <textarea name="Interest" rows="3" placeholder="In a few sentences, please communicate what you are interested in." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
+                  <label class="qf-field"><span class="qf-label">Message</span>
+                    <textarea class="qf-input" name="Interest" rows="4" placeholder="In a few sentences, tell us what you are interested in"></textarea>
+                  </label>
                 </div>
               </sc-if>
-              <div ref="{{ captchaRef }}" style="display:flex;justify-content:flex-start;max-width:100%;overflow:hidden;"></div>
-              <button type="submit" style="font-family:'TNR','Tinos',serif;font-style:italic;font-size:20px;height:56px;border:0;border-radius:40px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;transition:background .2s;" style-hover="background:#1d3d66;">{{ submitLabel }}</button>
-              <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;color:#a3122a;text-align:center;">{{ submitError }}</p></sc-if>
-              <p style="margin:0;font-size:12px;color:#3d4f66;text-align:center;">By filling out this form you agree to the processing of personal data.</p>
+              <div ref="{{ captchaRef }}" class="qf-captcha"></div>
+              <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" class="qf-error">{{ submitError }}</p></sc-if>
+              <button type="submit" class="qf-submit">{{ submitLabel }}</button>
+              <p class="qf-legal">By submitting this form you agree to the processing of your personal data.</p>
             </form>
             </div>
           </sc-if>
@@ -520,8 +576,19 @@ class Component extends DCLogic {
     if (this.state.sending) return;
     const fd = new FormData(form);
     if (fd.get('website')) { this.setState({ submitted: true }); return; } // bot filled the hidden field
-    const files = fd.getAll('File').filter(f => f && f.size);
-    if (files.length > MAX_PHOTOS) { this.setState({ error: 'Please attach no more than ' + MAX_PHOTOS + ' photos.' }); return; }
+    // Own validation (the form has novalidate): mark empty/invalid fields and say which ones.
+    const bad = Array.from(form.querySelectorAll('[required]')).filter(el => !el.checkValidity());
+    form.querySelectorAll('.qf-invalid').forEach(el => el.classList.remove('qf-invalid'));
+    bad.forEach(el => el.classList.add('qf-invalid'));
+    const files = (this.photoFiles || []).slice(0, MAX_PHOTOS);
+    if (bad.length) {
+      const names = bad.map(el => { const l = el.closest('.qf-field'); const t = l && l.querySelector('.qf-label'); return t ? t.firstChild.textContent.trim() : el.name; });
+      const email = bad.find(el => el.type === 'email' && el.value);
+      bad[0].focus();
+      this.setState({ error: email && bad.length === 1 ? 'Please check your e-mail address.' : 'Please fill in: ' + names.join(', ') + '.' });
+      return;
+    }
+    if (kind === 'apply' && !files.length) { this.setState({ error: 'Please add at least one photo.' }); return; }
     if (!APPLY_ENDPOINT) { this.setState({ error: 'The form is not connected yet. Please write to contest@qotb.eu.' }); return; }
     let captcha = '';
     if (RECAPTCHA_SITE_KEY) {
@@ -586,7 +653,30 @@ class Component extends DCLogic {
     if (lock !== !!this.scrollLocked) { this.scrollLocked = lock; document.body.style.overflow = lock ? 'hidden' : ''; }
     this.mountCaptcha();
   }
-  clearPhotos() { (this.state.photos || []).forEach(p => URL.revokeObjectURL(p.src)); if (this.state.photos && this.state.photos.length) this.setState({ photos: [] }); }
+  clearPhotos() {
+    (this.state.photos || []).forEach(p => URL.revokeObjectURL(p.src));
+    this.photoFiles = [];
+    if (this.state.photos && this.state.photos.length) this.setState({ photos: [] });
+  }
+  addPhotos(list) {
+    const have = this.photoFiles || [];
+    const images = list.filter(f => /^image\//.test(f.type) || /\.(jpe?g|png|webp|gif|heic|heif)$/i.test(f.name));
+    const room = MAX_PHOTOS - have.length;
+    const take = images.slice(0, Math.max(0, room));
+    this.photoFiles = have.concat(take);
+    const photos = (this.state.photos || []).concat(take.map(f => ({ src: URL.createObjectURL(f), name: f.name })));
+    let error = '';
+    if (images.length > take.length) error = 'You can add up to ' + MAX_PHOTOS + ' photos.';
+    else if (images.length < list.length) error = 'Please choose image files (JPG or PNG).';
+    this.setState({ photos, error });
+  }
+  removePhoto(i) {
+    const photos = (this.state.photos || []).slice();
+    const [gone] = photos.splice(i, 1);
+    if (gone) URL.revokeObjectURL(gone.src);
+    this.photoFiles = (this.photoFiles || []).filter((_, k) => k !== i);
+    this.setState({ photos, error: '' });
+  }
   // Renders the reCAPTCHA checkbox into the form whenever the form is on screen.
   mountCaptcha() {
     const el = this.captchaRef && this.captchaRef.current;
@@ -687,14 +777,13 @@ class Component extends DCLogic {
       submitLabel: this.state.sending ? 'Sending…' : 'Submit',
       hasError: !!this.state.error, submitError: this.state.error,
       captchaRef: this.captchaRef || (this.captchaRef = React.createRef()),
-      photoPreviews: this.state.photos, hasPhotos: this.state.photos.length > 0, noPhotos: !this.state.photos.length,
-      photosLabel: this.state.photos.length === 1 ? '1 photo selected' : this.state.photos.length + ' photos selected',
-      pickPhotos: ev => {
-        const files = Array.from(ev.target.files || []);
-        this.clearPhotos();
-        if (files.length > MAX_PHOTOS) { ev.target.value = ''; this.setState({ photos: [], error: 'Please choose no more than ' + MAX_PHOTOS + ' photos.' }); return; }
-        this.setState({ photos: files.map(f => ({ src: URL.createObjectURL(f), name: f.name })), error: '' });
-      },
+      photoPreviews: this.state.photos.map((p, i) => ({ ...p, remove: () => this.removePhoto(i) })),
+      canAddPhoto: this.state.photos.length < MAX_PHOTOS,
+      addTileClass: this.state.photos.length ? 'qf-add' : 'qf-add qf-wide',
+      addTitle: this.state.photos.length ? 'Add photo' : 'Choose photos',
+      addSub: this.state.photos.length ? (MAX_PHOTOS - this.state.photos.length) + ' more' : 'or drag them here · JPG or PNG, up to ' + MAX_PHOTOS,
+      formInput: ev => { const t = ev.target; if (t && t.classList && t.classList.contains('qf-invalid') && t.checkValidity()) t.classList.remove('qf-invalid'); },
+      pickPhotos: ev => { const list = Array.from(ev.target.files || []); ev.target.value = ''; this.addPhotos(list); },
       submit: ev => { ev.preventDefault(); this.sendForm(ev.currentTarget || ev.target, m === 'partner' ? 'partner' : 'apply'); }
     };
   }
