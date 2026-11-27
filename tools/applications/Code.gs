@@ -15,13 +15,15 @@
 // Where notifications go. Leave empty to send them to the Google account that owns this script.
 const NOTIFY_EMAIL = '';
 // Name of the Drive folder for applicants' photos (created in "My Drive").
-const PHOTOS_FOLDER_NAME = 'Queen of the Baltic — application photos';
+const PHOTOS_FOLDER_NAME = 'Queen of the Baltic — фото участниц';
 
 const NAVY = '#041e3a';
 const LABEL_BG = '#eef1f5';
 const LINE = '#c9d1dc';
-const STATUSES = ['New', 'In review', 'Contacted', 'Accepted', 'Declined'];
-const STATUS_COLORS = { 'New': '#fff4cc', 'In review': '#dbe8f7', 'Contacted': '#e8e0f5', 'Accepted': '#d9f2e0', 'Declined': '#f3dada' };
+const STATUSES = ['Новая', 'На рассмотрении', 'Связались', 'Принята', 'Отклонена'];
+const STATUS_COLORS = { 'Новая': '#fff4cc', 'На рассмотрении': '#dbe8f7', 'Связались': '#e8e0f5', 'Принята': '#d9f2e0', 'Отклонена': '#f3dada' };
+const STATUS_LABEL = 'Статус';
+const COUNTRIES_RU = { 'Estonia': 'Эстония', 'Latvia': 'Латвия', 'Lithuania': 'Литва' };
 
 const LABEL_WIDTH = 170;   // column A, px
 const VALUE_WIDTH = 560;   // column B, px
@@ -31,37 +33,37 @@ const FIRST_CARD_ROW = 3;  // row 1 = title, row 2 = empty, cards start below; n
 // Card fields, top to bottom. `photo` rows only appear when the photo was attached.
 const SHEETS = {
   apply: {
-    name: 'Applications',
-    title: 'Queen of the Baltic — Applications',
+    name: 'Заявки',
+    title: 'Queen of the Baltic — заявки участниц',
     fields: [
-      { key: 'status', label: 'Status' },
-      { key: 'date', label: 'Date' },
-      { key: 'Name', label: 'Full name', bold: true },
+      { key: 'status', label: STATUS_LABEL },
+      { key: 'date', label: 'Дата' },
+      { key: 'Name', label: 'Имя и фамилия', bold: true },
       { key: 'Email', label: 'E-mail' },
-      { key: 'Phone', label: 'Phone' },
-      { key: 'country', label: 'Country' },
+      { key: 'Phone', label: 'Телефон' },
+      { key: 'country', label: 'Страна' },
       { key: 'Instagram', label: 'Instagram' },
-      { key: 'About', label: 'About herself' },
-      { key: 'photo1', label: 'Photo 1', photo: 0 },
-      { key: 'photo2', label: 'Photo 2', photo: 1 },
-      { key: 'photo3', label: 'Photo 3', photo: 2 },
-      { key: 'folder', label: 'All photos' },
-      { key: 'notes', label: 'Notes' }
+      { key: 'About', label: 'О себе' },
+      { key: 'photo1', label: 'Фото 1', photo: 0 },
+      { key: 'photo2', label: 'Фото 2', photo: 1 },
+      { key: 'photo3', label: 'Фото 3', photo: 2 },
+      { key: 'folder', label: 'Все фото' },
+      { key: 'notes', label: 'Заметки' }
     ]
   },
   partner: {
-    name: 'Partners',
-    title: 'Queen of the Baltic — Partner requests',
+    name: 'Партнёры',
+    title: 'Queen of the Baltic — запросы партнёров',
     fields: [
-      { key: 'status', label: 'Status' },
-      { key: 'date', label: 'Date' },
-      { key: 'Name', label: 'Full name', bold: true },
+      { key: 'status', label: STATUS_LABEL },
+      { key: 'date', label: 'Дата' },
+      { key: 'Name', label: 'Имя и фамилия', bold: true },
       { key: 'Email', label: 'E-mail' },
-      { key: 'Phone', label: 'Phone' },
-      { key: 'company', label: 'Company' },
-      { key: 'type', label: 'Interest' },
-      { key: 'Interest', label: 'Message' },
-      { key: 'notes', label: 'Notes' }
+      { key: 'Phone', label: 'Телефон' },
+      { key: 'company', label: 'Компания' },
+      { key: 'type', label: 'Интерес' },
+      { key: 'Interest', label: 'Сообщение' },
+      { key: 'notes', label: 'Заметки' }
     ]
   }
 };
@@ -78,15 +80,15 @@ function setup() {
   if (['Sheet1', 'Лист1'].indexOf(first.getName()) >= 0 && first.getLastRow() === 0 && ss.getSheets().length > 1) ss.deleteSheet(first);
   photosRoot_();
   ss.setActiveSheet(ss.getSheetByName(SHEETS.apply.name));
-  ss.toast('Sheets are ready. Next: Deploy → New deployment → Web app.', 'Queen of the Baltic', 8);
+  ss.toast('Листы готовы. Дальше: Deploy → New deployment → Web app.', 'Queen of the Baltic', 8);
 }
 
 /** Sends a fake application through the whole pipeline, so you can check the sheet and the e-mail. */
 function testSubmission() {
   const pixel = 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
   const res = handle_({
-    kind: 'apply', Name: 'Test Applicant', Email: Session.getEffectiveUser().getEmail(), Phone: '+372 0000 0000',
-    country: 'Estonia', Instagram: '@test', About: 'This is a test application created by testSubmission(). You can delete this card.',
+    kind: 'apply', Name: 'Тестовая Заявка', Email: Session.getEffectiveUser().getEmail(), Phone: '+372 0000 0000',
+    country: 'Estonia', Instagram: '@test', About: 'Это тестовая заявка, созданная функцией testSubmission(). Эту карточку можно удалить.',
     photos: [{ name: 'test.png', type: 'image/png', data: pixel, thumb: pixel }], page: 'test'
   });
   Logger.log(JSON.stringify(res));
@@ -120,7 +122,8 @@ function handle_(body) {
     const sh = ss.getSheetByName(spec.name) || prepareSheet_(ss, spec);
     data.n = nextNumber_(kind);
     data.date = new Date();
-    data.status = 'New';
+    data.status = STATUSES[0];
+    if (COUNTRIES_RU[data.country]) data.country = COUNTRIES_RU[data.country];
 
     // Photos → Drive
     const photos = [];
@@ -204,7 +207,7 @@ function writeCard_(sh, spec, data, photos, folder) {
 }
 
 function cellValue_(key, data, folder) {
-  if (key === 'folder') return folder ? link_(folder.getUrl(), 'Open folder on Google Drive') : '';
+  if (key === 'folder') return folder ? link_(folder.getUrl(), 'Открыть папку на Google Drive') : '';
   if (key === 'Email') return data.Email ? link_('mailto:' + data.Email, data.Email) : '';
   if (key === 'Instagram') return data.Instagram ? igLink_(data.Instagram) : '';
   const v = data[key];
@@ -222,18 +225,18 @@ function prepareSheet_(ss, spec) {
   sh.setColumnWidth(2, VALUE_WIDTH);
   sh.setHiddenGridlines(true);
 
-  sh.getRange(1, 1, 1, 2).setValues([[spec.title + '  ·  newest on top', '']])
+  sh.getRange(1, 1, 1, 2).setValues([[spec.title + '  ·  новые сверху', '']])
     .setFontFamily('Montserrat').setFontColor(NAVY).setVerticalAlignment('middle');
   sh.getRange(1, 1).setFontSize(14).setFontWeight('bold').setWrap(false);
   sh.setRowHeight(1, 44);
   sh.setRowHeight(2, 12);
   sh.setFrozenRows(1);
 
-  // Status colours: any cell in column B whose label in column A is "Status".
+  // Status colours: any cell in column B whose label in column A is STATUS_LABEL.
   const colB = sh.getRange('B:B');
   const rules = sh.getConditionalFormatRules().filter(r => !r.getRanges().some(g => g.getA1Notation() === colB.getA1Notation()));
   STATUSES.forEach(s => rules.push(SpreadsheetApp.newConditionalFormatRule()
-    .whenFormulaSatisfied('=AND($A1="Status", $B1="' + s + '")')
+    .whenFormulaSatisfied('=AND($A1="' + STATUS_LABEL + '", $B1="' + s + '")')
     .setBackground(STATUS_COLORS[s]).setRanges([colB]).build()));
   sh.setConditionalFormatRules(rules);
   return sh;
@@ -266,10 +269,10 @@ function notify_(kind, data, photos, folder, ss, sh, row) {
   if (!to) return;
   const sheetUrl = ss.getUrl() + '#gid=' + sh.getSheetId() + '&range=A' + row;
   const isApply = kind === 'apply';
-  const title = isApply ? 'New application' : 'New partner request';
+  const title = isApply ? 'Новая заявка' : 'Новый запрос от партнёра';
   const fields = isApply
-    ? [['Full name', data.Name], ['E-mail', data.Email], ['Phone', data.Phone], ['Country', data.country], ['Instagram', data.Instagram], ['About herself', data.About]]
-    : [['Full name', data.Name], ['E-mail', data.Email], ['Phone', data.Phone], ['Company', data.company], ['Interest', data.type], ['Message', data.Interest]];
+    ? [['Имя и фамилия', data.Name], ['E-mail', data.Email], ['Телефон', data.Phone], ['Страна', data.country], ['Instagram', data.Instagram], ['О себе', data.About]]
+    : [['Имя и фамилия', data.Name], ['E-mail', data.Email], ['Телефон', data.Phone], ['Компания', data.company], ['Интерес', data.type], ['Сообщение', data.Interest]];
 
   const rows = fields.filter(f => f[1]).map(f =>
     '<tr><td style="padding:6px 14px 6px 0;color:#5b6b80;vertical-align:top;white-space:nowrap">' + esc_(f[0]) +
@@ -282,11 +285,11 @@ function notify_(kind, data, photos, folder, ss, sh, row) {
     '<p style="margin:0 0 16px;color:#5b6b80">Queen of the Baltic · qotb.eu · ' +
     Utilities.formatDate(data.date, ss.getSpreadsheetTimeZone(), 'dd.MM.yyyy HH:mm') + '</p>' +
     '<table style="border-collapse:collapse">' + rows + '</table>' +
-    (photos.length ? '<p style="margin:16px 0 0">Photos: ' + photos.length + ' (attached)</p>' : '') +
-    '<p style="margin:16px 0 0">' + btn(sheetUrl, 'Open in the table') + (folder ? btn(folder.getUrl(), 'Open photos') : '') + '</p>' +
+    (photos.length ? '<p style="margin:16px 0 0">Фото: ' + photos.length + ' (во вложении)</p>' : '') +
+    '<p style="margin:16px 0 0">' + btn(sheetUrl, 'Открыть в таблице') + (folder ? btn(folder.getUrl(), 'Открыть фото') : '') + '</p>' +
     '</div>';
 
-  const plain = title + ' №' + data.n + '\n\n' + fields.filter(f => f[1]).map(f => f[0] + ': ' + f[1]).join('\n') + '\n\nTable: ' + sheetUrl;
+  const plain = title + ' №' + data.n + '\n\n' + fields.filter(f => f[1]).map(f => f[0] + ': ' + f[1]).join('\n') + '\n\nТаблица: ' + sheetUrl;
 
   MailApp.sendEmail({
     to: to,
@@ -294,7 +297,7 @@ function notify_(kind, data, photos, folder, ss, sh, row) {
     body: plain,
     htmlBody: html,
     replyTo: /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.Email || '') ? data.Email : undefined,
-    name: 'Queen of the Baltic — website',
+    name: 'Queen of the Baltic — сайт',
     attachments: photos.map(p => p.file.getBlob())
   });
 }
