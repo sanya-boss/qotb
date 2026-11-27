@@ -109,8 +109,9 @@ function doPost(e) {
     const body = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     return json_(handle_(body));
   } catch (err) {
-    console.error(err);
-    return json_({ ok: false, error: 'Server error' });
+    console.error(err && err.stack || err);
+    // `detail` helps to diagnose problems from the website side; it never contains the applicant's data.
+    return json_({ ok: false, error: 'Server error', detail: String(err && err.message || err).slice(0, 300) });
   }
 }
 
