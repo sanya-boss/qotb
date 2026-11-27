@@ -348,6 +348,7 @@ a:hover{color:#3b5998}
                   <textarea name="Interest" rows="3" placeholder="In a few sentences, please communicate what you are interested in." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
                 </div>
               </sc-if>
+              <div ref="{{ captchaRef }}" style="display:flex;justify-content:center;"></div>
               <button type="submit" style="font:inherit;font-size:16px;height:56px;border:0;border-radius:6px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;" style-hover="background:#1d3d66;">{{ submitLabel }}</button>
               <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;color:#a3122a;text-align:center;">{{ submitError }}</p></sc-if>
               <p style="margin:0;font-size:12px;color:#3d4f66;text-align:center;">By filling out this form you agree to the processing of personal data.</p>
@@ -365,6 +366,18 @@ const IMG = 'assets/img/';
 // Paste the /exec URL here after deploying tools/applications/Code.gs (see docs/applications-setup.md).
 const APPLY_ENDPOINT = '';
 const MAX_PHOTOS = 3;
+// Google reCAPTCHA v2 ("I'm not a robot") site key — public, safe to keep here. Empty = no captcha.
+// The matching secret key lives only in the Apps Script project (Script properties → RECAPTCHA_SECRET).
+const RECAPTCHA_SITE_KEY = '';
+let recaptchaReady = null;
+const loadRecaptcha = () => recaptchaReady || (recaptchaReady = new Promise((resolve, reject) => {
+  window.qotbRecaptchaLoaded = () => resolve(window.grecaptcha);
+  const s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?onload=qotbRecaptchaLoaded&render=explicit&hl=en';
+  s.async = true; s.defer = true;
+  s.onerror = () => { recaptchaReady = null; reject(new Error('reCAPTCHA failed to load')); };
+  document.head.appendChild(s);
+}));
 // Shrink a photo in the browser before upload. Returns { name, type, data, thumb } (base64 JPEG):
 // `data` = longest side 1600px (saved to Drive), `thumb` = 600px preview shown inside the table cell.
 const jpeg = (img, max, q) => {
@@ -473,14 +486,25 @@ class Component extends DCLogic {
     const files = fd.getAll('File').filter(f => f && f.size);
     if (files.length > MAX_PHOTOS) { this.setState({ error: 'Please attach no more than ' + MAX_PHOTOS + ' photos.' }); return; }
     if (!APPLY_ENDPOINT) { this.setState({ error: 'The form is not connected yet. Please write to contest@qotb.eu.' }); return; }
+    let captcha = '';
+    if (RECAPTCHA_SITE_KEY) {
+      captcha = window.grecaptcha && this.captchaId != null ? window.grecaptcha.getResponse(this.captchaId) : '';
+      if (!captcha) { this.setState({ error: 'Please confirm that you are not a robot.' }); return; }
+    }
     this.setState({ sending: true, error: '' });
     try {
       const data = { kind };
       for (const [k, v] of fd.entries()) if (typeof v === 'string' && k !== 'website') data[k] = v.trim();
       data.photos = await Promise.all(files.map(shrinkPhoto));
       data.page = location.href;
+      data.captcha = captcha;
       const res = await fetch(APPLY_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
       const out = await res.json().catch(() => ({}));
+      if (out.error === 'captcha') {
+        if (window.grecaptcha && this.captchaId != null) window.grecaptcha.reset(this.captchaId);
+        this.setState({ sending: false, error: 'The “I’m not a robot” check expired. Please tick it again and press Submit.' });
+        return;
+      }
       if (!res.ok || out.ok === false) throw new Error(out.error || 'HTTP ' + res.status);
       this.setState({ sending: false, submitted: true });
     } catch (err) {
@@ -516,9 +540,22 @@ class Component extends DCLogic {
     if (location.hash === '#partner') this.setState({ modal: 'partner' });
   }
   componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); window.removeEventListener('resize', this.onResize); document.removeEventListener('scroll', this.onScroll, true); document.removeEventListener('scroll', this.onHeroScroll, true); window.removeEventListener('resize', this.onHeroScroll); }
-  componentDidUpdate(_, prev) {
-    const lock = this.state.menu || !!this.state.modal;
-    if (lock !== (prev.menu || !!prev.modal)) document.body.style.overflow = lock ? 'hidden' : '';
+  componentDidUpdate() {
+    // The runtime passes only prevProps here, so remember the previous lock state ourselves.
+    const lock = !!(this.state.menu || this.state.modal);
+    if (lock !== !!this.scrollLocked) { this.scrollLocked = lock; document.body.style.overflow = lock ? 'hidden' : ''; }
+    this.mountCaptcha();
+  }
+  // Renders the reCAPTCHA checkbox into the form whenever the form is on screen.
+  mountCaptcha() {
+    const el = this.captchaRef && this.captchaRef.current;
+    if (!RECAPTCHA_SITE_KEY || !el) { if (!el) this.captchaEl = null; return; }
+    if (this.captchaEl === el) return;
+    this.captchaEl = el; this.captchaId = null;
+    loadRecaptcha().then(g => {
+      if (this.captchaEl !== el || !el.isConnected) return;
+      this.captchaId = g.render(el, { sitekey: RECAPTCHA_SITE_KEY, theme: 'light' });
+    }).catch(() => this.setState({ error: 'The anti-spam check could not load. Please reload the page or write to contest@qotb.eu.' }));
   }
   charityVals(isPhone) {
     const W = isPhone ? 320 : 1200, H = isPhone ? 570 : 690;
@@ -601,6 +638,7 @@ class Component extends DCLogic {
       submitted: this.state.submitted, notSubmitted: !this.state.submitted,
       submitLabel: this.state.sending ? 'Sending…' : 'Submit',
       hasError: !!this.state.error, submitError: this.state.error,
+      captchaRef: this.captchaRef || (this.captchaRef = React.createRef()),
       submit: ev => { ev.preventDefault(); this.sendForm(ev.currentTarget || ev.target, m === 'partner' ? 'partner' : 'apply'); }
     };
   }

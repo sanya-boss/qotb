@@ -12,9 +12,14 @@
  * and put the /exec URL into APPLY_ENDPOINT in site/index.html.
  */
 
-// Where notifications go. Leave empty to send them to the Google account that owns this script.
-const NOTIFY_EMAIL = '';
-// Name of the Drive folder for applicants' photos (created in "My Drive").
+// Where notifications about new applications go (with all the answers and the photos attached).
+// Leave empty to send them to the Google account that owns this script.
+const NOTIFY_EMAIL = 'lumierefoundation01@gmail.com';
+// Google Drive folder for applicants' photos: a sub-folder "Name — date" is created in it for every applicant.
+// https://drive.google.com/drive/folders/1i2a6hXyHNusEXC44IT87D5J-rRKB5ySL
+// The Google account that runs this script must be able to edit this folder.
+const PHOTOS_FOLDER_ID = '1i2a6hXyHNusEXC44IT87D5J-rRKB5ySL';
+// Used only if the folder above can't be opened, so that no application is lost.
 const PHOTOS_FOLDER_NAME = 'Queen of the Baltic — фото участниц';
 
 const NAVY = '#041e3a';
@@ -90,7 +95,7 @@ function testSubmission() {
     kind: 'apply', Name: 'Тестовая Заявка', Email: Session.getEffectiveUser().getEmail(), Phone: '+372 0000 0000',
     country: 'Estonia', Instagram: '@test', About: 'Это тестовая заявка, созданная функцией testSubmission(). Эту карточку можно удалить.',
     photos: [{ name: 'test.png', type: 'image/png', data: pixel, thumb: pixel }], page: 'test'
-  });
+  }, { skipCaptcha: true });
   Logger.log(JSON.stringify(res));
 }
 
@@ -108,7 +113,9 @@ function doPost(e) {
   }
 }
 
-function handle_(body) {
+// `opts.skipCaptcha` is only set by testSubmission(); requests from the website always go through the check.
+function handle_(body, opts) {
+  if (!(opts && opts.skipCaptcha) && !captchaOk_(body.captcha)) return { ok: false, error: 'captcha' };
   const kind = body.kind === 'partner' ? 'partner' : 'apply';
   const spec = SHEETS[kind];
   const data = {};
@@ -129,7 +136,8 @@ function handle_(body) {
     const photos = [];
     let folder = null;
     if (kind === 'apply' && Array.isArray(body.photos) && body.photos.length) {
-      folder = photosRoot_().createFolder(Utilities.formatString('%03d — %s', data.n, data.Name));
+      const day = Utilities.formatDate(data.date, SpreadsheetApp.getActive().getSpreadsheetTimeZone(), 'dd.MM.yyyy');
+      folder = photosRoot_().createFolder(data.Name.replace(/[\\/:*?"<>|]/g, ' ').trim() + ' — ' + day + ' (№ ' + data.n + ')');
       body.photos.slice(0, MAX_PHOTOS).forEach((p, i) => {
         if (!p || typeof p.data !== 'string') return;
         const bytes = Utilities.base64Decode(p.data);
@@ -304,6 +312,23 @@ function notify_(kind, data, photos, folder, ss, sh, row) {
 
 // ---------- helpers ----------
 
+// Google reCAPTCHA v2 check. The secret key is kept in Project Settings → Script properties → RECAPTCHA_SECRET
+// (never in the website code). Without the property the check is skipped, so the form keeps working.
+function captchaOk_(token) {
+  const secret = PropertiesService.getScriptProperties().getProperty('RECAPTCHA_SECRET');
+  if (!secret) return true;
+  if (typeof token !== 'string' || !token) return false;
+  try {
+    const res = UrlFetchApp.fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'post', payload: { secret: secret, response: token }, muteHttpExceptions: true
+    });
+    return JSON.parse(res.getContentText()).success === true;
+  } catch (err) {
+    console.error('reCAPTCHA check failed: ' + err);
+    return false;
+  }
+}
+
 function nextNumber_(kind) {
   const props = PropertiesService.getScriptProperties();
   const key = 'COUNTER_' + kind;
@@ -313,6 +338,10 @@ function nextNumber_(kind) {
 }
 
 function photosRoot_() {
+  if (PHOTOS_FOLDER_ID) {
+    try { return DriveApp.getFolderById(PHOTOS_FOLDER_ID); }
+    catch (err) { console.error('Photos folder ' + PHOTOS_FOLDER_ID + ' is not accessible, using a fallback folder: ' + err); }
+  }
   const props = PropertiesService.getScriptProperties();
   const id = props.getProperty('PHOTOS_FOLDER_ID');
   if (id) { try { return DriveApp.getFolderById(id); } catch (err) { /* recreated below */ } }
