@@ -54,7 +54,7 @@
 2. **Label:** Queen of the Baltic. **reCAPTCHA type:** Challenge (v2) → **«I'm not a robot» Checkbox**.
 3. **Domains:** `qotb.eu`, `www.qotb.eu`, `sanya-boss.github.io`. → **Submit**.
 4. Google покажет два ключа:
-   - **Site key** (ключ сайта) — пришлите его Claude, он вставит его в сайт (`RECAPTCHA_SITE_KEY`). Это публичный ключ, его можно показывать.
+   - **Site key** (ключ сайта) — уже вставлен в сайт (`RECAPTCHA_SITE_KEY`). Это публичный ключ, его можно показывать.
    - **Secret key** (секретный ключ) — **никому не присылайте**. В Apps Script: ⚙️ **Project Settings → Script properties → Add script property**: имя `RECAPTCHA_SECRET`, значение — секретный ключ → **Save**.
 
 После этого заявку нельзя отправить без галочки «I'm not a robot», а сервер дополнительно проверяет каждую заявку у Google. Пока ключи не добавлены, форма работает без капчи.

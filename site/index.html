@@ -368,7 +368,7 @@ const APPLY_ENDPOINT = '';
 const MAX_PHOTOS = 3;
 // Google reCAPTCHA v2 ("I'm not a robot") site key — public, safe to keep here. Empty = no captcha.
 // The matching secret key lives only in the Apps Script project (Script properties → RECAPTCHA_SECRET).
-const RECAPTCHA_SITE_KEY = '';
+const RECAPTCHA_SITE_KEY = '6LclNDUuAAAAAE_l1VpXMLEeeDpQTh-W09Ah5c4_';
 let recaptchaReady = null;
 const loadRecaptcha = () => recaptchaReady || (recaptchaReady = new Promise((resolve, reject) => {
   window.qotbRecaptchaLoaded = () => resolve(window.grecaptcha);
