@@ -221,9 +221,10 @@ class Component extends DCLogic {
     window.addEventListener('keydown', this.onKey);
   }
   componentWillUnmount() { window.removeEventListener('keydown', this.onKey); }
-  componentDidUpdate(_, prev) {
+  componentDidUpdate() {
+    // The runtime passes only prevProps here, so remember the previous lock state ourselves.
     const lock = !!(this.state.album || this.state.photographers);
-    if (lock !== !!(prev.album || prev.photographers)) document.body.style.overflow = lock ? 'hidden' : '';
+    if (lock !== !!this.scrollLocked) { this.scrollLocked = lock; document.body.style.overflow = lock ? 'hidden' : ''; }
   }
   step(d) {
     const a = ALBUMS.find(x => x.id === this.state.album); if (!a) return;

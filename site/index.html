@@ -68,7 +68,7 @@ a:hover{color:#3b5998}
         <img ref="{{ heroLogoRef }}" src="assets/img/tild6130-6161-4631-b163-303937326635__qobi_full_white.svg" alt="Queen of the Baltic International 2026" style="width:min(80vw,340px);height:auto;display:block;will-change:transform;">
         <div ref="{{ heroCtaRef }}" style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;">
           <div style="display:flex;gap:10px;justify-content:center;width:100%;">
-            <button disabled="" aria-disabled="true" title="Coming soon" style="opacity:.45;pointer-events:none;flex:0 1 144px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:17px;color:#fff;background:transparent;border:1px solid #fff;border-radius:40px;height:50px;cursor:not-allowed;">Apply now!</button>
+            <button onClick="{{ openJoin }}" style="flex:0 1 144px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:17px;color:#fff;background:transparent;border:1px solid #fff;border-radius:40px;height:50px;cursor:pointer;">Apply now!</button>
           </div>
           <p style="margin:0;font-size:14px;line-height:1.3;max-width:320px;text-wrap:balance;">More than a beauty contest, we are a movement that celebrates both outer and inner radiance, empowering women to shine in every aspect of life.</p>
           <a href="#about" style="color:#fff;text-decoration:none;font-family:'TNR','Tinos',serif;font-style:italic;font-size:15px;">SCROLL ↓</a>
@@ -128,7 +128,7 @@ a:hover{color:#3b5998}
     <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,2.6vw,44px);padding:0 20px clamp(70px,7vw,110px);text-align:center;">
       <img src="assets/img/tild6130-6161-4631-b163-303937326635__qobi_full_white.svg" alt="Queen of the Baltic International 2026" style="width:clamp(260px,43vw,820px);height:auto;display:block;">
       <div style="display:flex;gap:clamp(12px,1.4vw,26px);flex-wrap:wrap;justify-content:center;">
-        <button disabled="" aria-disabled="true" title="Coming soon" style="opacity:.45;pointer-events:none;font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(18px,1.5vw,26px);color:#fff;background:transparent;border:1px solid #fff;border-radius:40px;width:clamp(150px,12.6vw,236px);height:clamp(46px,3.2vw,60px);cursor:not-allowed;transition:background .2s;" style-hover="background:rgba(255,255,255,.12);">Apply now!</button>
+        <button onClick="{{ openJoin }}" style="font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(18px,1.5vw,26px);color:#fff;background:transparent;border:1px solid #fff;border-radius:40px;width:clamp(150px,12.6vw,236px);height:clamp(46px,3.2vw,60px);cursor:pointer;transition:background .2s;" style-hover="background:rgba(255,255,255,.12);">Apply now!</button>
       </div>
       <p style="max-width:min(700px,90vw);margin:0;font-size:clamp(13px,.9vw,17px);line-height:1.35;font-weight:500;text-wrap:balance;">More than a beauty contest, we are a movement that celebrates both outer and inner radiance, empowering women to shine in every aspect of life.</p>
     </div>
@@ -274,14 +274,14 @@ a:hover{color:#3b5998}
       <div onClick="{{ stop }}" style="position:relative;max-width:680px;margin:0 auto;background:#e6e6e6;padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:16px;font-size:15px;line-height:1.55;">
         <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:8px;right:10px;width:44px;height:44px;background:none;border:0;font-size:30px;color:#041e3a;cursor:pointer;">×</button>
         
-        <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(26px,3vw,36px);line-height:1.1;text-transform:uppercase;color:#041e3a;">Queen of the Baltic <span style="font-family:'TNR','Tinos',serif;">2026</span> — Your Chance to Level Up</h3>
+        <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(26px,3vw,36px);line-height:1.1;text-transform:uppercase;color:#041e3a;">Queen of the Baltic — Your Chance to Level Up</h3>
         <p style="margin:0;font-family:'TNR','Tinos',serif;font-style:italic;font-size:20px;color:#041e3a;">Information for participants.</p>
         <p style="margin:0;">This is an exclusive premium project for confident women from all over the world who are ready to shine.</p>
         <p style="margin:0;">A luxurious event in Europe, a premium venue in Tallinn, expert training, glossy photoshoots, press attention, and access to an elite network.</p>
         <p style="margin:0;">Here, you get more than experience: all participants receive exclusive crowns and sashes, professional photos and videos, media exposure, and a real opportunity to step onto a new stage.</p>
         <p style="margin:0;">If the thought “Why not me?” is in your mind — this is for you.</p>
         <h4 style="margin:12px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:22px;color:#041e3a;">Early Access — Secure Your Spot Now</h4>
-        <p style="margin:0;">Until December 31, the boldest and most confident can join for €1000, before the main prizes are officially announced.</p>
+        <p style="margin:0;">The boldest and most confident can join early for €1000, before the main prizes are officially announced.</p>
         <h4 style="margin:12px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:22px;color:#041e3a;">What you get:</h4>
         <div style="display:flex;flex-direction:column;gap:4px;">
           <div>— Professional training in stage presence, confidence, and personal image</div>
@@ -296,8 +296,8 @@ a:hover{color:#3b5998}
           <div>— All participants receive crowns and sashes</div>
           <div>— Main prizes will be announced very soon</div>
         </div>
-        <h4 style="margin:12px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:22px;color:#041e3a;">Event Dates</h4>
-        <p style="margin:0;"><strong style="font-weight:500;">September 15–18, 2026 — Tallinn, Europe</strong><br>Participation details will be sent after application</p>
+        <h4 style="margin:12px 0 0;font-family:'TNR','Tinos',serif;font-style:italic;font-weight:400;font-size:22px;color:#041e3a;">Event</h4>
+        <p style="margin:0;"><strong style="font-weight:500;">Tallinn, Europe</strong><br>Dates and participation details will be sent after application</p>
         <p style="margin:0;">Those who act now get the chance to secure their place and be ahead of everyone else.</p>
         <button onClick="{{ openApply }}" style="align-self:center;margin-top:12px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;color:#fff;background:#041e3a;border:0;border-radius:40px;padding:0 40px;height:56px;cursor:pointer;" style-hover="background:#1d3d66;">Submit a form!</button>
       </div>
@@ -307,32 +307,69 @@ a:hover{color:#3b5998}
   <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:60;background:rgba(4,30,58,.8);overflow-y:auto;padding:clamp(12px,4vw,60px) 12px;">
       <div onClick="{{ stop }}" style="position:relative;max-width:600px;margin:0 auto;background:#e6e6e6;display:flex;flex-direction:column;">
-        <div style="background:linear-gradient(180deg,#041e3a 60%,#e6e6e6 100%);color:#e6e6e6;padding:clamp(36px,5vw,60px) clamp(24px,4vw,48px) clamp(40px,5vw,60px);text-align:center;">
+        <div style="background:#041e3a;color:#e6e6e6;padding:clamp(36px,5vw,60px) clamp(24px,4vw,48px) clamp(28px,3.5vw,40px);text-align:center;">
           <button onClick="{{ closeModal }}" aria-label="Close" style="position:absolute;top:8px;right:10px;width:44px;height:44px;background:none;border:0;font-size:30px;color:#e6e6e6;cursor:pointer;">×</button>
           <h3 style="margin:0;font-family:'CaneNero',serif;font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.05;text-transform:uppercase;">{{ formTitle }}</h3>
           <p style="margin:12px 0 0;font-size:14px;">{{ formSub }}</p>
         </div>
         <div style="padding:clamp(20px,4vw,40px) clamp(24px,4vw,48px) clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:12px;">
           <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:12px 0;text-align:center;font-family:'TNR','Tinos',serif;font-style:italic;font-size:24px;color:#041e3a;">Thank you! We will contact you soon.</p>
+            <div role="status" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:8px 0 4px;text-align:center;color:#041e3a;">
+              <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:#041e3a;color:#fff;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+              <p style="margin:0;font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(24px,3vw,30px);line-height:1.2;">{{ successHead }}</p>
+              <p style="margin:0;max-width:420px;font-size:15px;line-height:1.6;color:#1a1a1a;">{{ successText }}</p>
+              <p style="margin:0;max-width:420px;font-size:14px;line-height:1.6;color:#3d4f66;">Meanwhile, follow the contest on Instagram <a href="https://www.instagram.com/queenbaltic/" target="_blank" rel="noopener" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">@queenbaltic</a></p>
+              <button type="button" onClick="{{ closeModal }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;margin-top:8px;border:0;background:#041e3a;color:#fff;" style-hover="background:#1d3d66;">Close</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+            <div role="alert" style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:8px 0 4px;text-align:center;color:#041e3a;">
+              <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;border:2px solid #a3122a;color:#a3122a;"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 6.5v7"/><path d="M12 17.5v.01"/></svg></span>
+              <p style="margin:0;font-family:'TNR','Tinos',serif;font-style:italic;font-size:clamp(24px,3vw,30px);line-height:1.2;">Your application was not sent</p>
+              <p style="margin:0;max-width:420px;font-size:15px;line-height:1.6;color:#1a1a1a;">Something went wrong on the way. Please check your internet connection and try again — everything you entered is still there.</p>
+              <p style="margin:0;max-width:420px;font-size:14px;line-height:1.6;color:#3d4f66;">If it keeps happening, write to us at <a href="mailto:contest@qotb.eu?subject=Application%20to%20Queen%20of%20the%20Baltic" style="color:#041e3a;font-weight:500;text-decoration:none;" style-hover="color:#3b5998;">contest@qotb.eu</a> and we will help.</p>
+              <span style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px;">
+                <button type="button" onClick="{{ tryAgain }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;border:0;background:#041e3a;color:#fff;" style-hover="background:#1d3d66;">Try again</button>
+                <button type="button" onClick="{{ closeModal }}" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 34px;border-radius:40px;font-family:'TNR','Tinos',serif;font-style:italic;font-size:19px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s;border:1px solid #041e3a;background:transparent;color:#041e3a;" style-hover="background:#041e3a;color:#fff;">Close</button>
+              </span>
+            </div>
           </sc-if>
           <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
-            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:12px;">
-              <input name="Name" required="" placeholder="Your full name" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-              <input name="Email" type="email" required="" placeholder="Your E-mail" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
-              <input name="Phone" type="tel" required="" placeholder="+1(000)000-0000" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
+            <div style="{{ formWrapStyle }}">
+            <form onSubmit="{{ submit }}" style="position:relative;display:flex;flex-direction:column;gap:12px;">
+              <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+              <input name="Name" required="required" placeholder="Your full name" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
+              <input name="Email" type="email" required="required" placeholder="Your E-mail" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
+              <input name="Phone" type="tel" required="required" placeholder="+1(000)000-0000" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
               <sc-if value="{{ isApply }}" hint-placeholder-val="{{ true }}">
                 <div style="display:flex;flex-direction:column;gap:12px;">
                   <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Your country
-                    <select name="country" style="font:inherit;font-size:15px;height:52px;padding:0 12px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select>
+                    <span style="position:relative;display:block;"><select name="country" style="width:100%;font:inherit;font-size:15px;height:52px;padding:0 44px 0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;-webkit-appearance:none;appearance:none;color:#1a1a1a;cursor:pointer;"><option>Estonia</option><option>Latvia</option><option>Lithuania</option></select><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#041e3a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;"><path d="M6 9l6 6 6-6"/></svg></span>
                   </label>
                   <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Instagram
                     <input name="Instagram" placeholder="@" style="font:inherit;font-size:15px;height:52px;padding:0 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;">
                   </label>
-                  <textarea name="About" required="" rows="3" placeholder="Write about yourself in two sentences." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
-                  <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;">Upload your photos <span style="font-size:12px;color:#3d4f66;">Attach 1-3 of your recent photos.</span>
-                    <input type="file" name="File" multiple="" accept="image/*" style="font:inherit;font-size:13px;">
-                  </label>
+                  <textarea name="About" required="required" rows="3" placeholder="Write about yourself in two sentences." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
+                  <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;">
+                    <span>Upload your photos <span style="display:block;margin-top:2px;font-size:12px;color:#3d4f66;">Attach 1–3 of your recent photos.</span></span>
+                    <label style="position:relative;display:flex;align-items:center;gap:14px;min-height:92px;padding:14px 16px;border:1px dashed #041e3a;border-radius:6px;background:#fff;color:#041e3a;cursor:pointer;transition:background .2s;" style-hover="background:#f1f4f8;">
+                      <input type="file" name="File" multiple="multiple" accept="image/*" onChange="{{ pickPhotos }}" aria-label="Upload your photos" style="position:absolute;inset:0;z-index:1;width:100%;height:100%;opacity:0;cursor:pointer;">
+                      <sc-if value="{{ noPhotos }}" hint-placeholder-val="{{ true }}">
+                        <span style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;">
+                          <span style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 24px;border-radius:40px;background:#041e3a;color:#fff;font-family:'TNR','Tinos',serif;font-style:italic;font-size:17px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Choose photos</span>
+                          <span style="font-size:13px;color:#3d4f66;">or drag them here</span>
+                        </span>
+                      </sc-if>
+                      <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ false }}">
+                        <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                          <sc-for list="{{ photoPreviews }}" as="ph" hint-placeholder-count="2">
+                            <img src="{{ ph.src }}" alt="{{ ph.name }}" style="width:64px;height:64px;object-fit:cover;border-radius:4px;display:block;">
+                          </sc-for>
+                          <span style="font-size:14px;line-height:1.4;">{{ photosLabel }}<span style="display:block;font-family:'TNR','Tinos',serif;font-style:italic;font-size:16px;text-decoration:underline;text-underline-offset:3px;">Change</span></span>
+                        </span>
+                      </sc-if>
+                    </label>
+                  </div>
                 </div>
               </sc-if>
               <sc-if value="{{ isPartner }}" hint-placeholder-val="{{ false }}">
@@ -347,9 +384,12 @@ a:hover{color:#3b5998}
                   <textarea name="Interest" rows="3" placeholder="In a few sentences, please communicate what you are interested in." style="font:inherit;font-size:15px;padding:14px 16px;border:1px solid #041e3a;border-radius:6px;background:#fff;color:#1a1a1a;resize:vertical;"></textarea>
                 </div>
               </sc-if>
-              <button type="submit" style="font:inherit;font-size:16px;height:56px;border:0;border-radius:6px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;" style-hover="background:#1d3d66;">Submit</button>
+              <div ref="{{ captchaRef }}" style="display:flex;justify-content:flex-start;max-width:100%;overflow:hidden;"></div>
+              <button type="submit" style="font-family:'TNR','Tinos',serif;font-style:italic;font-size:20px;height:56px;border:0;border-radius:40px;background:#041e3a;color:#fff;cursor:pointer;margin-top:4px;transition:background .2s;" style-hover="background:#1d3d66;">{{ submitLabel }}</button>
+              <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;font-size:14px;color:#a3122a;text-align:center;">{{ submitError }}</p></sc-if>
               <p style="margin:0;font-size:12px;color:#3d4f66;text-align:center;">By filling out this form you agree to the processing of personal data.</p>
             </form>
+            </div>
           </sc-if>
         </div>
       </div>
@@ -359,6 +399,41 @@ a:hover{color:#3b5998}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;marqueeSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:40,&quot;min&quot;:10,&quot;max&quot;:120,&quot;step&quot;:5,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;}}">
 const IMG = 'assets/img/';
+// Google Apps Script web app that saves applications to the Google Sheet and emails a notification.
+// Paste the /exec URL here after deploying tools/applications/Code.gs (see docs/applications-setup.md).
+const APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzqYXFiY-CwOgQQ9CeX-m0PufLJDLmCLGoSlIpFqG4FrkQjPkAPJ87gfIOi4YefwyMj/exec';
+const MAX_PHOTOS = 3;
+// Google reCAPTCHA v2 ("I'm not a robot") site key — public, safe to keep here. Empty = no captcha.
+// The matching secret key lives only in the Apps Script project (Script properties → RECAPTCHA_SECRET).
+const RECAPTCHA_SITE_KEY = '6LclNDUuAAAAAE_l1VpXMLEeeDpQTh-W09Ah5c4_';
+let recaptchaReady = null;
+const loadRecaptcha = () => recaptchaReady || (recaptchaReady = new Promise((resolve, reject) => {
+  window.qotbRecaptchaLoaded = () => resolve(window.grecaptcha);
+  const s = document.createElement('script');
+  s.src = 'https://www.google.com/recaptcha/api.js?onload=qotbRecaptchaLoaded&render=explicit&hl=en';
+  s.async = true; s.defer = true;
+  s.onerror = () => { recaptchaReady = null; reject(new Error('reCAPTCHA failed to load')); };
+  document.head.appendChild(s);
+}));
+// Shrink a photo in the browser before upload. Returns { name, type, data, thumb } (base64 JPEG):
+// `data` = longest side 1600px (saved to Drive), `thumb` = 600px preview shown inside the table cell.
+const jpeg = (img, max, q) => {
+  const k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+  const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', q).split(',')[1];
+};
+const shrinkPhoto = file => new Promise((resolve, reject) => {
+  const url = URL.createObjectURL(file);
+  const img = new Image();
+  img.onload = () => {
+    URL.revokeObjectURL(url);
+    resolve({ name: file.name.replace(/\.[^.]+$/, '') + '.jpg', type: 'image/jpeg', data: jpeg(img, 1600, 0.85), thumb: jpeg(img, 600, 0.8) });
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Could not read ' + file.name)); };
+  img.src = url;
+});
 const e = React.createElement;
 const ic = (d, vb = '0 0 24 24', s = 20) => e('svg', { width: s, height: s, viewBox: vb, fill: 'currentColor', 'aria-hidden': true }, e('path', { d }));
 const ICONS = {
@@ -441,7 +516,42 @@ const LOGOS = [
 const photo = ([src, w, dy]) => ({ src: IMG + src, style: { width: w + '%', height: 'auto', display: 'block', justifySelf: 'center', transform: `translateY(${dy}%)`, filter: 'grayscale(1)', objectFit: 'cover' } });
 
 class Component extends DCLogic {
-  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false };
+  async sendForm(form, kind) {
+    if (this.state.sending) return;
+    const fd = new FormData(form);
+    if (fd.get('website')) { this.setState({ submitted: true }); return; } // bot filled the hidden field
+    const files = fd.getAll('File').filter(f => f && f.size);
+    if (files.length > MAX_PHOTOS) { this.setState({ error: 'Please attach no more than ' + MAX_PHOTOS + ' photos.' }); return; }
+    if (!APPLY_ENDPOINT) { this.setState({ error: 'The form is not connected yet. Please write to contest@qotb.eu.' }); return; }
+    let captcha = '';
+    if (RECAPTCHA_SITE_KEY) {
+      captcha = window.grecaptcha && this.captchaId != null ? window.grecaptcha.getResponse(this.captchaId) : '';
+      if (!captcha) { this.setState({ error: 'Please confirm that you are not a robot.' }); return; }
+    }
+    this.setState({ sending: true, error: '' });
+    try {
+      const data = { kind };
+      for (const [k, v] of fd.entries()) if (typeof v === 'string' && k !== 'website') data[k] = v.trim();
+      data.photos = await Promise.all(files.map(shrinkPhoto));
+      data.page = location.href;
+      data.captcha = captcha;
+      const res = await fetch(APPLY_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) });
+      const out = await res.json().catch(() => ({}));
+      if (out.error === 'captcha') {
+        if (window.grecaptcha && this.captchaId != null) window.grecaptcha.reset(this.captchaId);
+        this.setState({ sending: false, error: 'The “I’m not a robot” check expired. Please tick it again and press Submit.' });
+        return;
+      }
+      if (!res.ok || out.ok === false) throw new Error(out.error || 'HTTP ' + res.status);
+      this.clearPhotos();
+      this.setState({ sending: false, submitted: true, failed: false, sentName: (data.Name || '').split(/\s+/)[0] });
+    } catch (err) {
+      // Network or server failure: show the failure screen, keep everything the visitor typed.
+      if (window.grecaptcha && this.captchaId != null) window.grecaptcha.reset(this.captchaId);
+      this.setState({ sending: false, failed: true, error: '' });
+    }
+  }
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, menu: false, modal: null, submitted: false, sending: false, error: '', photos: [], failed: false, sentName: '' };
   componentDidMount() {
     this.onResize = () => this.setState({ w: window.innerWidth });
     window.addEventListener('resize', this.onResize);
@@ -470,9 +580,23 @@ class Component extends DCLogic {
     if (location.hash === '#partner') this.setState({ modal: 'partner' });
   }
   componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); window.removeEventListener('resize', this.onResize); document.removeEventListener('scroll', this.onScroll, true); document.removeEventListener('scroll', this.onHeroScroll, true); window.removeEventListener('resize', this.onHeroScroll); }
-  componentDidUpdate(_, prev) {
-    const lock = this.state.menu || !!this.state.modal;
-    if (lock !== (prev.menu || !!prev.modal)) document.body.style.overflow = lock ? 'hidden' : '';
+  componentDidUpdate() {
+    // The runtime passes only prevProps here, so remember the previous lock state ourselves.
+    const lock = !!(this.state.menu || this.state.modal);
+    if (lock !== !!this.scrollLocked) { this.scrollLocked = lock; document.body.style.overflow = lock ? 'hidden' : ''; }
+    this.mountCaptcha();
+  }
+  clearPhotos() { (this.state.photos || []).forEach(p => URL.revokeObjectURL(p.src)); if (this.state.photos && this.state.photos.length) this.setState({ photos: [] }); }
+  // Renders the reCAPTCHA checkbox into the form whenever the form is on screen.
+  mountCaptcha() {
+    const el = this.captchaRef && this.captchaRef.current;
+    if (!RECAPTCHA_SITE_KEY || !el) { if (!el) this.captchaEl = null; return; }
+    if (this.captchaEl === el) return;
+    this.captchaEl = el; this.captchaId = null;
+    loadRecaptcha().then(g => {
+      if (this.captchaEl !== el || !el.isConnected) return;
+      this.captchaId = g.render(el, { sitekey: RECAPTCHA_SITE_KEY, theme: 'light' });
+    }).catch(() => this.setState({ error: 'The anti-spam check could not load. Please reload the page or write to contest@qotb.eu.' }));
   }
   charityVals(isPhone) {
     const W = isPhone ? 320 : 1200, H = isPhone ? 570 : 690;
@@ -511,7 +635,7 @@ class Component extends DCLogic {
     const isDesktop = this.state.w >= 960;
     const isPhone = this.state.w < 640;
     const m = this.state.modal;
-    const close = () => this.setState({ modal: null, submitted: false });
+    const close = () => this.setState({ modal: null, submitted: false, failed: false, error: '' });
     return {
       isDesktop, isMobile: !isDesktop,
       isPhone, notPhone: !isPhone,
@@ -543,17 +667,35 @@ class Component extends DCLogic {
       logos: LOGOS.map(([name, src, href]) => ({ name, src: IMG + src, href: href || '#partners', target: href ? '_blank' : '_self' })),
       partnerTypes: ['Franchising / National Director', 'Public Relations / Press Requests', 'Video and Image Licensing Requests', 'Titleholder and Brand Partnerships', 'Talent Appearance', 'Other Sponsorship', 'Other'],
       openJoin: () => this.setState({ modal: 'join' }),
-      openApply: () => this.setState({ modal: 'apply', submitted: false }),
-      openPartner: () => this.setState({ modal: 'partner', submitted: false }),
+      openApply: () => { this.clearPhotos(); this.setState({ modal: 'apply', submitted: false, failed: false, error: '' }); },
+      openPartner: () => this.setState({ modal: 'partner', submitted: false, failed: false, error: '' }),
       closeModal: close,
+      failed: this.state.failed && !this.state.submitted,
+      formWrapStyle: { display: this.state.failed ? 'none' : 'block' },
+      tryAgain: () => this.setState({ failed: false, error: '' }),
+      successHead: this.state.sentName ? 'Thank you, ' + this.state.sentName + '!' : 'Thank you!',
+      successText: m === 'partner'
+        ? 'Your request has been received. Our team will get back to you by e-mail soon.'
+        : 'Your application to Queen of the Baltic has been received. Our team will review it and contact you by e-mail or phone soon.',
       stop: ev => ev.stopPropagation(),
       joinOpen: m === 'join',
       formOpen: m === 'apply' || m === 'partner',
       isApply: m === 'apply', isPartner: m === 'partner',
-      formTitle: m === 'partner' ? 'Let’s reign together.' : 'Become the Queen of the Baltic!',
-      formSub: m === 'partner' ? 'Type your contacts and a reason of your reach.' : 'Fill in the form and we will get back to you.',
+      formTitle: this.state.submitted ? (m === 'partner' ? 'Request received' : 'Application received') : m === 'partner' ? 'Let’s reign together.' : 'Become the Queen of the Baltic!',
+      formSub: this.state.submitted ? 'Queen of the Baltic International' : m === 'partner' ? 'Type your contacts and a reason of your reach.' : 'Fill in the form and we will get back to you.',
       submitted: this.state.submitted, notSubmitted: !this.state.submitted,
-      submit: ev => { ev.preventDefault(); this.setState({ submitted: true }); }
+      submitLabel: this.state.sending ? 'Sending…' : 'Submit',
+      hasError: !!this.state.error, submitError: this.state.error,
+      captchaRef: this.captchaRef || (this.captchaRef = React.createRef()),
+      photoPreviews: this.state.photos, hasPhotos: this.state.photos.length > 0, noPhotos: !this.state.photos.length,
+      photosLabel: this.state.photos.length === 1 ? '1 photo selected' : this.state.photos.length + ' photos selected',
+      pickPhotos: ev => {
+        const files = Array.from(ev.target.files || []);
+        this.clearPhotos();
+        if (files.length > MAX_PHOTOS) { ev.target.value = ''; this.setState({ photos: [], error: 'Please choose no more than ' + MAX_PHOTOS + ' photos.' }); return; }
+        this.setState({ photos: files.map(f => ({ src: URL.createObjectURL(f), name: f.name })), error: '' });
+      },
+      submit: ev => { ev.preventDefault(); this.sendForm(ev.currentTarget || ev.target, m === 'partner' ? 'partner' : 'apply'); }
     };
   }
 }
